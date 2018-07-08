@@ -27,7 +27,7 @@ public class DefaultRuntimeDataInstallerService {
     private LoggerService loggerService;
 
     @Autowired
-    @Qualifier("duckinSecurityPasswordEncoder")
+    @Qualifier("quatspecSecurityPasswordEncoder")
     private PasswordEncoder passwordEncoder;
 
     @Value("${setup.info}")

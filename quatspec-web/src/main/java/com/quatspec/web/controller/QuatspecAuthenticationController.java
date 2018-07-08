@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.session.SessionAuthenticationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.quatspec.persistence.domain.Institution;
 import com.quatspec.persistence.domain.Profile;
+import com.quatspec.persistence.domain.User;
 import com.quatspec.persistence.repository.DataAccessService;
 import com.quatspec.service.application.service.LoggerService;
 import com.quatspec.service.application.service.UrlUtilityRequestServiceHandler;

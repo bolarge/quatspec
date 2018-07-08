@@ -13,7 +13,7 @@
 
             <!-- Breadcrumb-->
             <div class="breadcrumb-dn mr-auto">
-                <p>Quatbits Payment Infrastructure</p>
+                <p>Quatspec Payment</p>
             </div>
 
             <!-- Links -->

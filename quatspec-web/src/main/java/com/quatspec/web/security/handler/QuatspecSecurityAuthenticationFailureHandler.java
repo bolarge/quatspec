@@ -16,8 +16,8 @@ import org.springframework.util.StringUtils;
 import com.quatspec.service.application.service.LoggerService;
 import com.quatspec.service.application.service.UrlUtilityRequestServiceHandler;
 
-@Service("quaspecSecurityAuthenticationFailureHandler")
-public class QuaspecSecurityAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
+@Service("quatspecSecurityAuthenticationFailureHandler")
+public class QuatspecSecurityAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
 	@Autowired
 	private UrlUtilityRequestServiceHandler urlUtilityRequestServiceHandler;
@@ -27,7 +27,7 @@ public class QuaspecSecurityAuthenticationFailureHandler extends SimpleUrlAuthen
 
 	private String targetFailureURL = "";
 
-	public QuaspecSecurityAuthenticationFailureHandler() {
+	public QuatspecSecurityAuthenticationFailureHandler() {
 		super("/login?");
 		setDefaultFailureUrl("/login?");
 		targetFailureURL = "/login?";

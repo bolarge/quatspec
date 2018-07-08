@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 import com.quatspec.service.application.service.LoggerService;
 import com.quatspec.web.util.QuatspecServiceConstants;
 
-@Service("quaspeclogoutSecurityHandler")
-public class QuaspecSecurityLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
+@Service("quatspeclogoutSecurityHandler")
+public class QuatspecSecurityLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
     @Autowired
     private LoggerService loggerService;
 
-        public QuaspecSecurityLogoutSuccessHandler(){
+        public QuatspecSecurityLogoutSuccessHandler(){
             super();
             setUseReferer(true);
             setAlwaysUseDefaultTargetUrl(true);
