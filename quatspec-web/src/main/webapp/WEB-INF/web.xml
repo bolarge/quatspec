@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns="http://java.sun.com/xml/ns/javaee"
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+		 version="3.0">
+
+    <display-name>quatspec</display-name>
+    
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+       	<param-value>/WEB-INF/spring/quatspec-root.xml /WEB-INF/spring/quatspec-persistence.xml</param-value>
+    </context-param>
+    
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    <listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>com.quatspec.web.security.listener.QuatspecSessionServiceListener</listener-class>
+	</listener>
+	
+	<listener>
+    	<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+	</listener>
+	
+	<!-- <listener>
+		<listener-class>org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
+	</listener> -->
+	
+	<listener>
+		<listener-class>com.quatspec.web.security.listener.QuatspecContextInstallerServletListener</listener-class>
+	</listener>
+    
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+		<url-pattern>/admin</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>MultipartFilter</filter-name>
+		<filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>MultipartFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+    <servlet>
+		<servlet-name>quatspec</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value/>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
+		<multipart-config>
+			<max-file-size>5000000000</max-file-size>
+		</multipart-config>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>quatspec</servlet-name>
+		<url-pattern>/</url-pattern>
+		<url-pattern>/admin</url-pattern>
+	</servlet-mapping>
+	
+	<session-config>
+		<session-timeout>15</session-timeout>
+	</session-config>
+
+</web-app>

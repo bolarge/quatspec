@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+
+<tiles-definitions>
+ 
+  <definition name="adminwelcome" extends="default">
+    <put-attribute name="body" value="/WEB-INF/views/welcome/adminwelcome.jsp" />
+  </definition>
+  
+   <definition name="userwelcome" extends="default">
+    <put-attribute name="body" value="/WEB-INF/views/welcome/userwelcome.jsp" />
+  </definition>
+  
+  <definition name="access_denied" extends="default">
+    <put-attribute name="body" value="/WEB-INF/views/access_denied.jsp" />
+  </definition>
+  
+   <definition name="adminlogin" extends="default" >
+   	<put-attribute name="header" value="" />
+    <put-attribute name="body" value="/WEB-INF/views/authentication/adminlogin.jsp" />
+    <put-attribute name="bottom" value="" />
+  </definition>
+
+  <definition name="userlogin" extends="default" >
+      <put-attribute name="header" value="" />
+      <put-attribute name="body" value="/WEB-INF/views/authentication/userlogin.jsp" />
+      <put-attribute name="bottom" value="" />
+  </definition>
+ 
+</tiles-definitions>
