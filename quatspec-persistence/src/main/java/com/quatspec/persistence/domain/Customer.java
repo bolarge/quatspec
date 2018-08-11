@@ -1,5 +1,7 @@
 package com.quatspec.persistence.domain;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 

@@ -9,13 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.quatspec.api.exception.QuaspecServiceException;
+import com.quatspec.api.model.IProfile;
+import com.quatspec.api.model.IUser;
+import com.quatspec.api.service.IProfileService;
 import com.quatspec.persistence.domain.Profile;
 import com.quatspec.persistence.repository.ProfileRepository;
 import com.quatspec.service.service.ProfileService;
 
 @Service("userProfileService")
-@Transactional
-public class ProfileServiceImpl implements ProfileService {
+public class ProfileServiceImpl implements ProfileService, IProfileService {
 	
 	final Logger logger = LoggerFactory.getLogger(ProfileServiceImpl.class);
 	
@@ -23,18 +26,19 @@ public class ProfileServiceImpl implements ProfileService {
 	private ProfileRepository profileRepository;
 
 	@Override
+	@Transactional
 	public void saveProfile(Profile userProfile) {
 		profileRepository.save(userProfile);		
 	}
 
 	@Override
+	@Transactional
 	public void updateProfile(Profile userProfile) {	
 		saveProfile(userProfile);
 	}
 
 	@Override
-	public List<Profile> findAll() {	
-		
+	public List<Profile> findAll() {		
 		return (List<Profile>) profileRepository.findAll();
 	}
 
@@ -48,21 +52,26 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteProfileById(Long id) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
+	@Transactional
 	public void deleteAllData() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
 	public boolean isProfileExist(Profile profile) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<? extends IProfile> getByIUser(IUser iUser) throws QuaspecServiceException {		
+		return (List<? extends IProfile>) profileRepository.findProfileByUserId(iUser.getId());
 	}
 
 }

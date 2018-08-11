@@ -1,4 +1,4 @@
-package com.quatspec.service.service.impl;
+ package com.quatspec.service.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,12 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.quatspec.api.exception.QuaspecServiceException;
+import com.quatspec.api.model.IUser;
+import com.quatspec.api.service.IUserService;
 import com.quatspec.persistence.domain.User;
 import com.quatspec.persistence.repository.UserRepository;
 import com.quatspec.service.service.UserService;
 
 @Service("userService")
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService, IUserService{
 
 	public final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 	
@@ -60,6 +63,18 @@ public class UserServiceImpl implements UserService{
 	public boolean isUserExist(User user) {
 		
 		return userRepository.existsById(user.getId());
+	}
+
+	@Override
+	@Transactional
+	public List<? extends IUser> getAll() throws QuaspecServiceException {
+		return userRepository.findAll();
+	}
+
+	@Override
+	@Transactional
+	public IUser get(String username) throws QuaspecServiceException {
+		return userRepository.findByUserName(username);
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.quatspec.persistence.domain;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,6 +53,7 @@ public class Employee extends User{
 	public void setVacation(int vacation) {
 		this.vacation = vacation;
 	}
+	
 	
 	/*@ManyToMany(fetch=FetchType.EAGER, targetEntity = Profile.class)
 	@JoinTable(name = "employee_profile_mapping",

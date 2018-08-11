@@ -268,10 +268,6 @@ public abstract class User implements IUser{
 		return profiles;
 	}
 
-	public void setProfiles(Set<Profile> profiles) {
-		this.profiles = profiles;
-	}
-
 	public String getProfilePicture() {
 		return profilePicture;
 	}
