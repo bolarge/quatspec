@@ -85,13 +85,11 @@ public interface IUser<T>  {
 
 	void setBaseUrl(String url);
 	
-	Set<T> getProfiles();
+	Set<T> getProfiles();	
 	
-	//void setProfiles(Set<T> profiles) ;
-	
-	/*<T> Set<T> getProfiles();
+	/*
 
-	<T> void setProfiles(Set<T> profiles) ;
+	void setProfiles(Set<T> profiles) ;
 		
 	<T> Set<T> getRoles();
 
