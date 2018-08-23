@@ -9,47 +9,72 @@ import com.quatspec.api.model.IBankAccount;
 import com.quatspec.api.service.IBankAccountService;
 import com.quatspec.persistence.domain.BankAccount;
 import com.quatspec.persistence.domain.Customer;
-import com.quatspec.persistence.repository.BankAccountRepository;
-import com.quatspec.persistence.repository.UserRepository;
+import com.quatspec.persistence.domain.FixedDepositAccount;
+import com.quatspec.persistence.domain.SavingsAccount;
+import com.quatspec.persistence.repository.DataAccessService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service("bankAccountService")
 public class BankAccountServiceImpl implements IBankAccountService {
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private BankAccountRepository bankAccountRepository;
+	
+	@Autowired
+	DataAccessService dataAccessService;
 
     @Override
     @Transactional
     public List<? extends IBankAccount> getByIUser(String username) throws QuaspecServiceException {
-    	Customer user = (Customer) userRepository.findByUserName(username);
-        //IUser user = userRepository.findByUserName(username);
+    	//Customer user = (Customer)
+    	//User user = (User) dataAccessService.getUserRepository().findByUserName(username);
+    	Customer user = (Customer) dataAccessService.getUserRepository().findByUserName(username);
+    	//Customer customer = (Customer)user;
         if (user != null) {
-            return bankAccountRepository.findByUser(user);
+            return dataAccessService.getBankAccountRepository().findByUser(user);
         }
         return new ArrayList<>();
     }
 
     @Override
     @Transactional
-    public BankAccount create(IBankAccount account) throws QuaspecServiceException {
+    public BankAccount createBankAccount(IBankAccount account) throws QuaspecServiceException {
     	Customer user = (Customer) account.getUser();//Concrete Class of User object
-        //User user = account.getUser();
-        // TODO throw exception
         if (user != null) {
-            //User userEntity = UserRepository.findOne(account.getUser().getUsername());
-        	Customer userEntity = (Customer) userRepository.findByUserName((account.getUser().getUserName()));
+        	Customer userEntity = (Customer) dataAccessService.getUserRepository().findByUserName((account.getUser().getUserName()));
 
             if (userEntity != null) {
-                BankAccount target = new BankAccount(account.getAccountNumber(), account.getBic(), userEntity);
-                return bankAccountRepository.save(target);
+                IBankAccount bankAccount = new SavingsAccount(account.getAccountNumber(), userEntity);
+                return dataAccessService.getBankAccountRepository().saveBankAccount(bankAccount);
             }
         }
         return null;
     }
+
+	@Override
+	public IBankAccount createSavingsAccount(IBankAccount account) throws QuaspecServiceException {
+		Customer user = (Customer) account.getUser();//Concrete Class of User object
+        if (user != null) {
+        	Customer userEntity = (Customer) dataAccessService.getUserRepository().findByUserName((account.getUser().getUserName()));
+
+            if (userEntity != null) {
+                IBankAccount bankAccount = new SavingsAccount(account.getAccountNumber(), userEntity);
+                return dataAccessService.getBankAccountRepository().saveBankAccount(bankAccount);
+            }
+        }
+        return null;
+	}
+
+	@Override
+	public IBankAccount createFixedDepositAccount(IBankAccount account) throws QuaspecServiceException {
+		Customer user = (Customer) account.getUser();//Concrete Class of User object
+        if (user != null) {
+        	Customer userEntity = (Customer) dataAccessService.getUserRepository().findByUserName((account.getUser().getUserName()));
+
+            if (userEntity != null) {
+                IBankAccount bankAccount = new FixedDepositAccount(account.getAccountNumber(), userEntity);
+                return dataAccessService.getBankAccountRepository().saveBankAccount(bankAccount);
+            }
+        }
+        return null;
+	}
 }

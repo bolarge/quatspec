@@ -30,16 +30,16 @@ $(document).ready(function () {
         $(function () {
             $('#folder-1').click(function () {
                 toastr.error("Folder 1 has been clicked!", "Folder 1", {
-                    "positionClass": "toast-top-right",
+                    "positionClass": "toast-top-right"
                 });
             });
             $('#folder-2').click(function () {
                 // make it not dissappear
-                toastr.info("Folder 2 has been clicked!", "Folder 2", );
+                toastr.info("Folder 2 has been clicked!", "Folder 2" );
             });
             $('#folder-3').click(function () {
                 // make it not dissappear
-                toastr.info("Folder 3 has been clicked!", "Folder 3", );
+                toastr.info("Folder 3 has been clicked!", "Folder 3" );
             });
         });
 

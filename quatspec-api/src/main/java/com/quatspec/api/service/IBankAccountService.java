@@ -10,5 +10,9 @@ public interface IBankAccountService {
 
     List<? extends IBankAccount> getByIUser(String username) throws QuaspecServiceException;
 
-    IBankAccount create(IBankAccount account) throws QuaspecServiceException;
+    IBankAccount createBankAccount(IBankAccount account) throws QuaspecServiceException;
+    
+    IBankAccount createSavingsAccount(IBankAccount account) throws QuaspecServiceException;
+    
+    IBankAccount createFixedDepositAccount(IBankAccount account) throws QuaspecServiceException;
 }

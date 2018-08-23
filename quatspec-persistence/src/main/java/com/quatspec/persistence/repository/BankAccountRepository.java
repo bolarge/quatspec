@@ -1,15 +1,22 @@
 package com.quatspec.persistence.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.quatspec.persistence.domain.BankAccount;
-import com.quatspec.persistence.domain.User;
-
 import java.util.List;
 
-@Transactional
-public interface BankAccountRepository extends JpaRepository<BankAccount, String> {
+import org.springframework.transaction.annotation.Transactional;
 
-    List<BankAccount> findByUser(User user);
+import com.quatspec.api.model.IBankAccount;
+import com.quatspec.persistence.domain.BankAccount;
+import com.quatspec.persistence.domain.Customer;
+import com.quatspec.persistence.domain.User;
+
+@Transactional
+public interface BankAccountRepository extends BankAccountBaseRepository<BankAccount> {
+
+	BankAccount saveBankAccount(IBankAccount bankAccount);
+
+	List<? extends IBankAccount> findByUser(Customer user);
+
+	List<? extends IBankAccount> findByUser(User user);
 }
+
+

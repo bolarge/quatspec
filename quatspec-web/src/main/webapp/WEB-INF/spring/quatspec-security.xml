@@ -10,7 +10,7 @@
 
     <security:http-firewall ref="httpFireWall"/>
 
-    <security:http pattern="/api/rest/requesthandler" security="none" servlet-api-provision="true"/>
+    <security:http pattern="/api/rest" security="none" servlet-api-provision="true"/>
     <!-- we will need this for restservice that needs to be called when there is no login -->
 
     <security:http auto-config="false" disable-url-rewriting="true" use-expressions="true" create-session="ifRequired" entry-point-ref="authenticationEntryPoint">

@@ -9,5 +9,5 @@ import com.quatspec.persistence.domain.User;
 public interface UserRepository extends UserBaseRepository<User> {
 
 	void save(IUser iUser);
-
+	//T save(IUser iUser);
 }

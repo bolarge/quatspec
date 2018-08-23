@@ -29,6 +29,15 @@ public class DataAccessServiceImpl implements DataAccessService{
 	
 	@Autowired
 	private MenuRepository menuRepository;
+	
+	@Autowired
+	private SavingsAccountRepository savingsAccountRepository;
+	
+	@Autowired
+	private FixedDepositRepository fixedDepositRepository;
+	
+	@Autowired
+	private BankAccountRepository bankAccountRepository;
 
 	public ProfileRepository getProfileRepository() {
 		return profileRepository;
@@ -64,5 +73,20 @@ public class DataAccessServiceImpl implements DataAccessService{
 	@Override
 	public MenuRepository getMenuRepository() {
 		return menuRepository;
+	}
+
+	@Override
+	public SavingsAccountRepository getSavingsAccountRepository() {
+		return savingsAccountRepository;
+	}
+
+	@Override
+	public FixedDepositRepository getFixedDepositRepository() {
+		return fixedDepositRepository;
+	}
+
+	@Override
+	public BankAccountRepository getBankAccountRepository() {
+		return bankAccountRepository;
 	}	
 }

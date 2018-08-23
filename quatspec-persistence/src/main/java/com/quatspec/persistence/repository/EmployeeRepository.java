@@ -4,7 +4,6 @@ import javax.transaction.Transactional;
 
 import com.quatspec.persistence.domain.Employee;
 
-
 @Transactional
 public interface EmployeeRepository extends UserBaseRepository<Employee>{
 

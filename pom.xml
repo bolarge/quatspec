@@ -16,10 +16,11 @@
 		<module>quatspec-service</module>
 		<module>quatspec-web</module>
 		<module>quatspec-api</module>
+		<module>quatspec-middleware</module>
 	</modules>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>10</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<spring.version>5.0.3.RELEASE</spring.version>
@@ -30,7 +31,6 @@
 		<!-- <hibernate-validator.version>6.0.7.Final</hibernate-validator.version> -->
 
 		<jackson.version>2.9.4</jackson.version>
-
 		<javax-mail.version>1.6.1</javax-mail.version>
 		<javax-validation.version>1.1.0.Final</javax-validation.version>
 		<joda-time.version>2.9.9</joda-time.version>
@@ -38,7 +38,11 @@
 		<apachetiles.version>3.0.5</apachetiles.version>
 		<jasypt.version>1.9.2</jasypt.version>
 		<slf4j.version>1.7.25</slf4j.version>
-
+		<selenium.version>2.53.1</selenium.version>
+		<selenium-htmlunit.version>2.21</selenium-htmlunit.version>
+		<mockito.version>1.10.19</mockito.version>
+		<activemq.version>5.15.3</activemq.version>	  
+		
 	</properties>
 
 	<repositories>
@@ -256,6 +260,22 @@
 			<artifactId>spring-security-ldap</artifactId>
 			<version>${springsecurity-version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+			<!-- <scope>provided</scope> -->
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jms -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>${spring.version}</version>
+			<!-- <scope>provided</scope> -->
+		</dependency>
 		
 		<!-- JSR-303 validation -->
 		<dependency>
@@ -281,6 +301,11 @@
 			<artifactId>javax.servlet.jsp-api</artifactId>
 			<version>2.3.2-b02</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.jms</groupId>
+			<artifactId>javax.jms-api</artifactId>
+			<version>2.0</version>
 		</dependency>
 		
 		<dependency>
@@ -354,6 +379,41 @@
 			<artifactId>jquery-ui</artifactId>
 			<version>1.12.1</version>
 		</dependency>
+		
+		<!-- mockito-all -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.7.19</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-broker</artifactId>
+			<version>${activemq.version}</version>
+			<!-- <scope>provided</scope> -->
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-client</artifactId>
+			<version>${activemq.version}</version>
+			<!-- <scope>provided</scope> -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+			<version>${activemq.version}</version>
+			<!-- <scope>provided</scope> -->
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-kahadb-store</artifactId>
+			<version>${activemq.version}</version>
+		</dependency>
 
 	</dependencies>
 
@@ -374,8 +434,8 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.7.0</version>
 					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
+						<source>${java.version}</source>
+						<target>10</target>
 						<encoding>UTF-8</encoding>
 						<debug>true</debug>
 						<fork>true</fork>

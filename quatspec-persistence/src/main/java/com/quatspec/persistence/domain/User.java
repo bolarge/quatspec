@@ -37,82 +37,85 @@ public abstract class User implements IUser{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	protected Long id;
+	private Long id;
 	
 	@Column(name = "version")
-	protected int version;
+	private int version;
 	
 	@Column(name = "last_name", length = 15)
-	protected String lastName;
+	private String lastName;
 	
 	@Column(name = "first_name", length = 15)
-	protected String firstName;
+	private String firstName;
 	
 	@Column(name = "middle_name", length = 15)
-	protected String middleName;
+	private String middleName;
 	
 	@Column(name = "birth_date")
 	@Temporal(TemporalType.DATE)
-	protected Date birthDate;
+	private Date birthDate;
 	
 	@Column(name = "email", unique = true, nullable = false, length = 45)
-	protected String email;
+	private String email;
 	
 	@Column(name = "username", unique = true, nullable = false, length = 25)
-	protected String userName;
+	private String userName;
 	
 	@Column(name = "gender")
 	@Enumerated(EnumType.STRING)
-	protected Gender gender;
+	private Gender gender;
 	
 	@Column(name = "password", length = 100)
-	protected String password;
+	private String password;
 	
 	@Basic(fetch = FetchType.LAZY)
 	@Lob
 	@Column(name = "photo")
-	protected byte[] photo;
+	private byte[] photo;
 	
 	@Column(name="profile_pic")
-	protected String profilePicture = "/static/images/avatar.png";
+	private String profilePicture = "/static/images/avatar.png";
 	
 	@Column(name = "enabled")
-	protected boolean enabled = true;
+	private boolean enabled = true;
 	
 	@Column(name = "question", length = 25)
-	protected String securityQuestion;
+	private String securityQuestion;
 	
 	@Column(name = "answer", length = 25)
-	protected String securityAnswer;	
+	private String securityAnswer;	
 	
 	@Column(name="base_url")
-	protected String baseUrl;
+	private String baseUrl;
 
 	@Column(name = "start_date")
 	@Temporal(TemporalType.DATE)
-	protected Date startDate;
+	private Date startDate;
 	
 	@Column(name="last_logon_date")
 	@Temporal(TemporalType.TIMESTAMP)
-	protected Date lastLoginDate;
+	private Date lastLoginDate;
 
 	@Column(name="last_logout_date")
 	@Temporal(TemporalType.TIMESTAMP)
-	protected Date lastLogoutDate;
+	private Date lastLogoutDate;
 	
 	@ManyToOne(fetch =FetchType.EAGER)
 	@JoinColumn(name="institution_id")
-	protected Institution institution;
+	private Institution institution;
 
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="organization_id")
-    protected Organization organization;
+	private Organization organization;
+	
+	@Column(name = "gsm_number")
+	private String gsmPhoneNumber;
 	
 	@ManyToMany(fetch=FetchType.EAGER, targetEntity = Profile.class)
 	@JoinTable(name = "user_profile",
 			joinColumns = { @JoinColumn(name = "user_id") },
 			inverseJoinColumns = { @JoinColumn(name = "profile_id") })
-	protected Set<Profile> profiles = new HashSet<Profile>();
+	private Set<Profile> profiles = new HashSet<Profile>();
 	
 	/*@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role",
@@ -266,6 +269,18 @@ public abstract class User implements IUser{
 
 	public Set<Profile> getProfiles() {
 		return profiles;
+	}
+
+	public String getGsmPhoneNumber() {
+		return gsmPhoneNumber;
+	}
+
+	public void setGsmPhoneNumber(String gsmPhoneNumber) {
+		this.gsmPhoneNumber = gsmPhoneNumber;
+	}
+
+	public void setProfiles(Set<Profile> profiles) {
+		this.profiles = profiles;
 	}
 
 	public String getProfilePicture() {

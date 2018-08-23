@@ -7,5 +7,7 @@ import com.quatspec.persistence.domain.User;
 
 @NoRepositoryBean
 public interface UserBaseRepository<T extends User> extends JpaRepository<T, Long> {
+	
 	public T findByUserName (String username);
+	
 }

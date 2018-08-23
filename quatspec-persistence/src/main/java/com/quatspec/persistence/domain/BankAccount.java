@@ -1,3 +1,4 @@
+
 package com.quatspec.persistence.domain;
 
 import java.util.Date;
@@ -8,12 +9,17 @@ import com.quatspec.api.model.IBankAccount;
 
 @Entity(name = "BankAccount")
 @Table(name = "bank_account")
-public class BankAccount implements IBankAccount<User> {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "account_type")
+public abstract class BankAccount implements IBankAccount<User> {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private long accountId;
+	private Long id;
+	
+	@Column(name = "bvn")
+	private String bankVerificationNumber;
 
 	@Column(name = "balance_amount")
 	private int balanceAmount;
@@ -21,23 +27,25 @@ public class BankAccount implements IBankAccount<User> {
 	@Column(name = "last_transaction_ts")
 	private Date lastTransactionTimestamp;
 
-    @Column(name = "account_number", unique = true)
+    @Column(name = "account_number", unique = true, nullable = false)
     private String accountNumber;
-
-    @Column(name = "bic")
-    private String bic;
+    
+    @Column(name = "creation_date")
+	private Date creationDate;
+    
+    @Column(name = "active")
+	private String active;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_name")
+    @JoinColumn(name = "account_owner", referencedColumnName = "id", nullable = false)
     private User user;
 
     public BankAccount() {
         super();
     }
 
-    public BankAccount(String accountNumber, String bic, User user) {
+    public BankAccount(String accountNumber, User user) {
         this.accountNumber = accountNumber;
-        this.bic = bic;
         this.user = user;
     }
 
@@ -52,16 +60,6 @@ public class BankAccount implements IBankAccount<User> {
     }
 
     @Override
-    public String getBic() {
-        return bic;
-    }
-
-    @Override
-    public void setBic(String bic) {
-        this.bic = bic;
-    }
-
-    @Override
     public User getUser() {
         return user;
     }
@@ -71,12 +69,12 @@ public class BankAccount implements IBankAccount<User> {
         this.user = user;
     }
 
-	public long getAccountId() {
-		return accountId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setAccountId(long accountId) {
-		this.accountId = accountId;
+	public void setId(long accountId) {
+		this.id = accountId;
 	}
 
 	public int getBalanceAmount() {
@@ -94,8 +92,29 @@ public class BankAccount implements IBankAccount<User> {
 	public void setLastTransactionTimestamp(Date lastTransactionTimestamp) {
 		this.lastTransactionTimestamp = lastTransactionTimestamp;
 	}
-    
-    
+	
+	public Date getCreationDate() {
+		return creationDate;
+	}
 
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+	
+	public String getActive() {
+		return active;
+	}
+
+	public void setActive(String active) {
+		this.active = active;
+	}
+
+	public String getBankVerificationNumber() {
+		return bankVerificationNumber;
+	}
+
+	public void setBankVerificationNumber(String bankVerificationNumber) {
+		this.bankVerificationNumber = bankVerificationNumber;
+	}
 	
 }

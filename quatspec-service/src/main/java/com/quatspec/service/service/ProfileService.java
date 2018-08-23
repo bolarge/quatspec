@@ -11,7 +11,7 @@ public interface ProfileService {
 	void updateProfile(Profile data);
 	void deleteProfileById(Long id);
 	void deleteAllData();
-	List<Profile> findAll();
+	//List<Profile> findAll();
 	boolean isProfileExist(Profile profile);
 
 }

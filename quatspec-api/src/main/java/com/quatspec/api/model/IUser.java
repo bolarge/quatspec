@@ -87,6 +87,10 @@ public interface IUser<T>  {
 	
 	Set<T> getProfiles();	
 	
+	String getGsmPhoneNumber();
+
+	void setGsmPhoneNumber(String gsmPhoneNumber) ;
+	
 	/*
 
 	void setProfiles(Set<T> profiles) ;

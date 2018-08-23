@@ -17,4 +17,10 @@ public interface DataAccessService {
 	public UserRepository getUserRepository();
 	
 	public MenuRepository getMenuRepository();
+	
+	public SavingsAccountRepository getSavingsAccountRepository();
+	
+	public FixedDepositRepository getFixedDepositRepository();
+	
+	public BankAccountRepository getBankAccountRepository();
 }

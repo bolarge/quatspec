@@ -8,17 +8,13 @@ public interface IBankAccount<T extends IUser> {
 
     void setAccountNumber(String accountNumber);
 
-    String getBic();
-
-    void setBic(String bic);
-
     T getUser();
 
     void setUser(T iUser);
     
-    long getAccountId();
+    Long getId();
 
-	void setAccountId(long accountId);
+	void setId(long accountId);
 
 	int getBalanceAmount() ;
 
@@ -27,5 +23,17 @@ public interface IBankAccount<T extends IUser> {
 	Date getLastTransactionTimestamp(); 
 
 	void setLastTransactionTimestamp(Date lastTransactionTimestamp);
+	
+	Date getCreationDate();
+
+	void setCreationDate(Date creationDate);
+	
+	String getActive();
+
+	void setActive(String active);
+	
+	String getBankVerificationNumber() ;
+
+	void setBankVerificationNumber(String bankVerificationNumber);
         
 }

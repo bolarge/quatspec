@@ -37,10 +37,10 @@ public class ProfileServiceImpl implements ProfileService, IProfileService {
 		saveProfile(userProfile);
 	}
 
-	@Override
+	/*@Override
 	public List<Profile> findAll() {		
 		return (List<Profile>) profileRepository.findAll();
-	}
+	}*/
 
 	@Override
 	public Profile findById(Long Id) {
