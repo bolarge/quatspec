@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<import resource="quaspec-security.xml"/>
+	<import resource="quaspec-servlet.xml"/>	
+	
+	 <bean id="jMSConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
+        <property name="maxConnections" value="${jms.maxconnection}"></property>
+        <property name="connectionFactory">
+            <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+                <property name="brokerURL" value="${jms.broker}"/>
+                <property name="userName" value="${jms.connectionfactory.username}" />
+                <property name="password" value="${jms.connectionfactory.password}" />
+                <property name="trustAllPackages" value="true"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="jmsTransactionManager" class="org.springframework.jms.connection.JmsTransactionManager" depends-on="jMSConnectionFactory">
+        <property name="connectionFactory" ref="jMSConnectionFactory"/>
+    </bean>
+
+    <bean id="quaspecEmailQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="QUASPECMailQueue" />
+    </bean>
+
+    <bean id="quaspecSMSQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="QUASPECSMSQueue" />
+    </bean>
+
+    <bean id="quaspecNotificationQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="QUASPECNotificatioQueue" />
+    </bean>
+
+    <bean id="quaspecMailQueueJmsTemplate" class="org.springframework.jms.core.JmsTemplate" depends-on="jMSConnectionFactory">
+        <property name="connectionFactory" ref="jMSConnectionFactory" />
+        <property name="defaultDestination" ref="quaspecEmailQueue" />
+        <property name="receiveTimeout" value="1" />
+    </bean>
+
+    <bean id="quaspecSMSQueueJmsTemplate" class="org.springframework.jms.core.JmsTemplate" depends-on="jMSConnectionFactory">
+        <property name="connectionFactory" ref="jMSConnectionFactory" />
+        <property name="defaultDestination" ref="quaspecSMSQueue" />
+        <property name="receiveTimeout" value="1" />
+    </bean>
+
+    <bean id="quaspecNotificationQueueJmsTemplate" class="org.springframework.jms.core.JmsTemplate" depends-on="jMSConnectionFactory">
+        <property name="connectionFactory" ref="jMSConnectionFactory" />
+        <property name="defaultDestination" ref="quaspecNotificationQueue" />
+        <property name="receiveTimeout" value="1" />
+    </bean>
+
+    <bean id="sendEmailQueueMessageListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="concurrentConsumers" value="${mailServiceConsumer.concurrentConsumers}" />
+        <property name="connectionFactory" ref="jMSConnectionFactory" />
+        <property name="transactionManager" ref="jmsTransactionManager" />
+        <property name="destination" ref="quaspecEmailQueue"/>
+        <property name="messageListener" ref="quaspecEmailMessageConsumerService" />
+    </bean>
+
+    <bean id="sendSMSQueueMessageListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="concurrentConsumers" value="${mailServiceConsumer.concurrentConsumers}" />
+        <property name="connectionFactory" ref="jMSConnectionFactory" />
+        <property name="transactionManager" ref="jmsTransactionManager" />
+        <property name="destination" ref="quaspecSMSQueue"/>
+        <property name="messageListener" ref="smsMessageConsumerService" />
+    </bean>
+		    		
+</beans>

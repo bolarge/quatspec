@@ -20,7 +20,7 @@
 	</modules>
 
 	<properties>
-		<java.version>10</java.version>
+		<java.version>8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<spring.version>5.0.3.RELEASE</spring.version>
@@ -28,7 +28,6 @@
 
 		<spring-data-jpa.version>2.0.3.RELEASE</spring-data-jpa.version>
 		<hibernate.version>5.2.13.Final</hibernate.version>
-		<!-- <hibernate-validator.version>6.0.7.Final</hibernate-validator.version> -->
 
 		<jackson.version>2.9.4</jackson.version>
 		<javax-mail.version>1.6.1</javax-mail.version>
@@ -435,7 +434,7 @@
 					<version>3.7.0</version>
 					<configuration>
 						<source>${java.version}</source>
-						<target>10</target>
+						<target>${java.version}</target>
 						<encoding>UTF-8</encoding>
 						<debug>true</debug>
 						<fork>true</fork>
