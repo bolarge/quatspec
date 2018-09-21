@@ -22,13 +22,10 @@
 	<properties>
 		<java.version>8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
 		<spring.version>5.0.3.RELEASE</spring.version>
 		<springsecurity-version>5.0.1.RELEASE</springsecurity-version>
-
 		<spring-data-jpa.version>2.0.3.RELEASE</spring-data-jpa.version>
 		<hibernate.version>5.2.13.Final</hibernate.version>
-
 		<jackson.version>2.9.4</jackson.version>
 		<javax-mail.version>1.6.1</javax-mail.version>
 		<javax-validation.version>1.1.0.Final</javax-validation.version>
@@ -258,22 +255,16 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-ldap</artifactId>
 			<version>${springsecurity-version}</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+		</dependency>		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
-			<!-- <scope>provided</scope> -->
 		</dependency>
-
-
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jms -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
 			<version>${spring.version}</version>
-			<!-- <scope>provided</scope> -->
 		</dependency>
 		
 		<!-- JSR-303 validation -->
@@ -283,7 +274,16 @@
 			<version>${javax-validation.version}</version>
 		</dependency>
 
-		<!-- Web Libraries -->
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.0</version>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -391,29 +391,27 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-broker</artifactId>
 			<version>${activemq.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
-		
+		</dependency>		
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-client</artifactId>
 			<version>${activemq.version}</version>
-			<!-- <scope>provided</scope> -->
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-pool</artifactId>
 			<version>${activemq.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
-		
+		</dependency>		
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-kahadb-store</artifactId>
 			<version>${activemq.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-spring</artifactId>
+			<version>${activemq.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -476,48 +474,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<!--
-			<plugin>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.4.2</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-provider-gitexe</artifactId>
-						<version>1.9.1</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-api</artifactId>
-						<version>1.9.1</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.2</version>
-				<inherited>true</inherited>
-				<configuration>
-					<finalName>${project.build.finalName}</finalName>
-				</configuration>
-			</plugin>
-		 	<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
-				<configuration>
-					<source>8</source>
-					<target>8</target>
-					<encoding>UTF-8</encoding>
-					<annotationProcessors>
-						<annotationProcessor>
-							com.querydsl.apt.jpa.JPAAnnotationProcessor
-						</annotationProcessor>
-					</annotationProcessors>
-				</configuration>
-			</plugin> -->
+			</plugin>			
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

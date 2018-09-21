@@ -8,7 +8,7 @@
     
     <context-param>
         <param-name>contextConfigLocation</param-name>
-       	<param-value>/WEB-INF/spring/quaspec-root.xml /WEB-INF/spring/quaspec-persistence.xml</param-value>
+       	<param-value>/WEB-INF/spring/quatspec-root.xml /WEB-INF/spring/quatspec-persistence.xml</param-value>
     </context-param>
     
     <listener>
