@@ -20,7 +20,7 @@ import com.quatspec.api.service.IPaymentService;
 import com.quatspec.controller.rest.model.PaymentResource;
 
 @RestController
-@RequestMapping(value = "/rest/payments", produces = {APPLICATION_JSON_VALUE}, consumes = {APPLICATION_JSON_VALUE})
+@RequestMapping(value = "/rest/api/payments", produces = {APPLICATION_JSON_VALUE}, consumes = {APPLICATION_JSON_VALUE})
 public class PaymentApi {
 	
 	@Autowired

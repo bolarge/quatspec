@@ -17,11 +17,12 @@ import org.springframework.context.MessageSource;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -30,7 +31,7 @@ import com.quatspec.persistence.domain.Profile;
 import com.quatspec.persistence.repository.DataAccessService;
 import com.quatspec.service.application.service.ApplicationService;
 
-@Service("quatspecDatabaseUserDetailsManager")
+@Component("quatspecDatabaseUserDetailsManager")
 public class QuatspecDatabaseUserDetailsManager implements UserDetailsService{
 	
 	@Autowired @Qualifier("quatspecSecurityPasswordEncoder")
@@ -54,7 +55,7 @@ public class QuatspecDatabaseUserDetailsManager implements UserDetailsService{
 	            error_message = "";
 	            String fullname ="";
 	            HttpServletRequest httpRequest = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-	            String password = httpRequest.getParameter("j_password");if (password == null || password.equalsIgnoreCase("null")) password = "";	            
+	            String password = httpRequest.getParameter("j_password");if (password == null || password.equalsIgnoreCase("null")) password = "";	
 	            if(!username.isEmpty() && !password.isEmpty()) {
 	                Date loginDate = new GregorianCalendar(TimeZone.getTimeZone("Africa/Lagos")).getTime();
 	                IUser iUser = (IUser) dataAccessService.getUserRepository().findByUserName(username);	                
@@ -66,7 +67,7 @@ public class QuatspecDatabaseUserDetailsManager implements UserDetailsService{
 	                    if (authenticated) {
 	                        if (iUser.isEnabled()) {	                      	                
 	                           Set<Profile> userProfiles = new HashSet<Profile>(dataAccessService.getProfileRepository().findProfileByUserId(userId)); 
-	                            userDetails = new org.springframework.security.core.userdetails.User(username, iUser.getPassword(), true, true, true, true, getAuthorities(new ArrayList<>(userProfiles)));
+	                            userDetails = new User(username, iUser.getPassword(), true, true, true, true, getAuthorities(new ArrayList<>(userProfiles)));
 	                            iUser.setLastLoginDate(new Date());
 	                            dataAccessService.getUserRepository().save(iUser);	                           
 	                            error_message = "USER SUCCESSFULLY LOGIN!";

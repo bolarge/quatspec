@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.quatspec.controller.rest.model.LoginResource;
 
 @RestController
-@RequestMapping(value = "/rest/login")
+@RequestMapping(value = "/rest/api/login")
 public class LoginApi {
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    AuthenticationManager APIAuthenticationManager;
 
     @RequestMapping(method = RequestMethod.POST, produces = {APPLICATION_JSON_VALUE}, consumes = {APPLICATION_JSON_VALUE})
     public LoginResource login(@RequestBody LoginResource request) {
@@ -28,11 +28,11 @@ public class LoginApi {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword());
 
         try {
-            Authentication auth = authenticationManager.authenticate(token);
-            SecurityContextHolder.getContext().setAuthentication(auth);
-            return new LoginResource(auth.isAuthenticated(), auth.getName());
-        } catch (BadCredentialsException e) {
-            return new LoginResource(false, null);
+        		Authentication auth = APIAuthenticationManager.authenticate(token);
+        		SecurityContextHolder.getContext().setAuthentication(auth);
+            	return new LoginResource(auth.isAuthenticated(), auth.getName());
+        	} catch (BadCredentialsException e) {
+        		return new LoginResource(false, null);
         }
     }
 }

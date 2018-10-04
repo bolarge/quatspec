@@ -45,6 +45,9 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 		<url-pattern>/admin</url-pattern>
+		<url-pattern>/rest</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+   	    <dispatcher>ASYNC</dispatcher>
 	</filter-mapping>
 	
 	<filter>
@@ -75,24 +78,8 @@
 	<servlet-mapping>
 		<servlet-name>quatspec</servlet-name>
 		<url-pattern>/</url-pattern>
-		<url-pattern>/admin</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>quatspecrest</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet
-		</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value/>
-			<!-- <param-value>/WEB-INF/spring/webservice-config.xml</param-value> -->
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>quatspecrest</servlet-name>
-		<url-pattern>/rest</url-pattern>
+		 <url-pattern>/admin</url-pattern>
+		 <url-pattern>/rest</url-pattern>
 	</servlet-mapping>
 	
 	<session-config>

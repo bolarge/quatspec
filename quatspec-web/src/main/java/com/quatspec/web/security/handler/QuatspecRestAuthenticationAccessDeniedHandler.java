@@ -1,4 +1,4 @@
-package com.quatspec.controller.rest.security;
+package com.quatspec.web.security.handler;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Component
-public class CustomAccessDeniedHandler implements AccessDeniedHandler {
+@Component("quatspecRestAuthenticationAccessDeniedHandler")
+public class QuatspecRestAuthenticationAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.getWriter().flush();
+        //response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
     }
 }

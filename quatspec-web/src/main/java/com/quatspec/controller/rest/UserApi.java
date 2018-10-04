@@ -22,7 +22,7 @@ import com.quatspec.controller.rest.model.BankAccountResource;
 import com.quatspec.controller.rest.model.UserResource;
 
 @RestController
-@RequestMapping(value = "/rest/users", produces = {APPLICATION_JSON_VALUE})
+@RequestMapping(value = "/rest/api/users", produces = {APPLICATION_JSON_VALUE})
 public class UserApi {
 	
 	//INCLUDE MINIMAL LOGGING TO TRACE APPLICATION EXECUTION 

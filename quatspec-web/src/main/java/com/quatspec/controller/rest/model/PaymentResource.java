@@ -8,12 +8,8 @@ import com.quatspec.api.enums.PaymentType;
 import com.quatspec.api.model.IPayment;
 
 public class PaymentResource extends DefaultResource implements IPayment<UserResource> {
-
-	//private String paymentId;
 	
 	private BigDecimal amount;
-	
-	//private Double paymentCharge;
 	
 	private String paymentDescription;
 	

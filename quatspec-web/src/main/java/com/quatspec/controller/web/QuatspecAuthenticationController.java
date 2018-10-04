@@ -1,4 +1,4 @@
-package com.quatspec.web.controller;
+package com.quatspec.controller.web;
 
 import java.util.List;
 import java.util.Locale;
@@ -48,11 +48,9 @@ public class QuatspecAuthenticationController {
 		if(httpSession !=null){
 			 List<Profile> adminUserProfiles = (List<Profile>) dataAccessService.getProfileRepository().findAll();
 			 List<Institution> theInstitutions = (List<Institution>) dataAccessService.getInstitutionRepository().findAll();
-			 /*List<AppConfiguration> theOfferTypes = this.appConfigService.findByType("OFFER_TYPES");
-			 List<AppConfiguration> theAssetTypes = this.appConfigService.findByType("ASSET_TYPES");		*/	
+			 
 			 User user = (User)httpSession.getAttribute(QuatspecServiceConstants.SessionVariable.CURRENTLOGIN);		
-			 /*model.addAttribute("USER_OFFER_TYPES",theOfferTypes);
-			 model.addAttribute("USER_ASSET_TYPES",theAssetTypes);*/
+			 
 			 model.addAttribute("USER_INSTITUION",theInstitutions);
 			 model.addAttribute("USER_PROFILES",adminUserProfiles);
 			 model.addAttribute("USER_DATA",user);
@@ -60,7 +58,7 @@ public class QuatspecAuthenticationController {
 		return urlUtilityRequestServiceHandler.identityLandingPageForUserType(httpServletRequest);
 	}
 
-	@GetMapping(value={"/login","/admin/login"})
+	@GetMapping(value={"/login","/admin/login","/rest/login"})
 	public String login(Model uiModel,HttpServletRequest httpServletRequest) {
 		if(httpServletRequest.getSession().getAttribute("SPRING_SECURITY_LAST_EXCEPTION") !=null){
 			String error ="";

@@ -75,8 +75,7 @@ public class QuatspecSecurityAuthenticationSuccessHandler extends AbstractAuthen
 				}
 			}
 			if (StringUtils.isEmpty(targetUrl)) {
-				targetUrl = String
-						.valueOf(request.getAttribute(QuatspecServiceConstants.RequestVariable.LANDINGREDIRECTION));
+				targetUrl = String.valueOf(request.getAttribute(QuatspecServiceConstants.RequestVariable.LANDINGREDIRECTION));
 			}
 			if (!StringUtils.hasText(targetUrl)) {
 				targetUrl = this.getDefaultTargetUrl();

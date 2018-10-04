@@ -1,17 +1,22 @@
 package com.quatspec.web.security.handler;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.quatspec.service.application.service.LoggerService;
 import com.quatspec.web.util.QuatspecServiceConstants;
 
-@Service("quatspeclogoutSecurityHandler")
+@Component("quatspeclogoutSecurityHandler")
 public class QuatspecSecurityLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
     @Autowired
     private LoggerService loggerService;
@@ -24,7 +29,7 @@ public class QuatspecSecurityLogoutSuccessHandler extends SimpleUrlLogoutSuccess
         }
 
     @Override
-    public void onLogoutSuccess(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response, Authentication authentication) throws java.io.IOException, javax.servlet.ServletException{
+    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException{
         if(authentication !=null && authentication.isAuthenticated()){
             try{
                 HttpSession httpSession = request.getSession(false);
