@@ -8,13 +8,13 @@ import com.quatspec.api.enums.PaymentType;
 
 public interface IPayment<T extends IUser> {
 		
-	T getPayer();
+	T getPaychant();
 
-	void setPayer(T iUser) ;
+	void setPaychant(T paychant) ;
 
-	T getPayee() ;
+	T getMerchant() ;
 
-	void setPayee(T iUser) ;
+	void setMerchant(T merchant) ;
 
 	BigDecimal getAmount() ;
 

@@ -12,17 +12,15 @@ public interface DataAccessService {
 	
 	public EmployeeRepository getEmployeeRepository();
 	
-	public CustomerRepository getCustomerRepository();
-	
 	public UserRepository getUserRepository();
 	
 	public MenuRepository getMenuRepository();
-	
-	public SavingsAccountRepository getSavingsAccountRepository();
 	
 	public FixedDepositRepository getFixedDepositRepository();
 	
 	public BankAccountRepository getBankAccountRepository();
 	
 	public PaymentRepository getPaymentRepository();
+	
+	public ProductRepository getProductRepository();
 }

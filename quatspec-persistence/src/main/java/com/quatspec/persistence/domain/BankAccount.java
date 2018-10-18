@@ -6,50 +6,18 @@ import java.util.Date;
 import javax.persistence.*;
 
 import com.quatspec.api.model.IBankAccount;
+import com.quatspec.persistence.domain.base.AccountParent;
 
 @Entity(name = "BankAccount")
-@Table(name = "bank_account")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "account_class")
-public abstract class BankAccount implements IBankAccount<User> {
+@DiscriminatorValue(value = "1")
+public class BankAccount extends AccountParent implements IBankAccount<User> {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name = "bvn")
-	private String bankVerificationNumber;
-
-	@Column(name = "balance_amount")
-	private int balanceAmount;
-
-	@Column(name = "last_transaction_ts")
-	private Date lastTransactionTimestamp;
-
-    @Column(name = "account_number", unique = true, nullable = false)
-    private String accountNumber;
-    
-    @Column(name = "creation_date")
-	private Date creationDate;
-    
-    @Column(name = "active")
-	private String active;
-    
-    @Column(name = "account_type")
-    private String accountType;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_owner", referencedColumnName = "id", nullable = false)
-    private User user;
-
     public BankAccount() {
         super();
     }
 
-    public BankAccount(String accountNumber, User user) {
-        this.accountNumber = accountNumber;
-        this.user = user;
+    public BankAccount(String accountNumber, String bvn, User user) {
+    	super(accountNumber, bvn, user);
     }
 
     @Override
@@ -62,64 +30,75 @@ public abstract class BankAccount implements IBankAccount<User> {
         this.accountNumber = accountNumber;
     }
 
-    @Override
     public User getUser() {
         return user;
     }
 
-    @Override
     public void setUser(User user) {
         this.user = user;
     }
 
-	public Long getId() {
-		return id;
+    @Override
+	public Long getAccountId() {
+		return accountId;
 	}
 
-	public void setId(long accountId) {
-		this.id = accountId;
+    @Override
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
 	}
 
+    @Override
 	public int getBalanceAmount() {
 		return balanceAmount;
 	}
 
+    @Override
 	public void setBalanceAmount(int balanceAmount) {
 		this.balanceAmount = balanceAmount;
 	}
 
+    @Override
 	public Date getLastTransactionTimestamp() {
 		return lastTransactionTimestamp;
 	}
 
+    @Override
 	public void setLastTransactionTimestamp(Date lastTransactionTimestamp) {
 		this.lastTransactionTimestamp = lastTransactionTimestamp;
 	}
 	
+    @Override
 	public Date getCreationDate() {
 		return creationDate;
 	}
 
+    @Override
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
 	
+    @Override
 	public String getActive() {
 		return active;
 	}
 
+    @Override
 	public void setActive(String active) {
 		this.active = active;
 	}
 
+    @Override
 	public String getBankVerificationNumber() {
 		return bankVerificationNumber;
 	}
 
+    @Override
 	public void setBankVerificationNumber(String bankVerificationNumber) {
 		this.bankVerificationNumber = bankVerificationNumber;
 	}
 	
+    @Override
 	public String getAccountType() {
 		return accountType;
 	}
@@ -128,5 +107,14 @@ public abstract class BankAccount implements IBankAccount<User> {
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
-	
+
+	@Override
+	public String getApplicantId() {
+		return null;
+	}
+
+	@Override
+	public void setApplicantId(String applicantId) {
+		
+	}	
 }

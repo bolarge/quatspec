@@ -18,48 +18,37 @@ import org.springframework.web.bind.annotation.RestController;
 import com.quatspec.api.exception.QuaspecServiceException;
 import com.quatspec.api.model.IBankAccount;
 import com.quatspec.api.service.IBankAccountService;
-import com.quatspec.controller.rest.model.BankAccountResource;
-import com.quatspec.persistence.domain.BankAccount;
+import com.quatspec.controller.rest.model.IBankAccountResource;
 
 @RestController
-@RequestMapping(value = "/rest/accounts", produces = {APPLICATION_JSON_VALUE}, consumes = {APPLICATION_JSON_VALUE})
+@RequestMapping(value = "/rest/api/accounts", produces = {APPLICATION_JSON_VALUE}, consumes = {APPLICATION_JSON_VALUE})
 public class BankAccountApi {
 
     @Autowired
     @Qualifier("bankAccountService")
-    private IBankAccountService bankAccountService;
+    private IBankAccountService iBankAccountService;
 
     @Secured({"ROLE_USER"})
-    @RequestMapping(value="/getaccounts", method = RequestMethod.GET)
-    public List<BankAccountResource> getAll() throws QuaspecServiceException {
+    @RequestMapping(method = RequestMethod.GET)
+    public List<IBankAccountResource> getAll() throws QuaspecServiceException {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
+        List<IBankAccountResource> result = new ArrayList<>();
 
-        List<BankAccountResource> result = new ArrayList<>();
-
-        List<? extends IBankAccount> bankAccountEntities = bankAccountService.getByIUser(name);
+        List<? extends IBankAccount> bankAccountEntities = iBankAccountService.getByIUser(name);
         for (IBankAccount bankAccountEntity : bankAccountEntities) {
-            result.add(new BankAccountResource(bankAccountEntity));
+            result.add(new IBankAccountResource(bankAccountEntity));
         }
         return result;
     }
 
-    @Secured({"ROLE_ADMIN"})
-    @RequestMapping(value="/openaccount", method = RequestMethod.POST)
-    public BankAccountResource openAccount(@RequestBody BankAccountResource account) throws QuaspecServiceException {
-    	IBankAccount bankAccount = null;
-    	String accountType = account.getAccountType();
-    	if(accountType.equalsIgnoreCase("S")) {
-	        bankAccount = (IBankAccount) bankAccountService.createAccount(account);
-	        if (bankAccount != null) {
-	            return new BankAccountResource(bankAccount);
-	        }
-    	}else if(accountType.equalsIgnoreCase("F")){
-    		bankAccount = (IBankAccount) bankAccountService.createAccount(account);
-	        if (bankAccount != null) {
-	            return new BankAccountResource(bankAccount);
-	        }
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    @RequestMapping(method = RequestMethod.POST)
+    public IBankAccountResource openAccount(@RequestBody IBankAccountResource account) throws QuaspecServiceException {
+    	IBankAccount bankAccount = iBankAccountService.createAccount(account);    	
+    	if(bankAccount != null) {	        	        	
+	            return new IBankAccountResource(bankAccount);
     	}
         return null;
     }

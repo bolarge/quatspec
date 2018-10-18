@@ -7,8 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+import com.quatspec.api.model.IProfile;
+
 @Entity(name = "Employee")
-@DiscriminatorValue(value = "EMP")
+@DiscriminatorValue(value = "2")
 public class Employee extends User{
 	
 	@Column(name="employee_id", unique = true)
@@ -23,6 +25,14 @@ public class Employee extends User{
 	@Column(name="vacation")
 	private int vacation;
 	
+	public Employee() {
+		super();
+	}
+	
+	public Employee(String userName, String email, String password, String gsmPhoneNumber) {
+		super(userName, email, password, gsmPhoneNumber);
+	}
+
 	public String getEmployeeId() {
 		return employeeId;
 	}
@@ -52,18 +62,14 @@ public class Employee extends User{
 	public void setVacation(int vacation) {
 		this.vacation = vacation;
 	}
-	
-	
-	/*@ManyToMany(fetch=FetchType.EAGER, targetEntity = Profile.class)
-	@JoinTable(name = "employee_profile_mapping",
-			joinColumns = { @JoinColumn(name = "employee_id") },
-			inverseJoinColumns = { @JoinColumn(name = "profile_id") })
-	protected Set<Profile> profiles = new HashSet<Profile>();
-	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "employee_role_mapping",
-	           joinColumns = @JoinColumn(name = "employee_id"), 
-	           inverseJoinColumns = @JoinColumn(name = "role_id"))
-	protected Set<Role> roles = new HashSet<Role>();*/
 
+	@Override
+	public String getUserType() {
+		return null;
+	}
+
+	@Override
+	public void setUserType(String userType) {
+	
+	}	
 }

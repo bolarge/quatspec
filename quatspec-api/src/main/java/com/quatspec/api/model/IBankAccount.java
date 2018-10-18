@@ -3,18 +3,22 @@ package com.quatspec.api.model;
 import java.util.Date;
 
 public interface IBankAccount<T extends IUser> {
+	
+    T getUser();
+
+    void setUser(T iUser);
+	
+	String getApplicantId();
+	
+	void setApplicantId(String applicantId);
 
     String getAccountNumber();
 
     void setAccountNumber(String accountNumber);
-
-    T getUser();
-
-    void setUser(T iUser);
     
-    Long getId();
+    Long getAccountId();
 
-	void setId(long accountId);
+	void setAccountId(Long accountId);
 
 	int getBalanceAmount() ;
 

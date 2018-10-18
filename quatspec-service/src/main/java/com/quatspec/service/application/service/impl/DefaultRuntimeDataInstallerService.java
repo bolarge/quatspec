@@ -38,7 +38,7 @@ public class DefaultRuntimeDataInstallerService {
 
     public void startInstallation() {
         try {
-            loggerService.info("############ START ALL DOC_IN CONTEXT INSTALLATION ###############");
+            loggerService.info("############ START ALL PAYSPEC CONTEXT INSTALLATION ###############");
             JsonNode installNode = applicationService.getJacksonObjectMapper().readTree(installationInfo);         
             if (installNode != null) {
             	Profile profile = null;
@@ -66,36 +66,30 @@ public class DefaultRuntimeDataInstallerService {
      
                     if (!dataAccessService.getProfileRepository().existsById(new Long(1l))) {
                     	profile = new Profile();
-                    	profile.setDescription("Global profile for system wide operations");
+                    	profile.setName("System Profile");
+                    	profile.setDescription("System Super Profile");
                     	profile.setBaseUrl("/admin/welcome");
                     	profile.setStatus(true);
                     	profile.getRoles().add(role);
                     	dataAccessService.getProfileRepository().save(profile);
-                    	System.out.println("After Profile Insertion ");
                     } else {
                     	profile = applicationService.getApplicationProfileByName(installNode.get("profile").asText());
-                    	System.out.println("");
+                    	//System.out.println("");
                     }
-
-                    if (profile != null) {
-                    	//dataAccessService.getProfileRepository().findById(profile.getId()).get().getRoles().add(role);  
-                    	System.out.println("Profile is not null");
+                    if (profile != null) { 
                     	Employee user = null;                                              
                         if (!dataAccessService.getEmployeeRepository().existsById(new Long(1l))) {
-                        	System.out.println("Finished checking employee ID");
                             user = new Employee();
                             user.setUserName(installNode.get("username").asText());
                             user.setEmail(installNode.get("email").asText());
                             user.setFirstName(installNode.get("firstname").asText());
                             user.setLastName(installNode.get("lastname").asText());
-                            user.setPassword(passwordEncoder.encode(installNode.get("password").asText()));
-                            //user.setAdmin(true);
+                            user.setPassword(passwordEncoder.encode(installNode.get("password").asText()));                          
                             user.setEnabled(true);                            
                             user.getProfiles().add(profile);
                             dataAccessService.getEmployeeRepository().save(user);
-                            System.out.println("At the final end of it all");
-                        } else {
-                             //user = applicationService.getApplicationUserByUserNameAndProfile(installNode.get("username").asText(), profile.getId());
+                           
+                        } else {                           
                         	System.out.println("XXXXXXX XXXXXXXXXXXX XXXXXXXX XXXXXX");
                            }
                     }

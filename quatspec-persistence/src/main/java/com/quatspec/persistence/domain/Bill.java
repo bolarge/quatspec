@@ -18,13 +18,13 @@ public class Bill extends Payment{
 	}
 
 	public Bill(String paymentId, BigDecimal amount, Double paymentCharge, String paymentDescription, Date paymentDate,
-			Customer payer, Customer payee, PaymentStatus paymentStatus, PaymentType paymentType) {
-		super(paymentId, amount, paymentCharge, paymentDescription, paymentDate, payer, payee, paymentStatus, paymentType);
+			User paychant, User merchant, PaymentStatus paymentStatus, PaymentType paymentType) {
+		super(paymentId, amount, paymentCharge, paymentDescription, paymentDate, paychant, merchant, paymentStatus, paymentType);
 		
 	}
 
-	public Bill(String digest, BigDecimal amount, String paymentDescription, Date paymentDate, Customer payer,
-			Customer payee, PaymentStatus paymentStatus, PaymentStatus paymentStatus2, PaymentType paymentType) {
+	public Bill(String digest, BigDecimal amount, String paymentDescription, Date paymentDate, User paychant,
+			User merchant, PaymentStatus paymentStatus, PaymentStatus paymentStatus2, PaymentType paymentType) {
 		// TODO Auto-generated constructor stub
 	}
 	

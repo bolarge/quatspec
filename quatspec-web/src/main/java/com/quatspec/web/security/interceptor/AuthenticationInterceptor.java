@@ -15,6 +15,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
          if (!request.getRequestURI().contains("login")) {
+        	 System.out.println(":Called AuthenticationInterceptor preHandle " + request.getRequestURI());
             if(request.getRequestURL().toString().contains("/admin/") && !request.getRequestURL().toString().endsWith("/admin")) {
                 if (request.getUserPrincipal() == null) {
                     UrlUtilityRequestServiceHandler urlUtilityRequestServiceHandler = getContext(request.getServletContext()).getBean("urlUtilityRequestServiceHandler", UrlUtilityRequestServiceHandler.class);

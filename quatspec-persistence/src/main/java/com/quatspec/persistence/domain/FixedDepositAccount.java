@@ -1,9 +1,6 @@
 package com.quatspec.persistence.domain;
 
-import java.util.Date;
-
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -30,8 +27,8 @@ public class FixedDepositAccount extends BankAccount{
         super();
     }
 
-	public FixedDepositAccount(String accountNumber, User user) {
-        super(accountNumber, user);
+	public FixedDepositAccount(String accountNumber,String bvn, User user) {
+        super(accountNumber, bvn, user);
     }
 
 	public void setFixedDepositId(String fixedDepositId) {
@@ -58,7 +55,6 @@ public class FixedDepositAccount extends BankAccount{
 		this.tenure = tenure;
 	}
 	
-
 	public int getBankAccountId() {
 		return bankAccountId;
 	}
@@ -90,6 +86,18 @@ public class FixedDepositAccount extends BankAccount{
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public String getApplicantId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setApplicantId(String applicantId) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

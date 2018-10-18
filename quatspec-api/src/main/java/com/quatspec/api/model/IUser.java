@@ -5,11 +5,11 @@ import java.util.Set;
 
 import com.quatspec.api.enums.Gender;
 
-public interface IUser<T>  {
+public interface IUser<T extends IOrganization>  {
 	
-	Long getId();
+	Long getUserId();
 
-	void setId(Long id);
+	void setUserId(Long id);
 
 	int getVersion();
 
@@ -85,18 +85,32 @@ public interface IUser<T>  {
 
 	void setBaseUrl(String url);
 	
-	Set<T> getProfiles();	
-	
 	String getGsmPhoneNumber();
 
 	void setGsmPhoneNumber(String gsmPhoneNumber) ;
 	
-	/*
+	String getUserType();
+	
+	void setUserType(String userType);
+	
+	String getMerchantId();
+	
+	void setMerchantId(String merchantId);
+	
+	String getPaychantId();
+	
+	void setPaychantId(String paychantId);
+	
+	Set getProfiles();	
+	
+	T getOrganization();
+	
+	//void setOrganization(T iOrganization);
 
-	void setProfiles(Set<T> profiles) ;
-		
-	<T> Set<T> getRoles();
-
-	<T> void setRoles(Set<T> roles);*/
+	//void setOrganization(IOrganizationResource organization);
+	
+	//T getIProfile();
+	
+	//void setIProfile(T profile);
 	
 }

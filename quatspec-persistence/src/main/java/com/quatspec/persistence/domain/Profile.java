@@ -16,6 +16,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import com.quatspec.persistence.domain.base.UserParent;
+
 @Entity(name = "Profile")
 @Table(name = "profile")
 @NamedQueries({
@@ -42,7 +44,7 @@ public class Profile {
 	protected String baseUrl;
 	
 	@ManyToMany(mappedBy = "profiles")
-	protected Set<User> users = new HashSet<User>();
+	protected Set<UserParent> users = new HashSet<UserParent>();
 	
 	@ManyToMany(fetch=FetchType.EAGER,targetEntity = Role.class)
 	@JoinTable(name = "profile_role",
@@ -98,11 +100,11 @@ public class Profile {
 		this.baseUrl = baseUrl;
 	}
 
-	public Set<User> getUsers() {
+	public Set<UserParent> getUsers() {
 		return users;
 	}
 
-	public void setUsers(Set<User> users) {
+	public void setUsers(Set<UserParent> users) {
 		this.users = users;
 	}
 

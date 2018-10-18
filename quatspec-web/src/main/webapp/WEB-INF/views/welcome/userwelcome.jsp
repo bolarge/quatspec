@@ -1,1257 +1,595 @@
 <%@ include file="/WEB-INF/tags.jsp"%>
-<!-- Tasks -->
-<!-- Update all images link to correct link -->
-
-
-<!--Display -->
-	<div class="col-sm-10">
-		<div class="custom-container">
-			<div class="card no-border-radius">
-				<div class="card-body">
-					<div class="tab-content" id="custom-navbar">
-						<div class="tab-pane fade main-tabpane show active " id="overview"
-							role="tabpanel" aria-labelledby="pills-home-tab">
-							<div class="col-sm-12">
-								<div class="row row-space">
-									<div class="col-sm-5">
-										<div class="card no-card-border card-height">
-											<div class="card-body nopadding po-offer">
-												<div class="row">
-													<div class="col-sm-10">
-														<h6 class="text-muted">Ongoing Public Offer</h6>
-													</div>
-													<div class="col-sm-2">
-														<h5>4</h5>
-													</div>
-												</div>
-												<ul class="list-unstyled">
-													<li class="media"><img class="mr-3 list-img"
-                                                                           src="<c:url value='/static/images/mtn.png' />" alt="Generic placeholder image" />
-														<div class="media-body">
-															<h6 class="mt-0 mb-1">MTN Nigeria</h6>
-														</div></li>
-													<li class="media my-4"><img class="mr-3 list-img"
-                                                                                src="<c:url value='/static/images/fg.png' />" alt="Generic placeholder image" />
-														<div class="media-body">
-															<h6 class="mt-0 mb-1">Federal Govt. Savings Bond</h6>
-														</div></li>
-													<li class="media"><img class="mr-3 list-img"
-                                                                           src="<c:url value='/static/images/uac.png' />" alt="Generic placeholder image" />
-														<div class="media-body">
-															<h6 class="mt-0 mb-1">UAC Nigeria</h6>
-														</div></li>
-													<li class="media my-4"><img class="mr-3 list-img"
-                                                                                src="<c:url value='/static/images/diamond.png' />" alt="Generic placeholder image" />
-														<div class="media-body">
-															<h6 class="mt-0 mb-1">Diamond Bank</h6>
-														</div></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-7">
-										<div class="card no-card-border card-height">
-											<div class="card-body nopadding po-offer">
-												<div class="row">
-													<div class="col-sm-10">
-														<h6 class="text-muted">Subscribers</h6>
-													</div>
-													<div class="col-sm-2">
-														<h5>23,751</h5>
-													</div>
-												</div>
-												<div class="row row-pad">
-													<div class="col-sm-4 mychart"></div>
-													<div class="col-sm-8">
-														<div class="row row-pad">
-															<div class="col-sm-8">
-																<li class="mtnlist"><span class="black-color">MTN
-																		Nigeria</span></li>
-																<li class="fglist"><span class="black-color">Federal
-																		Govt. Savings Bond</span></li>
-																<li class="uaclist"><span class="black-color">UAC
-																		Nigeria</span></li>
-																<li class="dialist"><span class="black-color">Diamond
-																		Bank</span></li>
-															</div>
-															<div class="col-sm-4 text-right">
-																<p class="percentages">31%</p>
-																<p class="percentages">15%</p>
-																<p class="percentages">28%</p>
-																<p class="percentages">26%</p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="row row-space">
-									<div class="col-sm-8">
-										<div class="card no-card-border card-height-1">
-											<div class="card-body nopadding po-offer">
-												<div class="row">
-													<div class="col-sm-12">
-														<h6 class="text-muted">
-															Payment Methods<i
-																class="fa fa-credit-card-alt iconleftpad"></i>
-														</h6>
-														<div class="bar-chart"></div>
-													</div>
-												</div>
-
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="card no-card-border card-height-1">
-											<div class="card-body nopadding po-offer">
-												<div class="row">
-													<div class="col-sm-12">
-														<h7 class="text-muted">Value Alloted<i
-															class="fa fa-shopping-bag float-right" aria-hidden="true"></i></h7>
-														<h3 class="padding-bottom-1">N110,470,500</h3>
-														<h7 class="text-muted row-space">Pending Allotment
-														Value</h7>
-														<h3>N110,470,500</h3>
-													</div>
-												</div>
-
-											</div>
-										</div>
-									</div>
-								</div>
-
-
-								<div class="row row-space">
-									<div class="col-sm-5">
-										<div class="card no-card-border">
-											<div class="card-body nopadding po-offer">
-												<div class="row">
-													<div class="col-sm-12">
-														<h7 class="text-muted">Users Online<i
-															class="fa fa-laptop iconleftpad" aria-hidden="true"></i></h7>
-														<h3 class="online">583</h3>
-													</div>
-												</div>
-
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-7">
-										<div class="card no-card-border ">
-											<div class="card-body nopadding po-offer">
-												<div class="row">
-													<div class="col-sm-12">
-														<h7 class="text-muted">Total Amount Raised<i
-															class="fa fa-money iconleftpad" aria-hidden="true"></i></h7>
-														<h3 class="float-right online1">N110,470,500</h3>
-													</div>
-												</div>
-
-											</div>
-										</div>
-									</div>
-								</div>
-								<br /> <br />
-							</div>
-						</div>
-
-						<div class="tab-pane fade main-tabpane content-height" id="offers"
-							role="tabpanel" aria-labelledby="pills-home-tab">
-							<div class="row row-space padding-bottom-1">
-								<div class="col-sm-3">
-									<button type="button"
-										class="btn pobtn btn-block pobtn1 text-left"
-										data-toggle="modal" data-target="#exampleModal">
-										<i class="fa fa-plus iconpad"></i>Create Public Offer
-									</button>
-								</div>
-
-								<div class="modal fade" id="exampleModal" tabindex="-1"
-									role="dialog" aria-labelledby="exampleModalLabel"
-									aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content top-border justify-content-center">
-											<div class="text-center">
-												<h5 class="modal-title padding-top-1" id="exampleModalLabel">New
-													Public Offer</h5>
-											</div>
-											<div class="modal-body">
-												<div class="row">
-													<div class="col-sm-12">
-														<p class="green-color">
-															<i class="fa fa-picture-o uploadimg iconpad"
-																aria-hidden="true"></i> Upload Logo(JPEG,PNG)
-														</p>
-													</div>
-												</div>
-												<div class="row padding-bottom-1">
-													<div class="col-sm-12">
-														<input type="text" placeholder="Name"
-															class="form-control po-offer" />
-													</div>
-												</div>
-												<div class="row padding-bottom-1">
-													<div class="col-sm-12">
-														<input type="text" placeholder="Symbol"
-															class="form-control po-offer" />
-													</div>
-												</div>
-												<div class="row padding-bottom-1">
-													<div class="col-sm-6">
-														<select class="form-control po-offer">
-															<option>Asset</option>
-														</select>
-													</div>
-													<div class="col-sm-6">
-														<select class="form-control po-offer">
-															<option>Offer Type</option>
-														</select>
-													</div>
-												</div>
-												<div class="row padding-bottom-1">
-													<div class="col-sm-11">
-														<input type="text" placeholder="Issuing House"
-															class="form-control po-offer" />
-													</div>
-
-													<div class="col-sm-1 float-left">
-														<i class="fa fa-plus green-color"></i>
-													</div>
-												</div>
-
-												<div class="row padding-bottom-1">
-													<div class="col-sm-12 input-group mb-3">
-														<input type="text"
-															class="form-control po-offer form-right"
-															placeholder="Price" />
-														<div class="input-group-append">
-															<span class="input-group-text po-offer" id="basic-addon2">0.00</span>
-														</div>
-													</div>
-												</div>
-
-												<div class="row padding-bottom-1">
-													<div class="col-sm-12 input-group mb-3">
-														<input type="text"
-															class="form-control po-offer form-right"
-															placeholder="Number of Units" />
-														<div class="input-group-append">
-															<span class="input-group-text po-offer" id="basic-addon2">0</span>
-														</div>
-													</div>
-												</div>
-
-												<div class="row padding-bottom-1">
-
-													<div class="col-sm-6 input-group mb-3">
-														<input type="text" class="form-control po-offer"
-															placeholder="Min Order" />
-														<div class="input-group-append">
-															<span class="input-group-text po-offer" id="basic-addon2">0</span>
-														</div>
-													</div>
-
-													<div class="col-sm-6 input-group mb-3">
-														<input type="text" class="form-control po-offer"
-															placeholder="Max Order" />
-														<div class="input-group-append">
-															<span class="input-group-text po-offer" id="basic-addon2">0</span>
-														</div>
-													</div>
-
-												</div>
-
-												<div class="row padding-bottom-1">
-													<div class="col-sm-6 input-group mb-3">
-														<input type="text" class="form-control po-offer"
-															placeholder="Start Date" />
-														<div class="input-group-append">
-															<span class="input-group-text po-offer" id="basic-addon2">DD/MM/YY</span>
-														</div>
-													</div>
-
-													<div class="col-sm-6 input-group mb-3">
-														<input type="text" class="form-control po-offer"
-															placeholder="End Date" />
-														<div class="input-group-append">
-															<span class="input-group-text po-offer" id="basic-addon2">DD/MM/YY</span>
-														</div>
-													</div>
-												</div>
-
-												<div
-													class="row padding-bottom-1 padding-top-1 justify-content-center">
-													<div class="col-sm-5">
-														<button class="btn pobtn btn-block pobtn1">
-															Create Public Offer</button>
-													</div>
-												</div>
-
-
-
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-sm-5 offset-sm-4">
-									<div class="input-group mb-3">
-										<input type="text" class="form-control form-right"
-											placeholder="" aria-label="Recipient's username"
-											aria-describedby="basic-addon2" />
-										<div class="input-group-append">
-											<span class="input-group-text white-color" id="basic-addon2"><i
-												class="fa fa-search"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-12">
-								<div class="row row-head-color">
-									<div class="col-sm-3">
-										<p>Name</p>
-									</div>
-
-									<div class="col-sm-1">
-										<p>Asset</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>Offer Type</p>
-									</div>
-
-									<div class="col-sm-1">
-										<p>Price</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>Offer Size</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>Allotted</p>
-									</div>
-
-									<div class="col-sm-1">
-										<p>Status</p>
-									</div>
-								</div>
-
-								<div class="row padding-top-1 polist">
-									<div class="col-sm-3">
-										<ul class="list-unstyled">
-											<li class="media"><img class="mr-3 list-img"
-                                                                   src="<c:url value='/static/images/mtn.png' />" alt="Generic placeholder image" />
-												<div class="media-body">
-													<h7 class="mt-0 mb-1">MTN Nigeria</h7>
-												</div></li>
-										</ul>
-									</div>
-
-									<div class="col-sm-1">
-										<p>Stock</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>Initial Public Offering</p>
-									</div>
-
-									<div class="col-sm-1">
-										<p>9.99</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>1,000,000,000</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>970,359,500</p>
-									</div>
-
-									<div class="col-sm-1">
-										<p>Public</p>
-									</div>
-								</div>
-								<hr class="customhr" />
-
-								<div class="row padding-top-1 polist">
-									<div class="col-sm-3">
-										<ul class="list-unstyled">
-											<li class="media"><img class="mr-3 list-img"
-                                                                   src="<c:url value='/static/images/fg.png' />" alt="Generic placeholder image" />
-												<div class="media-body">
-													<h7 class="mt-0 mb-1">Federal Govt. Savings Bond</h7>
-												</div></li>
-										</ul>
-									</div>
-
-									<div class="col-sm-1">
-										<p>Stock</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>Initial Public Offering</p>
-									</div>
-
-									<div class="col-sm-1">
-										<p>9.99</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>1,000,000,000</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>970,359,500</p>
-									</div>
-
-									<div class="col-sm-1">
-										<p>Public</p>
-									</div>
-								</div>
-								<hr class="customhr" />
-
-								<div class="row padding-top-1 polist">
-									<div class="col-sm-3">
-										<ul class="list-unstyled">
-											<li class="media"><img class="mr-3 list-img"
-                                                                   src="<c:url value='/static/images/uac.png' />" alt="Generic placeholder image" />
-												<div class="media-body">
-													<h6 class="mt-0 mb-1">UAC Nigeria</h6>
-												</div></li>
-										</ul>
-									</div>
-
-									<div class="col-sm-1">
-										<p>Stock</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>Initial Public Offering</p>
-									</div>
-
-									<div class="col-sm-1">
-										<p>9.99</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>1,000,000,000</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>970,359,500</p>
-									</div>
-
-									<div class="col-sm-1">
-										<p>Public</p>
-									</div>
-								</div>
-								<hr class="customhr" />
-
-								<div class="row padding-top-1 polist">
-									<div class="col-sm-3">
-										<ul class="list-unstyled">
-											<li class="media"><img class="mr-3 list-img"
-                                                                   src="<c:url value='/static/images/diamond.png' />" alt="Generic placeholder image" />
-												<div class="media-body">
-													<h6 class="mt-0 mb-1">Diamond Bank</h6>
-												</div></li>
-										</ul>
-									</div>
-
-									<div class="col-sm-1">
-										<p>Stock</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>Initial Public Offering</p>
-									</div>
-
-									<div class="col-sm-1">
-										<p>9.99</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>1,000,000,000</p>
-									</div>
-
-									<div class="col-sm-2">
-										<p>970,359,500</p>
-									</div>
-
-									<div class="col-sm-1">
-										<p>Public</p>
-									</div>
-								</div>
-								<hr class="customhr" />
-							</div>
-						</div>
-
-						<!-- User Menu -->
-						<div class="tab-pane fade main-tabpane content-height" id="users"
-							role="tabpanel" aria-labelledby="pills-home-tab">
-							<div class="row">
-								<div class="col-sm-3">
-									<button
-										class="btn report-btn float-right btn-block no-border-radius"
-										data-toggle="modal" data-target="#newuser">
-										<i class="fa fa-plus iconpad" aria-hidden="true"></i>Create
-										New User
-									</button>
-								</div>
-								<div class="col-sm-9 d-flex justify-content-end">
-									<div class="col-sm-6">
-										<div class="input-group mb-3">
-											<input type="text" placeholder="Search..."
-												class="form-control form-right no-border-radius formcolor" />
-											<div class="input-group-append">
-												<span class="input-group-text formcolor no-border-radius"
-													id="basic-addon2"><i class="fa fa-search iconpad "
-													aria-hidden="true"></i></span>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<!-- User Form -->
-								<div class="modal fade" id="newuser" tabindex="-1" role="dialog"
-									aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content top-border justify-content-center">
-											<div class="text-center">
-												<h5 class="modal-title padding-top-1" id="exampleModalLabel">New
-													Institution</h5>
-											</div>
-											<div class="modal-body">
-												<div class="row">
-													<div class="col-sm-12">
-														<p class="green-color">
-															<i class="fa fa-picture-o uploadimg iconpad"
-																aria-hidden="true"></i> Upload Logo(JPEG,PNG)
-														</p>
-													</div>
-												</div>
-												
-												<!-- Upgrade Form to Spring Form -->
-												<form:form modelAttribute="stakeholder" id="app_stakeholder" method="post" action="<c:url value='/stakeholder'/> ">
-
-													<c:if test="${not empty message}">
-														<div id="message" class="${message.type}">${message.message}</div>
-													</c:if>
-												<div class="row padding-bottom-1">
-													<div class="col-sm-12">
-														<input type="text" placeholder="Business Name" name="stakeHolderName" id="stakeHolderName"
-															class="form-control po-offer" />
-													</div>
-												</div>
-												<div class="row padding-bottom-1">
-													<div class="col-sm-12">
-														<input type="text" placeholder="Institution" name="businessName" id="businessName"
-															class="form-control po-offer" />
-													</div>
-												</div>
-												
-												<div class="row padding-bottom-1">
-													<div class="col-sm-12">
-														<form:select path="profiles" items="${userprofiles1}"  class="form-control po-offer" multiple="false" 
-														itemValue="name" itemLabel="description" >														
-														</form:select>
-													</div>
-												</div>
-											
-												<div class="row padding-bottom-1">
-													<div class="col-sm-12">
-														<input type="text" placeholder="business email" name="businessEmail" id="businessEmail"
-															class="form-control po-offer" />
-													</div>
-												</div>
-
-												<div class="row padding-bottom-1">
-													<div class="col-sm-12">
-														<input type="text" placeholder="Business Phone Number" name="businessTelephone" id="businessTelephone"
-															class="form-control po-offer" />
-													</div>
-												</div>
-
-												<div
-													class="row padding-bottom-1 padding-top-1 justify-content-center">
-													<div class="col-sm-5">
-														<button class="btn pobtn btn-block pobtn1">Add
-															Institution</button>
-													</div>
-												</div>
-											</form:form>
-
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-sm-12">
-								<div class="row row-head-color text-center">
-									<div class="col-sm-4">
-										<p>Company</p>
-									</div>
-
-									<div class="col-sm-4">
-										<p>Institution</p>
-									</div>
-
-									<div class="col-sm-4">
-										<p>Users</p>
-									</div>
-								</div>
-
-								<div class="row text-center padding-top-1">
-									<div class="col-sm-4">
-										<div class="row">
-											<div class="col-sm-2"> 
-												<img class="manageusers" src="<c:url value='/static/images/afri.png' />" />
-											</div>
-
-											<div class="col-sm-8">
-												<a data-toggle="collapse" data-parent="#exampleAccordion"
-													href="#exampleAccordion1" role="button"
-													aria-expanded="true" aria-controls="exampleAccordion1">African
-													Prudential Registrars</a>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-sm-4">
-										<p>Registrar</p>
-									</div>
-
-									<div class="col-sm-4">
-										<p>4</p>
-									</div>
-								</div>
-								<div id="exampleAccordion1" class="row collapse" role="tabpanel">
-									<div class="row text-center">
-										<div class="col-sm-4">
-											<p class="mtd accordionheading mb-2">Name</p>
-											<p class="mtd mb-1">Chike Amara</p>
-											<p class="mtd mb-1">Chike Amara</p>
-											<p class="mtd mb-1">Chike Amara</p>
-										</div>
-
-										<div class="col-sm-4">
-											<p class="mtd accordionheading mb-2">Role</p>
-											<p class="mtd mb-1">User</p>
-											<p class="mtd mb-1">User</p>
-											<p class="mtd mb-1">Admin</p>
-
-										</div>
-
-										<div class="col-sm-4">
-											<p class="mtd accordionheading mb-2">email address</p>
-											<p class="mtd mb-1">chike.amara@fbn.com</p>
-											<p class="mtd mb-1">chike.amara@fbn.com</p>
-											<p class="mtd mb-1">chike.amara@fbn.com</p>
-											<br />
-										</div>
-									</div>
-								</div>
-								<hr class="customhr" />
-								<div class="row text-center padding-top-1">
-									<div class="col-sm-4">
-										<div class="row">
-											<div class="col-sm-2"> 
-												<img class="manageusers" src="<c:url value='/static/images/afri.png' />" />
-											</div>
-
-											<div class="col-sm-8">
-												<p>African Prudential Registrars</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-sm-4">
-										<p>Registrar</p>
-									</div>
-
-									<div class="col-sm-4">
-										<p>4</p>
-									</div>
-								</div>
-								<hr class="customhr" />
-								<div class="row text-center padding-top-1">
-									<div class="col-sm-4">
-										<div class="row">
-											<div class="col-sm-2">
-												<img class="manageusers" src="<c:url value='/static/images/afri.png' />" />
-											</div>
-
-											<div class="col-sm-8">
-												<p>African Prudential Registrars</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-sm-4">
-										<p>Registrar</p>
-									</div>
-
-									<div class="col-sm-4">
-										<p>4</p>
-									</div>
-								</div>
-								<hr class="customhr" />
-								<div class="row text-center padding-top-1">
-									<div class="col-sm-4">
-										<div class="row">
-											<div class="col-sm-2">
-												<img class="manageusers" src="<c:url value='/static/images/diamond.png' />" />
-											</div>
-
-											<div class="col-sm-8">
-												<p>African Prudential Registrars</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-sm-4">
-										<p>Registrar</p>
-									</div>
-
-									<div class="col-sm-4">
-										<p>4</p>
-									</div>
-								</div>
-								<hr class="customhr" />
-							</div>
-						</div>
-
-
-						<div class="tab-pane fade main-tabpane content-height"
-							id="payments" role="tabpanel" aria-labelledby="pills-home-tab">
-							<div class="row">
-								<div class="col-sm-3">
-									<button
-										class="btn report-btn float-right btn-block no-border-radius"
-										data-toggle="modal" data-target="#newuser">
-										<i class="fa fa-plus iconpad" aria-hidden="true"></i>Add
-										Payment Method
-									</button>
-								</div>
-								<div class="col-sm-9 d-flex justify-content-center">
-									<div class="col-sm-6">
-										<p>Payment Methods</p>
-									</div>
-								</div>
-							</div>
-
-							<div class="row">
-
-								<div class="col-sm-4 padding-top-1">
-									<div class="payments-section padding-1">
-										<div class="row ">
-											<div class="col-sm-6">
-												<p>
-													<i class="fa fa-money iconpad" aria-hidden="true"></i> Cash
-												</p>
-											</div>
-											<div class="col-sm-6">
-												<i class="fa fa-ellipsis-v float-right" aria-hidden="true"></i>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-sm-12">
-												<p class="caption_payment">Cash deposits to Bank or
-													Brokerage</p>
-											</div>
-										</div>
-									</div>
-								</div>
-
-
-								<div class="col-sm-4 padding-top-1">
-									<div class="payments-section padding-1">
-										<div class="row ">
-											<div class="col-sm-6">
-												<p>
-													<i class="fa fa-university" aria-hidden="true"></i> Bank
-													Transfer
-												</p>
-											</div>
-											<div class="col-sm-6">
-												<i class="fa fa-ellipsis-v float-right" aria-hidden="true"></i>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-sm-12">
-												<p class="caption_payment">Account to account transfer
-													processed by NIBSS</p>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-sm-4 padding-top-1">
-									<div class="payments-section padding-1">
-										<div class="row ">
-											<div class="col-sm-6">
-												<p>
-													<i class="fa fa-credit-card" aria-hidden="true"></i> Debit
-													Card
-												</p>
-											</div>
-											<div class="col-sm-6">
-												<i class="fa fa-ellipsis-v float-right" aria-hidden="true"></i>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-sm-12">
-												<p class="caption_payment">MasterCard,Visa,Verve</p>
-											</div>
-										</div>
-									</div>
-								</div>
-
-							</div>
-
-							<div class="row">
-
-								<div class="col-sm-4 padding-top-1">
-									<div class="payments-section padding-1">
-										<div class="row ">
-											<div class="col-sm-6">
-												<p>
-													<i class="fa fa-money iconpad" aria-hidden="true"></i> Paga
-												</p>
-											</div>
-											<div class="col-sm-6">
-												<i class="fa fa-ellipsis-v float-right" aria-hidden="true"></i>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-sm-12">
-												<p class="caption_payment">Agent Locations around the
-													country</p>
-											</div>
-										</div>
-									</div>
-								</div>
-
-
-								<div class="col-sm-4 padding-top-1">
-									<div class="payments-section padding-1">
-										<div class="row ">
-											<div class="col-sm-6">
-												<p>
-													<i class="fa fa-mobile iconpad" aria-hidden="true"></i>
-													USSD
-												</p>
-											</div>
-											<div class="col-sm-6">
-												<i class="fa fa-ellipsis-v float-right" aria-hidden="true"></i>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-sm-12">
-												<p class="caption_payment">*673#</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<hr />
-
-							<div class="row padding-top-1">
-								<div class="col-sm-3">
-									<button
-										class="btn report-btn float-right btn-block no-border-radius"
-										data-toggle="modal" data-target="#account">
-										<i class="fa fa-plus iconpad" aria-hidden="true"></i>Add
-										Account
-									</button>
-								</div>
-								<div class="modal fade" id="account" tabindex="-1" role="dialog"
-									aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content top-border justify-content-center">
-											<div class="text-center">
-												<h5 class="modal-title padding-top-1" id="exampleModalLabel">New
-													Institution</h5>
-											</div>
-											<div class="modal-body">
-												<div class="row">
-													<div class="col-sm-12">
-														<p class="green-color">
-															<i class="fa fa-picture-o uploadimg iconpad"
-																aria-hidden="true"></i> Upload Logo(JPEG,PNG)
-														</p>
-													</div>
-												</div>
-												<div class="row padding-bottom-1">
-													<div class="col-sm-12">
-														<select class="form-control po-offer">
-															<option>Bank</option>
-														</select>
-													</div>
-												</div>
-
-												<div class="row padding-bottom-1">
-													<div class="col-sm-12">
-														<input type="text" placeholder="Account Number"
-															class="form-control po-offer" />
-													</div>
-												</div>
-
-												<div class="row padding-bottom-1">
-													<div class="col-sm-12">
-														<input type="text" placeholder="Account Name"
-															class="form-control po-offer" />
-													</div>
-												</div>
-
-
-												<div
-													class="row padding-bottom-1 padding-top-1 justify-content-center">
-													<div class="col-sm-5">
-														<button class="btn pobtn btn-block pobtn1">Add
-															Institution</button>
-													</div>
-												</div>
-
-
-
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-9 d-flex justify-content-center">
-									<div class="col-sm-6">
-										<p>Reconciliation Accounts</p>
-									</div>
-								</div>
-							</div>
-
-							<div class="row padding-top-1">
-								<div class="col-sm-4">
-									<div class="payments-section">
-										<div class="row padding-1">
-											<div class="col-sm-6">
-												<p>
-													<img src="images/stanbic.png" class="reconciliation" />
-													Stanbic IBTC
-												</p>
-											</div>
-											<div class="col-sm-6">
-												<p class="float-right">1087654778</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="payments-section">
-										<div class="row padding-1">
-											<div class="col-sm-6">
-												<p>
-													<img src="images/citi.png" class="reconciliation" /> Citi
-													Bank
-												</p>
-											</div>
-											<div class="col-sm-6">
-												<p class="float-right">1087654778</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-
-						<div class="tab-pane fade main-tabpane content-height"
-							id="reports" role="tabpanel" aria-labelledby="pills-home-tab">
-							<div class="row">
-
-								<div class="col-sm-3">
-									<p>Transactions</p>
-								</div>
-								<div class="col-sm-4 offset-sm-5">
-									<div class="input-group mb-3">
-										<input type="text" placeholder="Search..."
-											class="form-control form-right no-border-radius formcolor" />
-										<div class="input-group-append">
-											<span class="input-group-text formcolor no-border-radius"
-												id="basic-addon2"><i class="fa fa-search iconpad "
-												aria-hidden="true"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-sm-1">
-									<p>Filters:</p>
-								</div>
-								<div class="col-sm-2">
-									<select
-										class="form-control po-offer selectlist  no-border-radius">
-										<option>Asset Type</option>
-									</select>
-								</div>
-
-								<div class="col-sm-2">
-									<select
-										class="form-control po-offer selectlist  no-border-radius">
-										<option>Offer Type</option>
-									</select>
-								</div>
-
-								<div class="col-sm-2">
-									<select
-										class="form-control po-offer selectlist  no-border-radius">
-										<option>Payment Method</option>
-									</select>
-								</div>
-
-								<div class="col-sm-2">
-									<select
-										class="form-control po-offer selectlist  no-border-radius generali">
-										<option>Status</option>
-									</select>
-								</div>
-								<div class="col-sm-3">
-									<div class="input-group mb-3">
-										<input type="date"
-											class="form-control selectlist no-border-radius datefilter"
-											placeholder="Recipient's username"
-											aria-label="Recipient's username"
-											aria-describedby="basic-addon2" />
-										<div class="input-group-append">
-											<input type="date"
-												class="form-control selectlist no-border-radius datefilter"
-												placeholder="Recipient's username"
-												aria-label="Recipient's username"
-												aria-describedby="basic-addon2" />
-										</div>
-									</div>
-								</div>
-
-							</div>
-
-							<div class="row">
-								<div class="col-sm-2">
-									<p class="mt-3 green-color">
-										Clear Filters
-										<!-- &times;-->
-									</p>
-								</div>
-
-								<div class="col-sm-3 offset-sm-7">
-									<button
-										class="btn btn-block report-btn text-left mt-2 no-border-radius generater">
-										<i class="fa fa-file-excel-o generateicon iconpad"
-											aria-hidden="true"></i>Generate Report
-									</button>
-								</div>
-							</div>
-							<hr />
-
-							<div class="col-sm-12">
-								<div class="row padding-top-1">
-									<div class="col-sm-12">
-										<div class="row row-head-color">
-											<div class="col-sm-3">
-												<p>Investor</p>
-											</div>
-
-											<div class="col-sm-1">
-												<p>Asset</p>
-											</div>
-
-											<div class="col-sm-1">
-												<p>Type</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>Units</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>Amount(N)</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>Date</p>
-											</div>
-
-											<div class="col-sm-1">
-												<p>Status</p>
-											</div>
-										</div>
-
-										<div class="row padding-top-1 polist">
-											<div class="col-sm-3">
-												<ul class="list-unstyled">
-													<li class="media">
-														<div class="media-body">
-															<h7 class="mt-0 mb-1">Babatunde Akinyemi</h7>
-														</div>
-													</li>
-												</ul>
-											</div>
-
-											<div class="col-sm-1">
-												<p>MTNNG</p>
-											</div>
-
-											<div class="col-sm-1">
-												<p>Stock</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>42,000</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>430,069.50</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>02/01/2018</p>
-											</div>
-
-											<div class="col-sm-1">
-												<p>Alloted</p>
-											</div>
-										</div>
-										<hr class="customhr" />
-
-
-										<div class="row padding-top-1 polist">
-											<div class="col-sm-3">
-												<ul class="list-unstyled">
-													<li class="media">
-														<div class="media-body">
-															<h7 class="mt-0 mb-1">Babatunde Akinyemi</h7>
-														</div>
-													</li>
-												</ul>
-											</div>
-
-											<div class="col-sm-1">
-												<p>MTNNG</p>
-											</div>
-
-											<div class="col-sm-1">
-												<p>Stock</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>42,000</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>430,069.50</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>02/01/2018</p>
-											</div>
-
-											<div class="col-sm-1">
-												<p>Alloted</p>
-											</div>
-										</div>
-										<hr class="customhr" />
-
-
-										<div class="row padding-top-1 polist">
-											<div class="col-sm-3">
-												<ul class="list-unstyled">
-													<li class="media">
-														<div class="media-body">
-															<h7 class="mt-0 mb-1">Babatunde Akinyemi</h7>
-														</div>
-													</li>
-												</ul>
-											</div>
-
-											<div class="col-sm-1">
-												<p>MTNNG</p>
-											</div>
-
-											<div class="col-sm-1">
-												<p>Stock</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>42,000</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>430,069.50</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>02/01/2018</p>
-											</div>
-
-											<div class="col-sm-1">
-												<p>Alloted</p>
-											</div>
-										</div>
-										<hr class="customhr" />
-
-
-										<div class="row padding-top-1 polist">
-											<div class="col-sm-3">
-												<ul class="list-unstyled">
-													<li class="media">
-														<div class="media-body">
-															<h7 class="mt-0 mb-1">Babatunde Akinyemi</h7>
-														</div>
-													</li>
-												</ul>
-											</div>
-
-											<div class="col-sm-1">
-												<p>MTNNG</p>
-											</div>
-
-											<div class="col-sm-1">
-												<p>Stock</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>42,000</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>430,069.50</p>
-											</div>
-
-											<div class="col-sm-2">
-												<p>02/01/2018</p>
-											</div>
-
-											<div class="col-sm-1">
-												<p>Alloted</p>
-											</div>
-										</div>
-										<hr class="customhr" />
-									</div>
-								</div>
-							</div>
-
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> <!-- /.End Gutter -->
+
+<!--Main Navigation-->
+<header>
+
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+            <div class="container">
+
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="#">Payspec</a>
+
+                <!-- Collapse button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                    <!-- Links -->
+                    <ul class="navbar-nav mr-auto smooth-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#intro">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#best-features">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#examples">Examples</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#gallery">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <!-- Links -->
+
+                    <!-- Social Icon  -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <a class="nav-link"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"><i class="fa fa-instagram"></i></a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Collapsible content -->
+
+            </div>
+        </nav>
+        <!--/.Navbar-->
+        
+         <!--Mask-->
+        <div id="intro" class="view">
+
+            <div class="mask rgba-black-strong">
+
+                <div class="container-fluid d-flex align-items-center justify-content-center h-100">
+
+                    <div class="row d-flex justify-content-center text-center">
+
+                        <div class="col-md-10">
+
+                            <!-- Heading -->
+                            <h2 class="display-4 font-weight-bold white-text pt-5 mb-2">Travel</h2>
+
+                            <!-- Divider -->
+                            <hr class="hr-light">
+
+                            <!-- Description -->
+                            <h4 class="white-text my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti consequuntur.</h4>
+                            <button type="button" class="btn btn-outline-white">Read more<i class="fa fa-book ml-2"></i></button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!--/.Mask-->
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+    <main class="mt-5">
+        <div class="container">
+
+            <!--Section: Best Features-->
+            <section id="best-features" class="text-center">
+
+                <!-- Heading -->
+                <h2 class="mb-5 font-weight-bold">Best Features</h2>
+
+                <!--Grid row-->
+                <div class="row d-flex justify-content-center mb-4">
+
+                    <!--Grid column-->
+                    <div class="col-md-8">
+
+                        <!-- Description -->
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptate hic provident nulla repellat
+                            facere esse molestiae ipsa labore porro minima quam quaerat rem, natus repudiandae debitis est
+                            sit pariatur.</p>
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-4 mb-5">
+                        <i class="fa fa-camera-retro fa-4x orange-text"></i>
+                        <h4 class="my-4 font-weight-bold">Experience</h4>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+                            assumenda deleniti hic.</p>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-4 mb-1">
+                        <i class="fa fa-heart fa-4x orange-text"></i>
+                        <h4 class="my-4 font-weight-bold">Happiness</h4>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+                            assumenda deleniti hic.</p>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-4 mb-1">
+                        <i class="fa fa-bicycle fa-4x orange-text"></i>
+                        <h4 class="my-4 font-weight-bold">Adventure</h4>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+                            assumenda deleniti hic.</p>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+            </section>
+            <!--Section: Best Features-->
+
+            <hr class="my-5">
+
+            <!--Section: Examples-->
+            <section id="examples" class="text-center">
+
+                <!-- Heading -->
+                <h2 class="mb-5 font-weight-bold">Stunning Examples</h2>
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-12 mb-4">
+
+                        <div class="view overlay z-depth-1-half">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg" class="img-fluid" alt="">
+                            <div class="mask rgba-white-slight"></div>
+                        </div>
+
+                        <h4 class="my-4 font-weight-bold">Heading</h4>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+                            assumenda deleniti hic.</p>
+
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <div class="view overlay z-depth-1-half">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" class="img-fluid" alt="">
+                            <div class="mask rgba-white-slight"></div>
+                        </div>
+
+                        <h4 class="my-4 font-weight-bold">Heading</h4>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+                            assumenda deleniti hic.</p>
+
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <div class="view overlay z-depth-1-half">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/images/29.jpg" class="img-fluid" alt="">
+                            <div class="mask rgba-white-slight"></div>
+                        </div>
+
+                        <h4 class="my-4 font-weight-bold">Heading</h4>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+                            assumenda deleniti hic.</p>
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-12 mb-4">
+
+                        <div class="view overlay z-depth-1-half">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/images/10.jpg" class="img-fluid" alt="">
+                            <div class="mask rgba-white-slight"></div>
+                        </div>
+
+                        <h4 class="my-4 font-weight-bold">Heading</h4>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+                            assumenda deleniti hic.</p>
+
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <div class="view overlay z-depth-1-half">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/images/11.jpg" class="img-fluid" alt="">
+                            <div class="mask rgba-white-slight"></div>
+                        </div>
+
+                        <h4 class="my-4 font-weight-bold">Heading</h4>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+                            assumenda deleniti hic.</p>
+
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <div class="view overlay z-depth-1-half">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/images/13.jpg" class="img-fluid" alt="">
+                            <div class="mask rgba-white-slight"></div>
+                        </div>
+
+                        <h4 class="my-4 font-weight-bold">Heading</h4>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+                            assumenda deleniti hic.</p>
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+            </section>
+            <!--Section: Examples-->
+
+            <hr class="my-5">
+
+            <!--Section: Gallery-->
+            <section id="gallery">
+
+                <!-- Heading -->
+                <h2 class="mb-5 font-weight-bold text-center">Gallery heading</h2>
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6 mb-4">
+
+                        <!--Carousel Wrapper-->
+                        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                            <!--Indicators-->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+                            </ol>
+                            <!--/.Indicators-->
+                            <!--Slides-->
+                            <div class="carousel-inner z-depth-1-half" role="listbox">
+                                <!--First slide-->
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/images/84.jpg" alt="First slide">
+                                </div>
+                                <!--/First slide-->
+                                <!--Second slide-->
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/images/85.jpg" alt="Second slide">
+                                </div>
+                                <!--/Second slide-->
+                                <!--Third slide-->
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/images/86.jpg" alt="Third slide">
+                                </div>
+                                <!--/Third slide-->
+                            </div>
+                            <!--/.Slides-->
+                            <!--Controls-->
+                            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                            <!--/.Controls-->
+                        </div>
+                        <!--/.Carousel Wrapper-->
+
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+
+                        <!--Excerpt-->
+                        <a href="" class="teal-text">
+                            <h6 class="pb-1">
+                                <i class="fa fa-heart"></i>
+                                <strong> Lifestyle </strong>
+                            </h6>
+                        </a>
+                        <h4 class="mb-3">
+                            <strong>This is title of the news</strong>
+                        </h4>
+                        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+                            placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis
+                            debitis aut rerum.</p>
+
+                        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+                            placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis
+                            debitis aut rerum.</p>
+                        <p>by
+                            <a>
+                                <strong>Jessica Clark</strong>
+                            </a>, 26/08/2016</p>
+                        <a class="btn btn-primary btn-md">Read more</a>
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+            </section>
+            <!--Section: Gallery-->
+
+            <hr class="my-5">
+
+            <!--Section: Contact-->
+            <section id="contact">
+
+                <!-- Heading -->
+                <h2 class="mb-5 font-weight-bold text-center">Contact us</h2>
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-lg-5 col-md-12">
+
+                        <!-- Form contact -->
+                        <form class="p-5">
+
+                          <div class="md-form form-sm"> <i class="fa fa-user prefix grey-text"></i>
+                            <input type="text" id="form3" class="form-control form-control-sm">
+                            <label for="form3">Your name</label>
+                          </div>
+
+                          <div class="md-form form-sm"> <i class="fa fa-envelope prefix grey-text"></i>
+                            <input type="text" id="form2" class="form-control form-control-sm">
+                            <label for="form2">Your email</label>
+                          </div>
+
+                          <div class="md-form form-sm"> <i class="fa fa-tag prefix grey-text"></i>
+                            <input type="text" id="form32" class="form-control form-control-sm">
+                            <label for="form34">Subject</label>
+                          </div>
+
+                          <div class="md-form form-sm"> <i class="fa fa-pencil prefix grey-text"></i>
+                            <textarea type="text" id="form8" class="md-textarea form-control form-control-sm" rows="4"></textarea>
+                            <label for="form8">Your message</label>
+                          </div>
+
+                          <div class="text-center mt-4">
+                            <button class="btn btn-primary">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+                          </div>
+                        </form>
+                        <!-- Form contact -->
+
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-7 col-md-12">
+
+                        <!--Grid row-->
+                        <div class="row text-center">
+
+                            <!--Grid column-->
+                            <div class="col-lg-4 col-md-12 mb-3">
+
+                                <p>
+                                    <i class="fa fa-map fa-1x mr-2 grey-text"></i>New York, NY 10012</p>
+
+                            </div>
+                            <!--Grid column-->
+
+                            <!--Grid column-->
+                            <div class="col-lg-4 col-md-6 mb-3">
+
+                                <p>
+                                    <i class="fa fa-building fa-1x mr-2 grey-text"></i>Mon - Fri, 8:00-22:00</p>
+
+                            </div>
+                            <!--Grid column-->
+
+                            <!--Grid column-->
+                            <div class="col-lg-4 col-md-6 mb-3">
+
+                                <p>
+                                    <i class="fa fa-phone fa-1x mr-2 grey-text"></i>+ 01 234 567 89</p>
+
+                            </div>
+                            <!--Grid column-->
+
+                        </div>
+                        <!--Grid row-->
+
+                        <!--Google map-->
+                        <div id="map-container" class="z-depth-1-half map-container mb-5" style="height: 400px"></div>
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+            </section>
+            <!--Section: Contact-->
+
+        </div>
+    </main>
+    <!--Main layout-->
+
+    <!--Footer-->
+    <footer class="page-footer font-small unique-color-dark pt-0">
+
+        <!-- Social buttons -->
+        <div class="primary-color">
+            <div class="container">
+                <!--Grid row-->
+                <div class="row py-4 d-flex align-items-center">
+
+                    <!--Grid column-->
+                    <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                        <h6 class="mb-0 white-text">Get connected with us on social networks!</h6>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6 col-lg-7 text-center text-md-right">
+                        <!--Facebook-->
+                        <a class="fb-ic ml-0">
+                            <i class="fa fa-facebook white-text mr-4"> </i>
+                        </a>
+                        <!--Twitter-->
+                        <a class="tw-ic">
+                            <i class="fa fa-twitter white-text mr-4"> </i>
+                        </a>
+                        <!--Google +-->
+                        <a class="gplus-ic">
+                            <i class="fa fa-google-plus white-text mr-4"> </i>
+                        </a>
+                        <!--Linkedin-->
+                        <a class="li-ic">
+                            <i class="fa fa-linkedin white-text mr-4"> </i>
+                        </a>
+                        <!--Instagram-->
+                        <a class="ins-ic">
+                            <i class="fa fa-instagram white-text mr-lg-4"> </i>
+                        </a>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+            </div>
+        </div>
+        <!-- Social buttons -->
+
+        <!--Footer Links-->
+        <div class="container mt-5 mb-4 text-center text-md-left">
+            <div class="row mt-3">
+
+                <!--First column-->
+                <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <strong>Company name</strong>
+                    </h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
+                        amet, consectetur adipisicing elit.</p>
+                </div>
+                <!--/.First column-->
+
+                <!--Second column-->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <strong>Products</strong>
+                    </h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <a href="#!">MDBootstrap</a>
+                    </p>
+                    <p>
+                        <a href="#!">MDWordPress</a>
+                    </p>
+                    <p>
+                        <a href="#!">BrandFlow</a>
+                    </p>
+                    <p>
+                        <a href="#!">Bootstrap Angular</a>
+                    </p>
+                </div>
+                <!--/.Second column-->
+
+                <!--Third column-->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <strong>Useful links</strong>
+                    </h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <a href="#!">Your Account</a>
+                    </p>
+                    <p>
+                        <a href="#!">Become an Affiliate</a>
+                    </p>
+                    <p>
+                        <a href="#!">Shipping Rates</a>
+                    </p>
+                    <p>
+                        <a href="#!">Help</a>
+                    </p>
+                </div>
+                <!--/.Third column-->
+
+                <!--Fourth column-->
+                <div class="col-md-4 col-lg-3 col-xl-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <strong>Contact</strong>
+                    </h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
+                    <p>
+                        <i class="fa fa-envelope mr-3"></i> info@example.com</p>
+                    <p>
+                        <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
+                    <p>
+                        <i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
+                </div>
+                <!--/.Fourth column-->
+
+            </div>
+        </div>
+        <!--/.Footer Links-->
+
+        <!--Copyright-->
+        <div class="footer-copyright py-3 text-center">
+            © 2018 Copyright:
+            <a href="https://payspec.co/"> payspec.co </a>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->

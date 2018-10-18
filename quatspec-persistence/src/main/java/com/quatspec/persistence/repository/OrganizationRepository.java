@@ -1,9 +1,15 @@
 package com.quatspec.persistence.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.quatspec.api.model.IOrganization;
 import com.quatspec.persistence.domain.Organization;
+import com.quatspec.persistence.repository.base.OrganizationBaseRepository;
 
-public interface OrganizationRepository extends CrudRepository<Organization, Long>{
+@Transactional
+public interface OrganizationRepository extends OrganizationBaseRepository<Organization>{
 
+	Organization findByName(String name);
+	IOrganization save(IOrganization iOrganization);
+	
 }

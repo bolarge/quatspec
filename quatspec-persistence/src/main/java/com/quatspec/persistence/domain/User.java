@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -26,109 +27,38 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.quatspec.api.enums.Gender;
+import com.quatspec.api.model.IOrganization;
 import com.quatspec.api.model.IUser;
+import com.quatspec.persistence.domain.base.UserParent;
 
-@Entity(name = "User")
-@Table(name = "user")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "user_type")
-public abstract class User implements IUser{
+@Entity(name = "Customer")
+@DiscriminatorValue(value = "1")
+public class User extends UserParent implements IUser<Organization> {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
+	private String userType;
 	
-	@Column(name = "version")
-	private int version;
+	public User() {
+		super();
+	}
 	
-	@Column(name = "last_name", length = 15)
-	private String lastName;
+	public User(String userName, String email, String password, String gsmPhoneNumber) {
+		super(userName, email, password, gsmPhoneNumber);
+	}
 	
-	@Column(name = "first_name", length = 15)
-	private String firstName;
-	
-	@Column(name = "middle_name", length = 15)
-	private String middleName;
-	
-	@Column(name = "birth_date")
-	@Temporal(TemporalType.DATE)
-	private Date birthDate;
-	
-	@Column(name = "email", unique = true, nullable = false, length = 45)
-	private String email;
-	
-	@Column(name = "username", unique = true, nullable = false, length = 25)
-	private String userName;
-	
-	@Column(name = "gender")
-	@Enumerated(EnumType.STRING)
-	private Gender gender;
-	
-	@Column(name = "password", length = 100)
-	private String password;
-	
-	@Basic(fetch = FetchType.LAZY)
-	@Lob
-	@Column(name = "photo")
-	private byte[] photo;
-	
-	@Column(name="profile_pic")
-	private String profilePicture = "/static/images/avatar.png";
-	
-	@Column(name = "enabled")
-	private boolean enabled = true;
-	
-	@Column(name = "question", length = 25)
-	private String securityQuestion;
-	
-	@Column(name = "answer", length = 25)
-	private String securityAnswer;	
-	
-	@Column(name="base_url")
-	private String baseUrl;
-
-	@Column(name = "start_date")
-	@Temporal(TemporalType.DATE)
-	private Date startDate;
-	
-	@Column(name="last_logon_date")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date lastLoginDate;
-
-	@Column(name="last_logout_date")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date lastLogoutDate;
-	
-	@ManyToOne(fetch =FetchType.EAGER)
-	@JoinColumn(name="institution_id")
-	private Institution institution;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="organization_id")
-	private Organization organization;
-	
-	@Column(name = "gsm_number")
-	private String gsmPhoneNumber;
-	
-	@ManyToMany(fetch=FetchType.EAGER, targetEntity = Profile.class)
-	@JoinTable(name = "user_profile",
-			joinColumns = { @JoinColumn(name = "user_id") },
-			inverseJoinColumns = { @JoinColumn(name = "profile_id") })
-	private Set<Profile> profiles = new HashSet<Profile>();
-	
-	/*@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "user_role",
-	           joinColumns = @JoinColumn(name = "user_id"), 
-	           inverseJoinColumns = @JoinColumn(name = "role_id"))
-	protected Set<Role> roles = new HashSet<Role>();*/
-	
-	public Long getId() {
-		return id;
+	public String getUserType() {
+		return userType;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long id) {
+		this.userId = id;
 	}
 
 	public int getVersion() {
@@ -270,6 +200,10 @@ public abstract class User implements IUser{
 	public Set<Profile> getProfiles() {
 		return profiles;
 	}
+	
+	public void setProfiles(Set<Profile> profiles) {
+		this.profiles = profiles;
+	}
 
 	public String getGsmPhoneNumber() {
 		return gsmPhoneNumber;
@@ -277,10 +211,6 @@ public abstract class User implements IUser{
 
 	public void setGsmPhoneNumber(String gsmPhoneNumber) {
 		this.gsmPhoneNumber = gsmPhoneNumber;
-	}
-
-	public void setProfiles(Set<Profile> profiles) {
-		this.profiles = profiles;
 	}
 
 	public String getProfilePicture() {
@@ -307,11 +237,30 @@ public abstract class User implements IUser{
 		this.organization = organization;
 	}
 
-/*	public Set<Role> getRoles() {
-		return roles;
+	public String getMerchantId() {
+		return merchantId;
 	}
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}*/	
+	public void setMerchantId(String merchantId) {
+		this.merchantId = merchantId;
+	}
+
+	public String getPaychantId() {
+		return paychantId;
+	}
+
+	public void setPaychantId(String paychantId) {
+		this.paychantId = paychantId;
+	}
+
+	@Override
+	public String getEmployeeId() {
+		return employeeId;
+	}
+
+	@Override
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;	
+	}
+	
 }

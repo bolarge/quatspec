@@ -10,11 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.quatspec.api.exception.QuaspecServiceException;
 import com.quatspec.api.model.IPayment;
-import com.quatspec.api.model.IUser;
 import com.quatspec.api.service.IPaymentService;
-import com.quatspec.persistence.domain.Bill;
-import com.quatspec.persistence.domain.Customer;
 import com.quatspec.persistence.domain.Payment;
+import com.quatspec.persistence.domain.User;
 import com.quatspec.persistence.repository.DataAccessService;
 
 @Service("paymentService")
@@ -24,29 +22,31 @@ public class PaymentServiceImpl implements IPaymentService{
 	DataAccessService dataAccessService;
 
 	@Override
-	public List<? extends IPayment<IUser>> getAll() throws QuaspecServiceException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<? extends IPayment> getAll() throws QuaspecServiceException {
+		return dataAccessService.getPaymentRepository().findAll();
 	}
 
 	@Override
 	public IPayment get(String username) throws QuaspecServiceException {
-		// TODO Auto-generated method stub
-		return null;
+		return dataAccessService.getPaymentRepository().findByPaychant(
+				dataAccessService.getUserRepository().findByUserName(username)).stream().findFirst().get();
 	}
 
 	@Override
-	public Payment processPayment(IPayment paymentRequest) throws QuaspecServiceException {
-		Customer payer = (Customer) paymentRequest.getPayer();//Get Payer
-		Customer payee = (Customer) paymentRequest.getPayee();//Get Payee
-		final String digest = UUID.randomUUID().toString().replace("-", "");
+	public Payment processPayment(IPayment iPaymentRequest) throws QuaspecServiceException {
+		//Transaction will be sorted by Initiating/Receiving Bank & transaction type ON-US / NOT ON-US
+		//ON US transaction will be routed to corresponding bank
 		
-        if (paymentRequest.getPayer() != null) {
-            if (paymentRequest.getPayee() != null) {
-            	if(paymentRequest.getAmount() != new BigDecimal(0)) {
-            		IPayment aBill = new Bill(digest,  paymentRequest.getAmount(), paymentRequest.getPaymentDescription(), paymentRequest.getPaymentDate(), payer, 
-            				payee, paymentRequest.getPaymentStatus(), paymentRequest.getPaymentStatus(), paymentRequest.getPaymentType());
-	                return dataAccessService.getPaymentRepository().save(aBill);
+		final String digest = UUID.randomUUID().toString().replace("-", "");	
+		User paychant = (User) dataAccessService.getUserRepository().findByUserName((iPaymentRequest.getPaychant().getUserName()));
+    	User merchant = (User) dataAccessService.getUserRepository().findByUserName((iPaymentRequest.getMerchant().getUserName()));
+    	
+        if (iPaymentRequest.getPaychant() != null && iPaymentRequest.getMerchant() != null) {        	
+            if (paychant != null) {
+            	if(iPaymentRequest.getAmount() != new BigDecimal(0)) {
+            		Payment payment = new Payment(digest, iPaymentRequest.getAmount(), iPaymentRequest.getPaymentDescription(), paychant, 
+            				merchant, iPaymentRequest.getPaymentType());
+	                return dataAccessService.getPaymentRepository().save(payment);
             	}
             	/*else if(paymentRequest.getPaymentType().equalsIgnoreCase("F")) {
             		IPayment aBill = new Bill(digest,  paymentRequest.getAmount(), paymentRequest.getPaymentDescription(), paymentRequest.getPaymentDate(), payer, 
@@ -60,11 +60,10 @@ public class PaymentServiceImpl implements IPaymentService{
 
 	@Override
 	public List<? extends IPayment> getByIUser(String username) throws QuaspecServiceException {
-		Customer user = (Customer) dataAccessService.getUserRepository().findByUserName(username);
+		User user = (User) dataAccessService.getUserRepository().findByUserName(username);
         if (user != null) {
-            return dataAccessService.getPaymentRepository().findByPayer(user);
+            return dataAccessService.getPaymentRepository().findByPaychant(user);
         }
         return new ArrayList<>();
 	}
-
 }

@@ -27,7 +27,7 @@ public class ProfileServiceImpl implements IProfileService {
 
 	@Override
 	public List<? extends IProfile> getByIUser(IUser iUser) throws QuaspecServiceException {		
-		return (List<? extends IProfile>) (IProfile)dataAccessService.getProfileRepository().findProfileByUserId(iUser.getId());
+		return (List<? extends IProfile>) (IProfile)dataAccessService.getProfileRepository().findProfileByUserId(iUser.getUserId());
 	}
 
 }

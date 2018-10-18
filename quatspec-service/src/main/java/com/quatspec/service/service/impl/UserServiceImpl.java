@@ -1,4 +1,4 @@
- package com.quatspec.service.service.impl;
+package com.quatspec.service.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,12 +6,16 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.quatspec.api.exception.QuaspecServiceException;
 import com.quatspec.api.model.IUser;
 import com.quatspec.api.service.IUserService;
+import com.quatspec.persistence.domain.Employee;
+import com.quatspec.persistence.domain.User;
 import com.quatspec.persistence.repository.DataAccessService;
 
 @Service("userService")
@@ -21,47 +25,20 @@ public class UserServiceImpl implements IUserService{
 	
 	@Autowired
 	DataAccessService dataAccessService;
+	
+	@Autowired
+    @Qualifier("quatspecSecurityPasswordEncoder")
+    private PasswordEncoder passwordEncoder;
 
-	/*@Override
-	@Transactional(readOnly = true)
-	public User findById(Long id) {
-		Optional<User> UserOptional = userRepository.findById(id);
-		if(UserOptional.isPresent()){
-			 return UserOptional.get();
+	@Override
+	@Transactional
+	public IUser getByUserId(Long userId) throws QuaspecServiceException {
+		Optional<IUser> user =  dataAccessService.getUserRepository().findByUserId(userId);
+		if(user.isPresent()){
+			 return user.get();
 		}
-		return null;
+		return null;	
 	}
-
-	@Override
-	public void saveUser(User data) {
-		userRepository.save(data);		
-	}
-
-	@Override
-	public void updateUser(User data) {
-		saveUser(data);
-	}
-
-	@Override
-	public void deleteUserById(Long id) {
-		userRepository.deleteById(id);
-	}
-
-	@Override
-	public void deleteAllData() {
-		userRepository.deleteAll();	
-	}
-
-	@Override
-	public List<User> findAll() {
-		return userRepository.findAll();
-	}
-
-	@Override
-	public boolean isUserExist(User user) {
-		
-		return userRepository.existsById(user.getId());
-	}*/
 
 	@Override
 	@Transactional
@@ -71,8 +48,39 @@ public class UserServiceImpl implements IUserService{
 
 	@Override
 	@Transactional
-	public IUser get(String username) throws QuaspecServiceException {
+	public IUser getByUsername(String username) throws QuaspecServiceException {
 		return dataAccessService.getUserRepository().findByUserName(username);
+	}
+
+	//Method can create different type of users 
+	@Override
+	public IUser createUser(IUser iUser) throws QuaspecServiceException {
+		IUser user = null;
+		User customer = null;
+		Employee employee = null;
+		if(iUser.getUserType().equalsIgnoreCase("1")) { // Create Concrete Customer User Entity
+			customer = new User(iUser.getUserName(),iUser.getEmail(),passwordEncoder.encode(iUser.getPassword()),iUser.getGsmPhoneNumber());
+			user = dataAccessService.getUserRepository().save(customer);
+		} else if (iUser.getUserType().equalsIgnoreCase("2")) {// Create Concrete Employee User Entity
+			employee = new Employee(iUser.getUserName(),iUser.getEmail(),passwordEncoder.encode(iUser.getPassword()),iUser.getGsmPhoneNumber());
+			user = dataAccessService.getUserRepository().save(employee);
+		}		
+		return user;			
+	}
+
+	@Override
+	public IUser updateUser(IUser iUser) throws QuaspecServiceException {
+		return createUser(iUser);
+	}
+
+	@Override
+	public void deleteUser(String userId) throws QuaspecServiceException {
+		dataAccessService.getUserRepository().deleteById(dataAccessService.getUserRepository().findByUserName(userId).getUserId());	
+	}
+
+	@Override
+	public boolean isUserExist(String userId) {
+		return dataAccessService.getUserRepository().existsById(dataAccessService.getUserRepository().findByUserName(userId).getUserId());
 	}
 
 }

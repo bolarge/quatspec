@@ -23,10 +23,10 @@ public class Institution {
     protected Long id;
 
     @Column(name="name")
-    private String name;
+    protected String name;
 
     @Column(name="status")
-    private boolean status = false;
+    protected boolean status = false;
 
     public Institution(){}
 

@@ -60,7 +60,7 @@ public class QuatspecDatabaseUserDetailsManager implements UserDetailsService{
 	                Date loginDate = new GregorianCalendar(TimeZone.getTimeZone("Africa/Lagos")).getTime();
 	                IUser iUser = (IUser) dataAccessService.getUserRepository().findByUserName(username);	                
 	                if(!iUser.equals(null)){	                	
-	                    Long userId = iUser.getId();
+	                    Long userId = iUser.getUserId();
 	                    String actionUser = iUser.getUserName();
 	                    fullname = iUser.getFirstName() + " " + iUser.getLastName();
 	                    boolean authenticated = passwordEncoder.matches(password, iUser.getPassword());	                    

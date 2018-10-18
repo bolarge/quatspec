@@ -3,3 +3,6 @@
 /.project
 /.classpath
 /.factorypath
+/bin/
+/.apt_generated/
+

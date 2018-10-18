@@ -8,41 +8,47 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import com.quatspec.api.model.IOrganization;
 
 @Entity(name="Organization")
 @Table(name="organization")
-@NamedQueries({
-	@NamedQuery(name="organization.findOrganisationByEmail", query = "select c from Organization as c where c.email=:EMAIL")	
-})
-public class Organization {
+public class Organization implements IOrganization{
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     protected Long id;
 
     @Column(name="name")
-    private String name;
+    protected String name;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="institution_id")
-    private Institution institution;
+    protected Institution institution;
 
     @Column(name="email")
-    private String email;
+    protected String email;
 
     @Column(name="phone_number")
-    private String phoneNumber;
+    protected String phoneNumber;
 
     @Column(name="status")
-    private boolean status = false;	
+    protected boolean status = false;	
    
-    public Organization(){}
+    public Organization(){
+    	super();
+    }
 
-    public Long getId() {
+    public Organization(String name, String email, String phoneNumber) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+	}
+
+	public Long getId() {
         return id;
     }
 

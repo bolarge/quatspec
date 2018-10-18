@@ -7,7 +7,7 @@ import com.quatspec.api.enums.PaymentStatus;
 import com.quatspec.api.enums.PaymentType;
 import com.quatspec.api.model.IPayment;
 
-public class PaymentResource extends DefaultResource implements IPayment<UserResource> {
+public class IPaymentResource extends DefaultResource implements IPayment<IUserResource> {
 	
 	private BigDecimal amount;
 	
@@ -15,47 +15,45 @@ public class PaymentResource extends DefaultResource implements IPayment<UserRes
 	
 	private Date paymentDate;
 	
-	private UserResource payer;
+	private IUserResource paychant;
 	
-	private UserResource payee;
+	private IUserResource merchant;
 	
 	private PaymentStatus paymentStatus;
 	
 	private PaymentType paymentType;
 	
-	public PaymentResource() {
+	public IPaymentResource() {
 		super();
 	}
 	
-	public PaymentResource(IPayment paymentRequest) {
+	public IPaymentResource(IPayment paymentRequest) {
 		this.amount = paymentRequest.getAmount();
 		this.paymentDescription = paymentRequest.getPaymentDescription();
-		if ((paymentRequest.getPayer() != null) && (paymentRequest.getPayee() != null)) {
-			this.payer = new UserResource(paymentRequest.getPayer());
-			this.payee = new UserResource(paymentRequest.getPayee());
+		if ((paymentRequest.getPaychant() != null) && (paymentRequest.getMerchant() != null)) {
+			this.paychant = new IUserResource(paymentRequest.getPaychant());
+			this.merchant = new IUserResource(paymentRequest.getMerchant());
 		}
 	}
 
 	@Override
-	public UserResource getPayer() {
-		return payer;
+	public IUserResource getPaychant() {
+		return paychant;
 	}
 
 	@Override
-	public void setPayer(UserResource iUser) {
-		this.payer = iUser;
-		
+	public void setPaychant(IUserResource paychant) {
+		this.paychant = paychant;		
 	}
 
 	@Override
-	public UserResource getPayee() {
-		return payee;
+	public IUserResource getMerchant() {
+		return merchant;
 	}
 
 	@Override
-	public void setPayee(UserResource iUser) {
-		this.payee = iUser;
-		
+	public void setMerchant(IUserResource merchant) {
+		this.merchant = merchant;	
 	}
 
 	@Override

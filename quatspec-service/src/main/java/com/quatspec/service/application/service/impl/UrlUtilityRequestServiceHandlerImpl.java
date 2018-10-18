@@ -24,6 +24,7 @@ public class UrlUtilityRequestServiceHandlerImpl implements UrlUtilityRequestSer
 	}
 
 	public String identityUrlAuthenitcationEntryPoint(HttpServletRequest httpServletRequest) {
+		System.out.println("2: Called identityUrlAuthenitcationEntryPoint " + httpServletRequest.getRequestURL());
 		String entryPoint = "userlogin";
 		if (isUrlForAdmin(httpServletRequest)) {
 			entryPoint = "adminlogin";
@@ -69,6 +70,7 @@ public class UrlUtilityRequestServiceHandlerImpl implements UrlUtilityRequestSer
 	public String resolveAuthenticationURLString(HttpServletRequest httpServletRequest, String targetFailureURL) {
 		String reference = httpServletRequest.getHeader(HttpHeaders.REFERER);
 		String path = httpServletRequest.getRequestURL().toString();
+		System.out.println(": Called resolveAuthenticationURLString " + httpServletRequest.getRequestURL());
 		if (!StringUtils.isEmpty(reference)) {
 			if (isURLAdminPath(reference)) {
 				reference = identityLoginAuthenticationEntryPointURL(reference);

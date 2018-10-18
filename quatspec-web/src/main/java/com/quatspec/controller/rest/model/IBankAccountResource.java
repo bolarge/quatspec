@@ -4,24 +4,28 @@ import java.util.Date;
 
 import com.quatspec.api.model.IBankAccount;
 
-public class BankAccountResource extends DefaultResource implements IBankAccount<UserResource> {
+public class IBankAccountResource extends DefaultResource implements IBankAccount<IUserResource> {
 
     private String accountNumber;
 
     private String bankVerificationNumber;
     
     private String accountType;
+    
+    private String applicantId;
 
-    private UserResource appUser;
+    private IUserResource iUser;
 
-    public BankAccountResource() {
+    public IBankAccountResource() {
         super();
     }
 
-    public BankAccountResource(IBankAccount bankAccount) {
+    public IBankAccountResource(IBankAccount bankAccount) {
         this.accountNumber = bankAccount.getAccountNumber();
+        this.bankVerificationNumber = bankAccount.getBankVerificationNumber();
+        this.accountType = bankAccount.getAccountType();
         if (bankAccount.getUser() != null) {
-            this.appUser = new UserResource(bankAccount.getUser());
+            this.iUser = new IUserResource(bankAccount.getUser());
         }
     }
     
@@ -36,72 +40,62 @@ public class BankAccountResource extends DefaultResource implements IBankAccount
     }
 
     @Override
-    public UserResource getUser() {
-        return appUser;
+    public IUserResource getUser() {
+        return iUser;
     }
 
     @Override
-    public void setUser(UserResource appUser) {
-        this.appUser = appUser;
+    public void setUser(IUserResource iUser) {
+        this.iUser = iUser;
     }
 
 	@Override
 	public int getBalanceAmount() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void setBalanceAmount(int balanceAmount) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Date getLastTransactionTimestamp() {
-		// TODO Auto-generated method stub
+	public Date getLastTransactionTimestamp() {		
 		return null;
 	}
 
 	@Override
-	public void setLastTransactionTimestamp(Date lastTransactionTimestamp) {
-		// TODO Auto-generated method stub
+	public void setLastTransactionTimestamp(Date lastTransactionTimestamp) {		
 		
 	}
 
 	@Override
-	public Long getId() {
-		// TODO Auto-generated method stub
+	public Long getAccountId() {		
 		return 0L;
 	}
 
 	@Override
-	public void setId(long accountId) {
-		// TODO Auto-generated method stub
+	public void setAccountId(Long accountId) {
 		
 	}
 
 	@Override
 	public Date getCreationDate() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void setCreationDate(Date creationDate) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public String getActive() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void setActive(String active) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -112,8 +106,7 @@ public class BankAccountResource extends DefaultResource implements IBankAccount
 
 	@Override
 	public void setBankVerificationNumber(String bankVerificationNumber) {
-		this.bankVerificationNumber = bankVerificationNumber;
-		
+		this.bankVerificationNumber = bankVerificationNumber;	
 	}
 
 	@Override
@@ -123,7 +116,16 @@ public class BankAccountResource extends DefaultResource implements IBankAccount
 
 	@Override
 	public void setAccountType(String accountType) {
-		this.accountType = accountType;
+		this.accountType = accountType;	
+	}
+
+	@Override
+	public String getApplicantId() {
+		return applicantId;
+	}
+
+	@Override
+	public void setApplicantId(String applicantId) {
 		
 	}
 

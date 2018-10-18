@@ -45,7 +45,8 @@ public class QuatspecSecurityAuthenticationSuccessHandler extends AbstractAuthen
 				if (principal != null) {
 					if (principal instanceof UserDetails) {
 						UserDetails details = (UserDetails) principal;
-						IUser<Profile> iUser = (IUser<Profile>) dataAccessService.getUserRepository().findByUserName(details.getUsername());
+						//IUser<Profile> iUser = (IUser<Profile>) dataAccessService.getUserRepository().findByUserName(details.getUsername());
+						IUser iUser = (IUser) dataAccessService.getUserRepository().findByUserName(details.getUsername());
 						if (!iUser.equals(null)) {
 							HttpSession httpSession = (request.getSession(false) != null) ? request.getSession(false): request.getSession(true);
 							httpSession.setAttribute(QuatspecServiceConstants.SessionVariable.CURRENTLOGIN, iUser);

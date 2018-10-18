@@ -58,7 +58,7 @@ public class QuatspecRestAuthenticationProvider implements AuthenticationProvide
 				boolean authenticated = passwordEncoder.matches(password, iUser.getPassword());	  
 				if (authenticated) {
 					if (iUser.isEnabled()) {	                      	                
-						Set<Profile> userProfiles = new HashSet<Profile>(dataAccessService.getProfileRepository().findProfileByUserId(iUser.getId())); 
+						Set<Profile> userProfiles = new HashSet<Profile>(dataAccessService.getProfileRepository().findProfileByUserId(iUser.getUserId())); 
 						UserDetails userDetails = new User(username, iUser.getPassword(), true, true, true, true, getAuthorities(new ArrayList<>(userProfiles)));
 						iUser.setLastLoginDate(new Date());
 						dataAccessService.getUserRepository().save(iUser);	                           

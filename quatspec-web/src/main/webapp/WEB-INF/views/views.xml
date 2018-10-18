@@ -3,16 +3,9 @@
 
 <tiles-definitions>
  
+ <!-- Back End Administrator -->
   <definition name="adminwelcome" extends="default">
     <put-attribute name="body" value="/WEB-INF/views/welcome/adminwelcome.jsp" />
-  </definition>
-  
-   <definition name="userwelcome" extends="default">
-    <put-attribute name="body" value="/WEB-INF/views/welcome/userwelcome.jsp" />
-  </definition>
-  
-  <definition name="access_denied" extends="default">
-    <put-attribute name="body" value="/WEB-INF/views/access_denied.jsp" />
   </definition>
   
    <definition name="adminlogin" extends="default" >
@@ -20,11 +13,30 @@
     <put-attribute name="body" value="/WEB-INF/views/authentication/adminlogin.jsp" />
     <put-attribute name="bottom" value="" />
   </definition>
+  <!-- /Back End Administrator -->
+  
+  <!-- Front End Customer -->
+  <definition name="userwelcome" extends="default">
+    <put-attribute name="body" value="/WEB-INF/views/welcome/userwelcome.jsp" />
+  </definition>
 
   <definition name="userlogin" extends="default" >
       <put-attribute name="header" value="" />
       <put-attribute name="body" value="/WEB-INF/views/authentication/userlogin.jsp" />
       <put-attribute name="bottom" value="" />
   </definition>
+  <!-- /Front End Customer -->
+  
+  <definition name="access_denied" extends="default">
+    <put-attribute name="body" value="/WEB-INF/views/access_denied.jsp" />
+  </definition>
+  
+  <!-- Front End Guest -->
+  <definition name="home/index" extends="default.frontend">
+  	<put-attribute name="header" value="" />
+    <put-attribute name="body" value="/WEB-INF/views/home/index.jsp" />
+    <put-attribute name="footer" value="" />
+  </definition>
+  <!-- /Front End Guest -->
  
 </tiles-definitions>

@@ -11,9 +11,15 @@
 	<!-- <security:debug/> -->
 	<security:global-method-security pre-post-annotations="enabled"/>
     <security:http-firewall ref="httpFireWall"/>
+    
+    <!-- Guest URL -->
+	<security:http auto-config="true" pattern="/guest/**" use-expressions="true">  
+        <security:intercept-url pattern="/visitor/*" access="permitAll()" />                      
+	</security:http>
+	<!--\END Guest  -->
 
 	<!-- REST Authentication -->
-	<security:http realm="API Realm"  pattern="/rest/**" use-expressions="true" authentication-manager-ref="APIAuthenticationManager">  
+	<security:http realm="API Realm"  pattern="/rest/**" use-expressions="true" authentication-manager-ref="apiAuthenticationManager">  
         <security:intercept-url pattern="/api/*" access="hasAuthority('ROLE_ADMIN')" />
         <security:http-basic/>
         <security:logout delete-cookies="JSESSIONID" />
@@ -21,10 +27,6 @@
         <security:csrf disabled="true" />                        
 	</security:http>
 	<!--\END REST Authentication  -->
-	
-	<security:authentication-manager id="APIAuthenticationManager" alias="APIAuthenticationManager">  
-    	<security:authentication-provider ref="quatspecRestAuthenticationProvider"/>    	 	         
-    </security:authentication-manager>
 	
 	<!--Form Authentication  -->
     <security:http auto-config="false" disable-url-rewriting="true" use-expressions="true" create-session="ifRequired" entry-point-ref="authenticationEntryPoint" authentication-manager-ref="defaultAuthenticationManager"> 
@@ -66,6 +68,10 @@
         <property name="passwordParameter" value="j_password"/>
         <property name="filterProcessesUrl" value="/j_spring_security_check"/>
     </bean>
+    
+    <security:authentication-manager id="apiAuthenticationManager" alias="apiAuthenticationManager">  
+    	<security:authentication-provider ref="quatspecRestAuthenticationProvider"/>    	 	         
+    </security:authentication-manager>
     
 	<security:authentication-manager alias="defaultAuthenticationManager" id="defaultAuthenticationManager">  
         <security:authentication-provider user-service-ref="quatspecDatabaseUserDetailsManager">

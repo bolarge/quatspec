@@ -44,6 +44,7 @@ public class QuatspecAuthenticationController {
 
 	@GetMapping(value = {"/welcome","/admin/welcome"})
 	public String home(Locale locale, Model model, HttpServletRequest httpServletRequest) throws Exception{
+		System.out.println(": Called QuatspecAuthenticationController Landing Page " + httpServletRequest.getRequestURI());
 		HttpSession httpSession = httpServletRequest.getSession(false); 
 		if(httpSession !=null){
 			 List<Profile> adminUserProfiles = (List<Profile>) dataAccessService.getProfileRepository().findAll();
@@ -58,8 +59,9 @@ public class QuatspecAuthenticationController {
 		return urlUtilityRequestServiceHandler.identityLandingPageForUserType(httpServletRequest);
 	}
 
-	@GetMapping(value={"/login","/admin/login","/rest/login"})
+	@GetMapping(value={"/login","/admin/login"})
 	public String login(Model uiModel,HttpServletRequest httpServletRequest) {
+		System.out.println("1: Called QuatspecAuthenticationController Login " + httpServletRequest.getRequestURI());
 		if(httpServletRequest.getSession().getAttribute("SPRING_SECURITY_LAST_EXCEPTION") !=null){
 			String error ="";
 			Object object = httpServletRequest.getSession().getAttribute("SPRING_SECURITY_LAST_EXCEPTION");

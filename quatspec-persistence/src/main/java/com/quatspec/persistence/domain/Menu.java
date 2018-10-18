@@ -17,7 +17,6 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name="menu.findAll",query = "select c from Menu as c order by c.displayIndex asc"),
     @NamedQuery(name="menu.findAllActiveMenuByProfileId", query="select c from Menu as c where c.profile.id=:profileId order by c.displayIndex asc"),
-    //@NamedQuery(name="menu.findAllActiveMenuByRoleIDsAndUserTypeId",query="select distinct(c) from Menu as c,Role as r where r.id in :IDS and c MEMBER OF r.menus and c.status=true and c.userType.id=:USERTYPEID order by c.displayIndex asc")
 })
 public class Menu {
     @Id

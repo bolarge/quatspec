@@ -2,12 +2,19 @@
 <!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<!-- Back Office Template -->
+	<!-- Back End Template -->
 	<definition name="default" template="/WEB-INF/layouts/default.jsp">
 		<put-attribute name="title" value=""/>
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
 		<put-attribute name="body" value=""/>	
 		<put-attribute name="bottom" value="/WEB-INF/views/bottom.jsp"/>		
+	</definition>
+	
+	<!-- Front End Template -->
+	<definition name="default.frontend" extends="default" template="/WEB-INF/layouts/frontend.jsp">
+		<put-attribute name="frontend" value="/WEB-INF/views/frontend.jsp"/>
+		<put-attribute name="body" value=""/>	
+		<put-attribute name="bottom2" value="/WEB-INF/views/bottom2.jsp"/>		
 	</definition>
 	
 </tiles-definitions>
