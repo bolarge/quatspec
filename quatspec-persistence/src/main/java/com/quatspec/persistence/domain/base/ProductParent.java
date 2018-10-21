@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 import com.quatspec.persistence.domain.Organization;
 
-@Entity(name = "ProductParent")
+@Entity(name = "Product")
 @Table(name = "product")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "p_type")
@@ -47,8 +47,11 @@ public abstract class ProductParent {
     @JoinColumn(name="organization_id")
 	protected Organization organization;
 	
+	@Column(name = "p_class")
+	protected Integer productClass;
+	
 	@ManyToMany(fetch=FetchType.LAZY,targetEntity=ProductSubCategory.class)
-    @JoinTable(name="product_product_subcat",
+    @JoinTable(name="product_subcategory",
             joinColumns =@JoinColumn(name="product_id"),
             inverseJoinColumns=@JoinColumn(name="product_subcat_id"))
 	protected Set<ProductSubCategory> productSubCategories = new HashSet<ProductSubCategory>();
@@ -64,11 +67,12 @@ public abstract class ProductParent {
 		this.description = description;
 	}
 	
-	public ProductParent(String productId, String name, String description, Organization organization) {
+	public ProductParent(String productId, String name, String description, Integer productClass, Organization organization) {
 		super();
 		this.productId = productId;
 		this.name = name;
 		this.description = description;
+		this.productClass = productClass;
 		this.organization = organization;
 	}
 
@@ -127,5 +131,46 @@ public abstract class ProductParent {
 	public void setProductSubCategories(Set<ProductSubCategory> productSubCategories) {
 		this.productSubCategories = productSubCategories;
 	}
+
+	public Integer getProductClass() {
+		return productClass;
+	}
+
+	public void setProductClass(Integer productClass) {
+		this.productClass = productClass;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((productId == null) ? 0 : productId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductParent other = (ProductParent) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (productId == null) {
+			if (other.productId != null)
+				return false;
+		} else if (!productId.equals(other.productId))
+			return false;
+		return true;
+	}
+	
+	
 
 }

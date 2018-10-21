@@ -1,41 +1,36 @@
 package com.quatspec.controller.rest.model;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import com.quatspec.api.model.IProduct;
+import com.quatspec.api.model.IInvoice;
 
-public class IProductResource extends DefaultResource implements IProduct<IOrganizationResource>{
-	
-	private String productId;
+public class IInvoiceResource extends DefaultResource implements IInvoice<IProductResource>{
+
+	/*private String productId;
 	
 	private String name;
 	
 	private String description;
 	
-	private Integer productClass;
+	private Integer productClass;*/
 	
 	private Set<IProductResource> products = new HashSet<IProductResource>();
-	
-	private IOrganizationResource organization;
-	
-	public IProductResource() {
+
+	public IInvoiceResource() {
 		super();
 	}
-	
-	public IProductResource(IProduct product) {
-		this.productId = product.getProductId();
-		this.name = product.getName();
-		this.description = product.getDescription();
-		this.productClass = product.getProductClass();
-		if(product.getOrganization() != null) {
-		this.organization = new IOrganizationResource(product.getOrganization());
-		}
-	}
 
-	@Override
+	public IInvoiceResource(IInvoice invoice) {
+		/*this.productId = invoice.getProductId();
+		this.name = invoice.getName();
+		this.description = invoice.getDescription();
+		this.productClass = invoice.getProductClass();*/
+		
+		this.products.addAll(invoice.getProducts());
+	}
+	
+	/*@Override
 	public String getProductId() {
 		return productId;
 	}
@@ -66,16 +61,6 @@ public class IProductResource extends DefaultResource implements IProduct<IOrgan
 	}
 
 	@Override
-	public IOrganizationResource getOrganization() {
-		return organization;
-	}
-
-	@Override
-	public void setOrganization(IOrganizationResource organization) {
-		this.organization = organization;
-	}
-
-	@Override
 	public Integer getProductClass() {
 		return productClass;
 	}
@@ -83,15 +68,15 @@ public class IProductResource extends DefaultResource implements IProduct<IOrgan
 	@Override
 	public void setProductClass(Integer productClass) {
 		this.productClass = productClass;
-	}
+	}*/
 
+	@Override
 	public Set<IProductResource> getProducts() {
 		return products;
 	}
 
+	@Override
 	public void setProducts(Set<IProductResource> products) {
-		this.products = products;
+		this.products.addAll(products);		
 	}
-	
-	
 }

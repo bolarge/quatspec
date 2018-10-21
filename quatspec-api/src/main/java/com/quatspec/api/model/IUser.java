@@ -105,9 +105,11 @@ public interface IUser<T extends IOrganization>  {
 	
 	T getOrganization();
 	
-	//void setOrganization(T iOrganization);
-
-	//void setOrganization(IOrganizationResource organization);
+	void setOrganization(T organization);
+	
+	String getNationalId();
+	
+	void setNationalId(String nationalId);
 	
 	//T getIProfile();
 	

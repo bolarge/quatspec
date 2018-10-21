@@ -1,14 +1,20 @@
 package com.quatspec.controller.rest.model;
 
-import com.quatspec.api.model.IOrganization;
+import java.util.HashSet;
+import java.util.Set;
 
-public class IOrganizationResource extends DefaultResource implements IOrganization{
+import com.quatspec.api.model.IOrganization;
+import com.quatspec.persistence.domain.Product;
+
+public class IOrganizationResource extends DefaultResource implements IOrganization<IProductResource>{
 	
 	private String name;
 	
 	private String email;
 	
 	private String phoneNumber;
+	
+	private Set<IProductResource> products = new HashSet<IProductResource>();
 	
 	public IOrganizationResource() {
 		super();
@@ -48,6 +54,14 @@ public class IOrganizationResource extends DefaultResource implements IOrganizat
 	@Override
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public Set<IProductResource> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<IProductResource> products) {
+		this.products = products;
 	}
 
 }

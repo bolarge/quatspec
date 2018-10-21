@@ -28,6 +28,7 @@ import javax.persistence.TemporalType;
 import com.quatspec.api.enums.Gender;
 import com.quatspec.persistence.domain.Institution;
 import com.quatspec.persistence.domain.Organization;
+import com.quatspec.persistence.domain.Product;
 import com.quatspec.persistence.domain.Profile;
 
 @Entity(name = "User")
@@ -125,19 +126,30 @@ public abstract class UserParent {
 	@Column(name = "employeeId")
 	protected String employeeId;
 	
+	@Column(name = "national_id")
+	protected String nationalId;
+	
 	@ManyToMany(fetch=FetchType.EAGER, targetEntity = Profile.class)
 	@JoinTable(name = "user_profile",
 			joinColumns = { @JoinColumn(name = "user_id") },
 			inverseJoinColumns = { @JoinColumn(name = "profile_id") })
 	protected Set<Profile> profiles = new HashSet<Profile>();
 	
+    @ManyToMany(fetch=FetchType.LAZY,targetEntity=Product.class)
+    @JoinTable(name="user_product",
+            joinColumns =@JoinColumn(name="user_id"),
+            inverseJoinColumns=@JoinColumn(name="product_id"))
+    protected Set<Product> products = new HashSet<Product>();
+	
 	public UserParent() {}
 	
-	public UserParent(String userName, String email, String password, String gsmPhoneNumber) {
+	public UserParent(String userName, String email, String password, String gsmPhoneNumber, String nationalId, Organization organization) {
 		this.userName = userName;
 		this.email = email;
 		this.password = password;
 		this.gsmPhoneNumber = gsmPhoneNumber;
+		this.nationalId = nationalId;
+		this.organization = organization;
 	}
 	
 	public Long getUserId() {
@@ -348,12 +360,61 @@ public abstract class UserParent {
 		this.employeeId = employeeId;	
 	}
 
-/*	public Set<Role> getRoles() {
-		return roles;
+	public String getUserType() {
+		return userType;
 	}
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}*/	
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public String getNationalId() {
+		return nationalId;
+	}
+
+	public void setNationalId(String nationalId) {
+		this.nationalId = nationalId;
+	}
+	
+    public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products.addAll(products);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((gsmPhoneNumber == null) ? 0 : gsmPhoneNumber.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserParent other = (UserParent) obj;
+		if (gsmPhoneNumber == null) {
+			if (other.gsmPhoneNumber != null)
+				return false;
+		} else if (!gsmPhoneNumber.equals(other.gsmPhoneNumber))
+			return false;
+		if (userId == null) {
+			if (other.userId != null)
+				return false;
+		} else if (!userId.equals(other.userId))
+			return false;
+		return true;
+	}
+	
+	
 
 }

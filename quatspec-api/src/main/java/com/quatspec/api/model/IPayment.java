@@ -1,10 +1,10 @@
 package com.quatspec.api.model;
 
 import java.math.BigDecimal;
+
 import java.util.Date;
 
 import com.quatspec.api.enums.PaymentStatus;
-import com.quatspec.api.enums.PaymentType;
 
 public interface IPayment<T extends IUser> {
 		
@@ -31,9 +31,14 @@ public interface IPayment<T extends IUser> {
 	PaymentStatus getPaymentStatus() ;
 
 	void setPaymentStatus(PaymentStatus paymentStatus);
+	
+	String getPaymentType() ;
 
-	public PaymentType getPaymentType() ;
+	void setPaymentType(String paymentType);
+	
+	/*Set<T> getProducts();
 
-	public void setPaymentType(PaymentType paymentType);
+	void setProducts(Set<T> products) ;*/
+	
 
 }

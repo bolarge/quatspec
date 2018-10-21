@@ -13,6 +13,8 @@ public interface UserBaseRepository<T extends User> extends JpaRepository<T, Lon
 	
 	public T findByUserName (String username);
 	
+	public T findByEmail(String email);
+	
 	public Optional<IUser> findByUserId (Long userId);
 	
 }

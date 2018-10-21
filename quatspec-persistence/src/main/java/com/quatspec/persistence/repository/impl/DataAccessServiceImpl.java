@@ -49,6 +49,7 @@ public class DataAccessServiceImpl implements DataAccessService{
 	@Autowired
 	private ProductRepository productRepository;
 	
+	@Autowired
 	private PaymentRepository paymentRepository;
 
 	public ProfileRepository getProfileRepository() {

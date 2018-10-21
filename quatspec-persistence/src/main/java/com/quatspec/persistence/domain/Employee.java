@@ -1,13 +1,10 @@
 package com.quatspec.persistence.domain;
 
 import java.math.BigDecimal;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-
-import com.quatspec.api.model.IProfile;
 
 @Entity(name = "Employee")
 @DiscriminatorValue(value = "2")
@@ -20,17 +17,17 @@ public class Employee extends User{
 	private BigDecimal salary;
 	
 	@Column(name="pension")
-	private long pension;
+	private Long pension;
 	
 	@Column(name="vacation")
-	private int vacation;
+	private Integer vacation;
 	
 	public Employee() {
 		super();
 	}
 	
-	public Employee(String userName, String email, String password, String gsmPhoneNumber) {
-		super(userName, email, password, gsmPhoneNumber);
+	public Employee(String userName, String email, String password, String gsmPhoneNumber, String nationalId, Organization organization) {
+		super(userName, email, password, gsmPhoneNumber, nationalId, organization);
 	}
 
 	public String getEmployeeId() {
@@ -48,18 +45,18 @@ public class Employee extends User{
 		this.salary = salary;
 	}
 	
-	public long getPension() {
+	public Long getPension() {
 		return pension;
 	}
-	public void setPension(long pension) {
+	public void setPension(Long pension) {
 		this.pension = pension;
 	}
 	
-	public int getVacation() {
+	public Integer getVacation() {
 		return vacation;
 	}
 
-	public void setVacation(int vacation) {
+	public void setVacation(Integer vacation) {
 		this.vacation = vacation;
 	}
 

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.quatspec.api.exception.QuaspecServiceException;
+import com.quatspec.api.model.IInvoice;
 import com.quatspec.api.model.IPayment;
 import com.quatspec.api.service.IPaymentService;
 import com.quatspec.persistence.domain.Payment;
@@ -33,28 +34,23 @@ public class PaymentServiceImpl implements IPaymentService{
 	}
 
 	@Override
-	public Payment processPayment(IPayment iPaymentRequest) throws QuaspecServiceException {
-		//Transaction will be sorted by Initiating/Receiving Bank & transaction type ON-US / NOT ON-US
-		//ON US transaction will be routed to corresponding bank
+	public IPayment processPayment(IPayment iPaymentRequest) throws QuaspecServiceException {
+		//Transaction will be sorted by Initiating/Receiving Bank & transaction type
+		//Invoices is to be generated immediately
+		//ON US transaction will be relayed to Bank through Integration to a service
+		//NOT ON US transaction will be routed through integration to NIBSS for onward relay to Beneficiary bank
 		
 		final String digest = UUID.randomUUID().toString().replace("-", "");	
-		User paychant = (User) dataAccessService.getUserRepository().findByUserName((iPaymentRequest.getPaychant().getUserName()));
-    	User merchant = (User) dataAccessService.getUserRepository().findByUserName((iPaymentRequest.getMerchant().getUserName()));
+		User paychant = (User) dataAccessService.getUserRepository().findByEmail((iPaymentRequest.getPaychant().getEmail()));
+    	User merchant = (User) dataAccessService.getUserRepository().findByEmail((iPaymentRequest.getMerchant().getEmail()));
     	
-        if (iPaymentRequest.getPaychant() != null && iPaymentRequest.getMerchant() != null) {        	
-            if (paychant != null) {
-            	if(iPaymentRequest.getAmount() != new BigDecimal(0)) {
+        if (paychant != null && merchant != null) {        	          
+            	if(iPaymentRequest.getAmount() != new BigDecimal(0)) {            		
             		Payment payment = new Payment(digest, iPaymentRequest.getAmount(), iPaymentRequest.getPaymentDescription(), paychant, 
             				merchant, iPaymentRequest.getPaymentType());
 	                return dataAccessService.getPaymentRepository().save(payment);
             	}
-            	/*else if(paymentRequest.getPaymentType().equalsIgnoreCase("F")) {
-            		IPayment aBill = new Bill(digest,  paymentRequest.getAmount(), paymentRequest.getPaymentDescription(), paymentRequest.getPaymentDate(), payer, 
-            				payee, paymentRequest.getPaymentStatus(), paymentRequest.getPaymentStatus(), paymentRequest.getPaymentType());
-	                return dataAccessService.getPaymentRepository().save(aBill);
-            	}*/
-            }
-        }
+            }        
         return null;		
 	}
 
@@ -65,5 +61,11 @@ public class PaymentServiceImpl implements IPaymentService{
             return dataAccessService.getPaymentRepository().findByPaychant(user);
         }
         return new ArrayList<>();
+	}
+
+	@Override
+	public IInvoice generateInvoice(IInvoice iProductInvoice) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

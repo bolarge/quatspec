@@ -11,7 +11,7 @@ public class ProductService extends Product{
 		super();
 	}
 	
-	public ProductService(String productId, String name, String description, Organization organization) {
-		super(productId, name, description, organization);
+	public ProductService(String productId, String name, String description, Integer productClass, Organization organization) {
+		super(productId, name, description, productClass, organization);
 	}
 }

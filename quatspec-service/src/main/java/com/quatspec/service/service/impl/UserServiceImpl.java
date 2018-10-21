@@ -15,6 +15,7 @@ import com.quatspec.api.exception.QuaspecServiceException;
 import com.quatspec.api.model.IUser;
 import com.quatspec.api.service.IUserService;
 import com.quatspec.persistence.domain.Employee;
+import com.quatspec.persistence.domain.Organization;
 import com.quatspec.persistence.domain.User;
 import com.quatspec.persistence.repository.DataAccessService;
 
@@ -52,17 +53,17 @@ public class UserServiceImpl implements IUserService{
 		return dataAccessService.getUserRepository().findByUserName(username);
 	}
 
-	//Method can create different type of users 
 	@Override
 	public IUser createUser(IUser iUser) throws QuaspecServiceException {
 		IUser user = null;
 		User customer = null;
 		Employee employee = null;
-		if(iUser.getUserType().equalsIgnoreCase("1")) { // Create Concrete Customer User Entity
-			customer = new User(iUser.getUserName(),iUser.getEmail(),passwordEncoder.encode(iUser.getPassword()),iUser.getGsmPhoneNumber());
+		Organization organization = dataAccessService.getOrganizationRepository().findByName(iUser.getOrganization().getName());
+		if(iUser.getUserType().equalsIgnoreCase("1")) { 
+			customer = new User(iUser.getUserName(),iUser.getEmail(),passwordEncoder.encode(iUser.getPassword()),iUser.getGsmPhoneNumber(), iUser.getNationalId(), organization);
 			user = dataAccessService.getUserRepository().save(customer);
-		} else if (iUser.getUserType().equalsIgnoreCase("2")) {// Create Concrete Employee User Entity
-			employee = new Employee(iUser.getUserName(),iUser.getEmail(),passwordEncoder.encode(iUser.getPassword()),iUser.getGsmPhoneNumber());
+		} else if (iUser.getUserType().equalsIgnoreCase("2")) {
+			employee = new Employee(iUser.getUserName(),iUser.getEmail(),passwordEncoder.encode(iUser.getPassword()),iUser.getGsmPhoneNumber(), iUser.getNationalId(), organization);
 			user = dataAccessService.getUserRepository().save(employee);
 		}		
 		return user;			

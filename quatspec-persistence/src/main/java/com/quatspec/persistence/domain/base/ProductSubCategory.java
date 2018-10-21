@@ -36,7 +36,7 @@ public class ProductSubCategory implements Comparable<ProductSubCategory>{
 	protected ProductCategory productCategory;
 	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "productSubCategories")
-	protected Set<Product> products = new HashSet<Product>();
+	protected Set<ProductParent> products = new HashSet<ProductParent>();
 	
 	public ProductSubCategory() {
 		super();
@@ -85,11 +85,11 @@ public class ProductSubCategory implements Comparable<ProductSubCategory>{
 		this.productCategory = productCategory;
 	}
 
-	public Set<Product> getProducts() {
+	public Set<ProductParent> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Set<Product> products) {
+	public void setProducts(Set<ProductParent> products) {
 		this.products = products;
 	}
 
@@ -104,5 +104,38 @@ public class ProductSubCategory implements Comparable<ProductSubCategory>{
 		//return compareQuantity - this.quantity;
 		//return 0;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductSubCategory other = (ProductSubCategory) obj;
+		if (Id == null) {
+			if (other.Id != null)
+				return false;
+		} else if (!Id.equals(other.Id))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+	
+	
 
 }

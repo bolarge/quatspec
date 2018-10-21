@@ -10,6 +10,7 @@ import com.quatspec.api.model.IProduct;
 import com.quatspec.api.service.IProductService;
 import com.quatspec.persistence.domain.Organization;
 import com.quatspec.persistence.domain.Product;
+import com.quatspec.persistence.domain.ProductService;
 import com.quatspec.persistence.repository.DataAccessService;
 
 @Service("productService")
@@ -35,11 +36,16 @@ public class ProductServiceImpl implements IProductService{
 
 	@Override
 	public IProduct createProduct(IProduct iProduct) throws QuaspecServiceException {
-		Product product = null;		
-		if(iProduct.getOrganization() != null) {
+		Product product = null;
+		if (iProduct.getOrganization() != null) {
 			Organization organization = dataAccessService.getOrganizationRepository().findByName(iProduct.getOrganization().getName());
-			product = new Product(iProduct.getProductId(), iProduct.getName(), iProduct.getDescription(), organization);
-			product = dataAccessService.getProductRepository().save(product);
+			if (iProduct.getProductClass() == 1) {				
+				product = new Product(iProduct.getProductId(), iProduct.getName(), iProduct.getDescription(), iProduct.getProductClass(), organization);
+				product = dataAccessService.getProductRepository().save(product);
+			} else if (iProduct.getProductClass() == 2) {
+				product = new ProductService(iProduct.getProductId(), iProduct.getName(), iProduct.getDescription(), iProduct.getProductClass(), organization);
+				product = dataAccessService.getProductRepository().save(product);
+			}
 		}
 		return product;
 	}

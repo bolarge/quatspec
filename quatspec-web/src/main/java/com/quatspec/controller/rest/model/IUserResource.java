@@ -1,15 +1,13 @@
 package com.quatspec.controller.rest.model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import com.quatspec.api.enums.Gender;
-import com.quatspec.api.model.IOrganization;
 import com.quatspec.api.model.IUser;
-import com.quatspec.persistence.domain.Organization;
 import com.quatspec.persistence.domain.Profile;
-
-public class IUserResource extends DefaultResource implements IUser<IOrganization> {
+public class IUserResource extends DefaultResource implements IUser<IOrganizationResource> {
 
 	private String userName;
 
@@ -18,8 +16,14 @@ public class IUserResource extends DefaultResource implements IUser<IOrganizatio
 	private String gsmPhoneNumber;
     
 	private String userType;
+	
+	private String password;
+	
+	private String nationalId;
 
-	private IOrganizationResource iOrganization;      
+	private IOrganizationResource iOrganization;   
+	
+	private Set<IProductResource> products = new HashSet<IProductResource>();
 
     public IUserResource() {
         super();
@@ -30,9 +34,11 @@ public class IUserResource extends DefaultResource implements IUser<IOrganizatio
         this.email = iUser.getEmail();
         this.gsmPhoneNumber = iUser.getGsmPhoneNumber();
         this.userType = iUser.getUserType();
-        if(iUser.getOrganization() != null) {
+        this.password = iUser.getPassword();
+        this.nationalId = iUser.getNationalId();
+        /*if(iUser.getOrganization() != null) {
         	iOrganization = new IOrganizationResource(iUser.getOrganization());
-        }
+        }*/
     }
 
 	@Override
@@ -47,12 +53,12 @@ public class IUserResource extends DefaultResource implements IUser<IOrganizatio
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public void setPassword(String password) {
-    	
+    	this.password = password;
     }
 
     @Override
@@ -271,9 +277,22 @@ public class IUserResource extends DefaultResource implements IUser<IOrganizatio
 	}
 
 	@Override
-	public IOrganization getOrganization() {
+	public String getNationalId() {
+		return nationalId;
+	}
+
+	@Override
+	public void setNationalId(String nationalId) {
+		this.nationalId = nationalId;
+	}
+	
+	@Override
+	public IOrganizationResource getOrganization() {
 		return iOrganization;
 	}
 
-	
+	@Override
+	public void setOrganization(IOrganizationResource organization) {
+		this.iOrganization = organization;
+	}
 }

@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import com.quatspec.api.model.IProduct;
 import com.quatspec.persistence.domain.base.ProductParent;
 
-@Entity(name = "Product")
+@Entity(name = "ProductGoods")
 @DiscriminatorValue(value = "1")
 public class Product extends ProductParent implements IProduct<Organization> {
 
@@ -18,8 +18,8 @@ public class Product extends ProductParent implements IProduct<Organization> {
 		super(productId, name, description);
 	}
 	
-	public Product(String productId, String name, String description, Organization organization) {
-		super(productId, name, description, organization);
+	public Product(String productId, String name, String description, Integer productClass, Organization organization) {
+		super(productId, name, description, productClass, organization);
 	}
 
 	public Long getId() {

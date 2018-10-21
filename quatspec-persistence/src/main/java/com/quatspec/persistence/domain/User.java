@@ -1,33 +1,12 @@
 package com.quatspec.persistence.domain;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.quatspec.api.enums.Gender;
-import com.quatspec.api.model.IOrganization;
 import com.quatspec.api.model.IUser;
 import com.quatspec.persistence.domain.base.UserParent;
 
@@ -41,8 +20,8 @@ public class User extends UserParent implements IUser<Organization> {
 		super();
 	}
 	
-	public User(String userName, String email, String password, String gsmPhoneNumber) {
-		super(userName, email, password, gsmPhoneNumber);
+	public User(String userName, String email, String password, String gsmPhoneNumber, String nationalId, Organization organization) {
+		super(userName, email, password, gsmPhoneNumber, nationalId, organization);
 	}
 	
 	public String getUserType() {
@@ -261,6 +240,13 @@ public class User extends UserParent implements IUser<Organization> {
 	@Override
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;	
-	}
+	}	
 	
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products.addAll(products);
+	}
 }

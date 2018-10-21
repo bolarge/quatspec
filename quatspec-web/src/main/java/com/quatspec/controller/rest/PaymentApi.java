@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.quatspec.api.exception.QuaspecServiceException;
+import com.quatspec.api.model.IInvoice;
 import com.quatspec.api.model.IPayment;
 import com.quatspec.api.service.IPaymentService;
+import com.quatspec.controller.rest.model.IInvoiceResource;
 import com.quatspec.controller.rest.model.IPaymentResource;
 
 @RestController
@@ -42,12 +44,16 @@ public class PaymentApi {
 	}
 	
 	@Secured({"ROLE_ADMIN", "ROLE_USER"})
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST) 
 	public IPaymentResource initiatePayment(@RequestBody IPaymentResource iPaymentRequest) {
-		IPayment paymentRequestOutcome = paymentService.processPayment(iPaymentRequest);
-		if(paymentRequestOutcome != null) {
-			return new IPaymentResource(paymentRequestOutcome);
-		}
+		System.out.println("Product to be Invouced are " + iPaymentRequest.getPaychant().getUserName());
+		//IInvoice productInvoiceRequest = paymentService.generateInvoice(iProductInvoice);
+		//if (productInvoiceRequest != null) {
+			IPayment paymentRequestOutcome = paymentService.processPayment(iPaymentRequest);
+			if (paymentRequestOutcome != null) {
+				return new IPaymentResource(paymentRequestOutcome);
+			}
+		//}
 		return null;
 	}
 }

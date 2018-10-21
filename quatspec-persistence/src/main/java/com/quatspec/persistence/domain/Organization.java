@@ -1,5 +1,8 @@
 package com.quatspec.persistence.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -14,7 +19,7 @@ import com.quatspec.api.model.IOrganization;
 
 @Entity(name="Organization")
 @Table(name="organization")
-public class Organization implements IOrganization{
+public class Organization implements IOrganization<Product>{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +41,12 @@ public class Organization implements IOrganization{
 
     @Column(name="status")
     protected boolean status = false;	
+    
+    @ManyToMany(fetch=FetchType.LAZY,targetEntity=Product.class)
+    @JoinTable(name="organization_product",
+            joinColumns =@JoinColumn(name="organization_id"),
+            inverseJoinColumns=@JoinColumn(name="product_id"))
+    protected Set<Product> products = new HashSet<Product>();
    
     public Organization(){
     	super();
@@ -96,11 +107,20 @@ public class Organization implements IOrganization{
         this.institution = institution;
     }
 
-    @Override
+    public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products.addAll(products);
+	}
+
+	@Override
     public boolean equals(Object object){
          if(object instanceof Organization && ((Organization)object).getId().equals(this.id)){
              return true;
          }
          return false;
     }
+
 }
