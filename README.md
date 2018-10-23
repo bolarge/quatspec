@@ -1,12 +1,12 @@
 # Payspec Payment Infrastructure Project 
 
-The project provides RESTful APIs to handle Payments processing.
+The project provides RESTful APIs to manage Bank Account, initiate and process Payments and facilitates both B2B and B2C.
 
 ## How to set up
 At deployment project uses a servlet installer to install super ADMIN into the database. The is the Customer Key or Super Admin of the entire system.
 
 
-**user1** is the only user with **ROLE_ADMIN** so, is the only who can use some of the entry points, for example, *get users*.
+**superuser** is the only user with **ROLE_ADMIN** so, is the only who can use some of the entry points, for example, *get users*.
 
 ## How to run it
 
@@ -28,13 +28,13 @@ Request:
 Headers:
 Accept: application/json
 Content-Type: application/json
-Body: { "username":"user1", "password":"1111" }
+Body: {\"username\":\"bolaji@gmail.com\",\"password\":\"password\"}
 ```
 
 Login success response:
 ```
 Code: 200
-Body: {"username":"user1","loggedIn":true}
+Body: {"username":"superuser","loggedIn":true}
 ```
 Login incorrect response:
 ```
@@ -53,7 +53,7 @@ Body: empty
 Request:
 ```
 Headers: Accept: application/json, Content-Type: application/json
-Body: { "username":"user1", "password":"1111" }
+Body: {\"username\":\"bolaji@gmail.com\",\"password\":\"password\"}
 ```
 
 Logout success response:
@@ -78,7 +78,7 @@ Accept: application/json
 success response:
 ```
 Code: 200
-Body: [{"username":"user1","email":"user1@smava.de"},{"username":"user2","email":"user2@smava.de"},{"username":"user3","email":"user3@smava.de"}]
+Body: [{"username":"superuser","email":"superuser@payspec.com"},{"username":"customer1","email":"customer2@payspec.com"},{"username":"customer3","email":"customer2@payspec.com"}]
 ```
 unauthorized response:
 ```
@@ -96,7 +96,7 @@ Headers: Accept: application/json
 success response:
 ```
 Code: 200
-Body: [{"iban":"TESTIBAN0","bic":"TESTBIC0","appUser":{"username":"user2","email":"user2@smava.de"}}]
+Body: [{\"bankVerificationNumber\":\"0067825\",\"accountNumber\":\"0044534\",\"accountType\":\"SA\",\"user\":{\"userName\":\"cleancut\",\"email\":\"cleancut@gmail.com\"}]
 ```
 unauthorized response:
 ```
@@ -109,12 +109,12 @@ Body: empty
 request:
 ```
 Headers: Accept: application/json
-Body: {"iban":"TESTIBAN1","bic":"TESTBIC1","appUser":{"username":"user2","email":"user2@smava.de"}}
+Body: {\"bankVerificationNumber\":\"0067825\",\"accountNumber\":\"0044534\",\"accountType\":\"SA\",\"user\":{\"userName\":\"cleancut\",\"email\":\"cleancut@gmail.com\"}
 ```
 success response:
 ```
 Code: 200
-Body: {"iban":"TESTIBAN1","bic":"TESTBIC1","appUser":{"username":"user2","email":"user2@smava.de"}}
+Body: {"accountNumber":"0042234","bankVerificationNumber":"009331","accountId":0,"balanceAmount":0,"user":{"userName":"abegigrace","email":"amalaabegi@gmail.com","gsmPhoneNumber":"08011122234","password":"vuvogLx0V40JNEu80gGLp6fcVE+T9Z1lbxDXzvdNjwVKbgpO7kyCNMZo","enabled":false,"version":0,"organization":{"name":"Amala Abegi","email":"amalaabegi@gmail.com","phoneNumber":"xxx11122234","products":[]}}}
 ```
 unauthorized response:
 ```
@@ -132,7 +132,7 @@ Headers: Accept: application/json
 success response:
 ```
 Code: 200
-Body: [{"iban":"TESTIBAN0","bic":"TESTBIC0","IUser":{"username":"user5","email":"user5@quaspec.ng"}}]
+Body: [{\"amount\":\"450\",\"paymentDescription\":\"Fresh Meal\",\"paymentType\":\"Inv\",\"paychant\":{\"name\":\"Cleancut Barbers\",\"email\":\"cleancut@gmail.com\"},\"merchant\":{\"name\":\"Amala Abegi\",\"email\":\"amalaabegi@gmail.com\"},\"products\":[{\"productId\":\"119332\",\"name\":\"Amala Abegi\"},{\"productId\":\"119333\",\"name\":"\Semo Abegi\"}]}"]
 ```
 unauthorized response:
 ```
@@ -145,12 +145,12 @@ Body: empty
 request:
 ```
 Headers: Accept: application/json
-Body: {"iban":"TESTIBAN1","bic":"TESTBIC1","appUser":{"username":"user2","email":"user2@smava.de"}}
+Body: {\"amount\":\"450\",\"paymentDescription\":\"Fresh Meal\",\"paymentType\":\"Inv\",\"paychant\":{\"name\":\"Cleancut Barbers\",\"email\":\"cleancut@gmail.com\"},\"merchant\":{\"name\":\"Amala Abegi\",\"email\":\"amalaabegi@gmail.com\"},\"products\":[{\"productId\":\"119332\",\"name\":\"Amala Abegi\"},{\"productId\":\"119333\",\"name\":"\Semo Abegi\"}]}"
 ```
 success response:
 ```
 Code: 200
-Body: {"iban":"TESTIBAN1","bic":"TESTBIC1","appUser":{"username":"user2","email":"user2@smava.de"}}
+Body: {""}}
 ```
 unauthorized response:
 ```
@@ -188,7 +188,7 @@ Date: Tue, 23 May 2017 12:06:08 GMT
 ##### POST request example
 This example will make a **POST** request on path *rest/api/login* in our local running server on *localhost:/quatspec/8080*
 ```
-curl -XPOST -H'Accept: application/json' -H'Content-Type: application/json' -d'{"username":"user1","password":"1111"}' -D- http://localhost:8080/rest/api/login
+curl -XPOST -H'Accept: application/json' -H'Content-Type: application/json' -d'{"username":"superuser","password":"password"}' -D- http://localhost:8080/rest/api/login
 ```
 you'll get in your terminal something like this with the status code on the first line and the body of the response in the last one
 ```
@@ -205,7 +205,7 @@ Content-Type: application/json
 Transfer-Encoding: chunked
 Date: Tue, 23 May 2017 12:06:08 GMT
 
-{"username":"user1","loggedIn":true}
+{"username":"superuser","loggedIn":true}
 ```
 
 
