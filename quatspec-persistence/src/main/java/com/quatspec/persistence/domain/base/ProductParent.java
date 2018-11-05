@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.quatspec.persistence.domain.Organization;
@@ -43,12 +44,21 @@ public abstract class ProductParent {
 	@Column(name="status")
     protected boolean status = true;
 	
+	@Column(name = "p_class")
+	protected Integer productClass;
+	
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="organization_id")
 	protected Organization organization;
 	
-	@Column(name = "p_class")
-	protected Integer productClass;
+	/*@ManyToOne(fetch = FetchType.LAZY)
+	@JoinTable(name = "product_payment", 
+		joinColumns = @JoinColumn(name = "product_id"), 
+		inverseJoinColumns = @JoinColumn(nullable = false))*/
+	
+	/*@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="payment_id")
+	protected PaymentParent payment;*/
 	
 	@ManyToMany(fetch=FetchType.LAZY,targetEntity=ProductSubCategory.class)
     @JoinTable(name="product_subcategory",
@@ -139,6 +149,14 @@ public abstract class ProductParent {
 	public void setProductClass(Integer productClass) {
 		this.productClass = productClass;
 	}
+
+	/*public PaymentParent getPayment() {
+		return payment;
+	}
+
+	public void setPayment(PaymentParent payment) {
+		this.payment = payment;
+	}*/
 
 	@Override
 	public int hashCode() {

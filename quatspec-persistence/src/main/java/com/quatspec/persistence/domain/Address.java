@@ -5,7 +5,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-import com.quatspec.persistence.enums.AddressType;
+import com.quatspec.api.enums.AddressType;
 
 @Embeddable
 public class Address {

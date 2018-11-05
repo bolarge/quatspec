@@ -11,10 +11,12 @@ import com.quatspec.persistence.domain.User;
 @NoRepositoryBean
 public interface UserBaseRepository<T extends User> extends JpaRepository<T, Long> {
 	
-	public T findByUserName (String username);
+	T findByUserName (String username);
 	
-	public T findByEmail(String email);
+	T findByEmail(String email);
 	
-	public Optional<IUser> findByUserId (Long userId);
+	Optional<IUser> findByUserId (Long userId);
+	
+	T create(IUser iUser);
 	
 }

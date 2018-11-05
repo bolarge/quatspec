@@ -1,8 +1,10 @@
 package com.quatspec.persistence.domain;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.quatspec.api.model.IOrganization;
@@ -42,11 +45,12 @@ public class Organization implements IOrganization<Product>{
     @Column(name="status")
     protected boolean status = false;	
     
-    @ManyToMany(fetch=FetchType.LAZY,targetEntity=Product.class)
+    /*@ManyToMany(fetch=FetchType.LAZY,targetEntity=Product.class)
     @JoinTable(name="organization_product",
             joinColumns =@JoinColumn(name="organization_id"),
-            inverseJoinColumns=@JoinColumn(name="product_id"))
-    protected Set<Product> products = new HashSet<Product>();
+            inverseJoinColumns=@JoinColumn(name="product_id"))*/
+    @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
+    protected Collection<Product> products = new HashSet<Product>();
    
     public Organization(){
     	super();
@@ -107,11 +111,11 @@ public class Organization implements IOrganization<Product>{
         this.institution = institution;
     }
 
-    public Set<Product> getProducts() {
+    public Collection<Product> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Set<Product> products) {
+	public void setProducts(Collection<Product> products) {
 		this.products.addAll(products);
 	}
 

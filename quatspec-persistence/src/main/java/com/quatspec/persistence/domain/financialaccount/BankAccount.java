@@ -1,16 +1,18 @@
 
-package com.quatspec.persistence.domain;
+package com.quatspec.persistence.domain.financialaccount;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
 
 import com.quatspec.api.model.IBankAccount;
+import com.quatspec.persistence.domain.User;
 import com.quatspec.persistence.domain.base.AccountParent;
 
-@Entity(name = "BankAccount")
+@Entity(name = "SavingsAccount")
 @DiscriminatorValue(value = "1")
-public class BankAccount extends AccountParent implements IBankAccount<User> {
+public class BankAccount extends AccountParent implements IBankAccount<User>, Serializable {
 	
     public BankAccount() {
         super();
@@ -20,7 +22,13 @@ public class BankAccount extends AccountParent implements IBankAccount<User> {
     	super(accountNumber, bvn, user);
     }
 
-    @Override
+    public BankAccount(String bankVerificationNumber, int balanceAmount, Date lastTransactionTimestamp,
+			String accountNumber, Date creationDate, String active, boolean enabled, String accountType, User user) {
+		super(bankVerificationNumber, balanceAmount, lastTransactionTimestamp, accountNumber, creationDate, active, enabled,
+				accountType, user);
+	}
+
+	@Override
     public String getAccountNumber() {
         return accountNumber;
     }
@@ -39,13 +47,13 @@ public class BankAccount extends AccountParent implements IBankAccount<User> {
     }
 
     @Override
-	public Long getAccountId() {
-		return accountId;
+	public Long getId() {
+		return id;
 	}
 
     @Override
-	public void setAccountId(Long accountId) {
-		this.accountId = accountId;
+	public void setId(Long accountId) {
+		this.id = accountId;
 	}
 
     @Override
@@ -116,5 +124,6 @@ public class BankAccount extends AccountParent implements IBankAccount<User> {
 	@Override
 	public void setApplicantId(String applicantId) {
 		
-	}	
+	}
+	
 }

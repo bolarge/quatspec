@@ -1,31 +1,41 @@
 package com.quatspec.persistence.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 import com.quatspec.api.enums.PaymentStatus;
-import com.quatspec.api.model.IInvoice;
-import com.quatspec.api.model.IOrganization;
+import com.quatspec.api.enums.PaymentType;
 import com.quatspec.api.model.IPayment;
+import com.quatspec.api.model.IUser;
 import com.quatspec.persistence.domain.base.PaymentParent;
 
 @Entity(name = "Payment")
 @DiscriminatorValue(value = "1")
-public class Payment extends PaymentParent implements IPayment<User>, IInvoice<Product>{
+public class Payment extends PaymentParent implements IPayment, Serializable{
 	
 	public Payment() {}
-	
-	public Payment(String paymentId, BigDecimal amount, Double paymentCharge, String paymentDescription, Set<Product> product,
-			Date paymentDate, User paychant, User merchant, String paymentType) {
-		super(paymentId, amount, paymentCharge, paymentDescription, product, paymentDate, paychant, merchant, paymentType);
+
+	public Payment(String paymentId, BigDecimal amount, Double paymentCharge, String paymentDescription,
+			Collection<Product> product, Date paymentDate, User paychant, User merchant, PaymentType paymentType,
+			PaymentStatus paymentStatus) {
+		super(paymentId, amount, paymentCharge, paymentDescription, product, paymentDate, paychant, merchant, paymentType,
+				paymentStatus);
 	}
 
-	public Payment(String digest, BigDecimal amount, String paymentDescription, User paychant, User merchant, String paymentType) {
-		super(digest, amount, paymentDescription, paychant, merchant, paymentType);
+	public Payment(String paymentId, BigDecimal amount, Double paymentCharge, String paymentDescription,
+			Date paymentDate, User paychant, User merchant, PaymentType paymentType, PaymentStatus paymentStatus) {
+		super(paymentId, amount, paymentCharge, paymentDescription, paymentDate, paychant, merchant, paymentType,
+				paymentStatus);
+	}
+
+	public Payment(String paymentId, BigDecimal amount, String paymentDescription, User paychant, User merchant,
+			PaymentType paymentType, PaymentStatus paymentStatus) {
+		super(paymentId, amount, paymentDescription, paychant, merchant, paymentType, paymentStatus);
 	}
 
 	public Long getId() {
@@ -84,22 +94,35 @@ public class Payment extends PaymentParent implements IPayment<User>, IInvoice<P
 		this.paymentStatus = paymentStatus;
 	}
 
-	public String getPaymentType() {
+	public PaymentType getPaymentType() {
 		return paymentType;
 	}
 
-	public void setPaymentType(String paymentType) {
+	public void setPaymentType(PaymentType paymentType) {
 		this.paymentType = paymentType;
 	}
-/*	
-	public Set<Product> getProducts() {
-		return products;
+
+	@Override
+	public void setPaychant(IUser paychant) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void setProducts(Set<Product> products) {
-		this.products = products;
-	}*/
+	@Override
+	public void setMerchant(IUser merchant) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public Collection<Product> getProducts() {
+		return super.getProducts();
+	}
 
-
+	@Override
+	public void setProducts(Collection<Product> products) {
+		super.setProducts(products);
+	}
+	
+		
 }

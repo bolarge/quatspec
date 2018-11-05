@@ -1,7 +1,8 @@
 package com.quatspec.persistence.domain;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import com.quatspec.persistence.domain.base.UserParent;
 
 @Entity(name = "Customer")
 @DiscriminatorValue(value = "1")
-public class User extends UserParent implements IUser<Organization> {
+public class User extends UserParent implements IUser<Organization>, Serializable {
 	
 	private String userType;
 	
@@ -176,11 +177,11 @@ public class User extends UserParent implements IUser<Organization> {
 		this.lastLogoutDate = lastLogoutDate;
 	}
 
-	public Set<Profile> getProfiles() {
+	public Collection<Profile> getProfiles() {
 		return profiles;
 	}
 	
-	public void setProfiles(Set<Profile> profiles) {
+	public void setProfiles(Collection<Profile> profiles) {
 		this.profiles = profiles;
 	}
 
@@ -241,12 +242,4 @@ public class User extends UserParent implements IUser<Organization> {
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;	
 	}	
-	
-	public Set<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(Set<Product> products) {
-		this.products.addAll(products);
-	}
 }

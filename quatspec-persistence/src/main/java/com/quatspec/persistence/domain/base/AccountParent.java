@@ -26,7 +26,7 @@ public abstract class AccountParent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	protected Long accountId;
+	protected Long id;
 	
 	@Column(name = "bvn", unique = true, nullable = false)
 	protected String bankVerificationNumber;
@@ -46,7 +46,10 @@ public abstract class AccountParent {
     @Column(name = "active")
     protected String active;
     
-    @Column(name = "account_type")
+    @Column(name = "enabled")
+	protected boolean enabled = true;
+    
+    @Column(name = "account_type", nullable = false)
     protected String accountType;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -56,12 +59,27 @@ public abstract class AccountParent {
     public AccountParent() {}
 
     public AccountParent(String accountNumber, String bvn, User user) {
+    	super();
         this.accountNumber = accountNumber;
         this.bankVerificationNumber = bvn;
         this.user = user;
     }
- 
-    public String getAccountNumber() {
+    
+    public AccountParent(String bankVerificationNumber, int balanceAmount, Date lastTransactionTimestamp,
+			String accountNumber, Date creationDate, String active, boolean enabled, String accountType, User user) {
+		super();
+		this.bankVerificationNumber = bankVerificationNumber;
+		this.balanceAmount = balanceAmount;
+		this.lastTransactionTimestamp = lastTransactionTimestamp;
+		this.accountNumber = accountNumber;
+		this.creationDate = creationDate;
+		this.active = active;
+		this.enabled = enabled;
+		this.accountType = accountType;
+		this.user = user;
+	}
+
+	public String getAccountNumber() {
         return accountNumber;
     }
 
@@ -69,12 +87,12 @@ public abstract class AccountParent {
         this.accountNumber = accountNumber;
     }
 
-	public Long getAccountId() {
-		return accountId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setAccountId(Long accountId) {
-		this.accountId = accountId;
+	public void setId(Long accountId) {
+		this.id = accountId;
 	}
 
 	public User getUser() {
@@ -133,11 +151,19 @@ public abstract class AccountParent {
 		this.accountType = accountType;
 	}
 
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((accountId == null) ? 0 : accountId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((accountNumber == null) ? 0 : accountNumber.hashCode());
 		return result;
 	}
@@ -151,10 +177,10 @@ public abstract class AccountParent {
 		if (getClass() != obj.getClass())
 			return false;
 		AccountParent other = (AccountParent) obj;
-		if (accountId == null) {
-			if (other.accountId != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!accountId.equals(other.accountId))
+		} else if (!id.equals(other.id))
 			return false;
 		if (accountNumber == null) {
 			if (other.accountNumber != null)

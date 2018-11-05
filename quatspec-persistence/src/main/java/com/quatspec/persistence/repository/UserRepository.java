@@ -10,5 +10,5 @@ import com.quatspec.persistence.repository.base.UserBaseRepository;
 public interface UserRepository extends UserBaseRepository<User> {
 
 	IUser save(IUser iUser);
-	//T save(IUser iUser);
+	
 }

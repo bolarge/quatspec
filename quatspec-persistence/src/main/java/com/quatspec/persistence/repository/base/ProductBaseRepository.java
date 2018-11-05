@@ -13,5 +13,7 @@ public interface ProductBaseRepository<T extends Product> extends JpaRepository<
 
 	public T findByName (String username);
 	
+	public T findByProductId(String productId);
+	
 	public Optional<IProduct> findByProductId (Long productId);
 }

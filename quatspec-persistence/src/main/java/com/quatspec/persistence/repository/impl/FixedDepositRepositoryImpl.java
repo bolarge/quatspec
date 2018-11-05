@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.quatspec.persistence.domain.FixedDepositAccount;
+import com.quatspec.persistence.domain.financialaccount.FixedDepositAccount;
 import com.quatspec.persistence.exception.NoFixedDepositFoundException;
 
 public class FixedDepositRepositoryImpl {

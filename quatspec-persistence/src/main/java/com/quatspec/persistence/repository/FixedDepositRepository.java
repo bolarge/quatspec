@@ -13,11 +13,11 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 import org.springframework.scheduling.annotation.Async;
 
-import com.quatspec.persistence.domain.FixedDepositAccount;
+import com.quatspec.persistence.domain.financialaccount.FixedDepositAccount;
 import com.quatspec.persistence.repository.base.BankAccountBaseRepository;
 
-public interface FixedDepositRepository extends BankAccountBaseRepository<FixedDepositAccount>,
-		QuerydslPredicateExecutor<FixedDepositAccount>, QueryByExampleExecutor<FixedDepositAccount> {
+//QuerydslPredicateExecutor<FixedDepositAccount>, QueryByExampleExecutor<FixedDepositAccount>
+public interface FixedDepositRepository extends BankAccountBaseRepository<FixedDepositAccount> {
 
 	FixedDepositAccount save(FixedDepositAccount entity);
 
@@ -33,21 +33,21 @@ public interface FixedDepositRepository extends BankAccountBaseRepository<FixedD
 
 	List<FixedDepositAccount> findByTenureLessThan(int tenure);
 
-	List<FixedDepositAccount> findByFdAmountGreaterThan(int fdAmount);
+	List<FixedDepositAccount> findByFixedAmountGreaterThan(int fdAmount);
 
 	//List<FixedDepositAccount> findTop2ByOrderByFdCreationDateDesc();
 
 	List<FixedDepositAccount> findTop2ByTenure(int tenure);
 
-	List<FixedDepositAccount> findByTenureAndFdAmount(int tenure, int fdAmount);
+	List<FixedDepositAccount> findByTenureAndFixedAmount(int tenure, int fdAmount);
 
 	List<FixedDepositAccount> findByTenure(int tenure, Pageable pageable);
 
 	List<FixedDepositAccount> findByTenure(int tenure, Sort sort);
 
-	Slice<FixedDepositAccount> findByFdAmount(int amount, Pageable pageable);
+	Slice<FixedDepositAccount> findByFixedAmount(int amount, Pageable pageable);
 
-	Page<FixedDepositAccount> findByFdAmountGreaterThan(int amount, Pageable pageable);
+	Page<FixedDepositAccount> findByFixedAmountGreaterThan(int amount, Pageable pageable);
 
 	Stream<FixedDepositAccount> findAllByTenure(int tenure);
 

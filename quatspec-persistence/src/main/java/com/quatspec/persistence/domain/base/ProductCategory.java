@@ -23,7 +23,7 @@ public class ProductCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-	protected Integer id;
+	protected Long id;
 	
 	@Column(name = "name")
 	protected String name;
@@ -46,16 +46,16 @@ public class ProductCategory {
 		this.name = name;
 	}
 
-	public ProductCategory(Integer id) {
+	public ProductCategory(Long id) {
 		super();
 		this.id = id;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

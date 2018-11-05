@@ -1,5 +1,8 @@
 package com.quatspec.persistence.domain;
 
+import java.io.Serializable;
+import java.util.Collection;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -8,8 +11,8 @@ import com.quatspec.persistence.domain.base.ProductParent;
 
 @Entity(name = "ProductGoods")
 @DiscriminatorValue(value = "1")
-public class Product extends ProductParent implements IProduct<Organization> {
-
+public class Product extends ProductParent implements IProduct<Organization>, Serializable {
+	
 	public Product() {
 		super();
 	}
@@ -61,4 +64,11 @@ public class Product extends ProductParent implements IProduct<Organization> {
 	public void setOrganization(Organization organization) {
 		this.organization = organization;
 	}
+
+	@Override
+	public Collection<Organization> getProducts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

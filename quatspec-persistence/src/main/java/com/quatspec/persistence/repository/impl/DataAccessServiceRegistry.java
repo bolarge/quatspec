@@ -17,7 +17,7 @@ import com.quatspec.persistence.repository.RoleRepository;
 import com.quatspec.persistence.repository.UserRepository;
 
 @Service("dataAccessService")
-public class DataAccessServiceImpl implements DataAccessService{
+public class DataAccessServiceRegistry implements DataAccessService{
 
 	@Autowired
 	private ProfileRepository profileRepository;

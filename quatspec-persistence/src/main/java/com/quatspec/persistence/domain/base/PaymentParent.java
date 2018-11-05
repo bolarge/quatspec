@@ -1,10 +1,13 @@
 package com.quatspec.persistence.domain.base;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -18,10 +21,13 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.quatspec.api.enums.PaymentStatus;
 import com.quatspec.api.enums.PaymentType;
 import com.quatspec.persistence.domain.Product;
@@ -64,16 +70,20 @@ public abstract class PaymentParent {
 	@Enumerated(EnumType.STRING)
 	protected PaymentStatus paymentStatus;
 
-	//@Enumerated(EnumType.STRING)
-	protected String paymentType;
-	
-	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
-	protected Set<Product> products = new HashSet<Product>();
+	@Enumerated(EnumType.STRING)
+	protected PaymentType paymentType;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "payment_product_association", 
+			joinColumns = @JoinColumn(name = "payment_id"),
+			inverseJoinColumns = @JoinColumn(name="product_id"))
+	//@OneToMany(mappedBy = "payment") //, cascade=CascadeType.ALL, orphanRemoval=true
+	protected Collection<Product> products = new ArrayList<Product>(); //change to boughtItems
 
 	public PaymentParent() {}
 
-	public PaymentParent(String paymentId, BigDecimal amount, Double paymentCharge, String paymentDescription, Set<Product> product,
-			Date paymentDate, User paychant, User merchant, String paymentType) {
+	public PaymentParent(String paymentId, BigDecimal amount, Double paymentCharge, String paymentDescription, Collection<Product> product,
+			Date paymentDate, User paychant, User merchant, PaymentType paymentType, PaymentStatus paymentStatus) {
 		this.paymentId = paymentId;
 		this.amount = amount;
 		this.paymentCharge = paymentCharge;
@@ -83,10 +93,24 @@ public abstract class PaymentParent {
 		this.paychant = paychant;
 		this.merchant = merchant;
 		this.paymentType = paymentType;
+		this.paymentStatus = paymentStatus;
+	}
+	
+	public PaymentParent(String paymentId, BigDecimal amount, Double paymentCharge, String paymentDescription,
+			Date paymentDate, User paychant, User merchant, PaymentType paymentType, PaymentStatus paymentStatus) {
+		this.paymentId = paymentId;
+		this.amount = amount;
+		this.paymentCharge = paymentCharge;
+		this.paymentDescription = paymentDescription;
+		this.paymentDate = paymentDate;
+		this.paychant = paychant;
+		this.merchant = merchant;
+		this.paymentType = paymentType;
+		this.paymentStatus = paymentStatus;
 	}
 
 	public PaymentParent(String paymentId, BigDecimal amount, String paymentDescription, User paychant, User merchant,
-			String paymentType) {
+			PaymentType paymentType, PaymentStatus paymentStatus) {
 		super();
 		this.paymentId = paymentId;
 		this.amount = amount;
@@ -94,6 +118,7 @@ public abstract class PaymentParent {
 		this.paychant = paychant;
 		this.merchant = merchant;
 		this.paymentType = paymentType;
+		this.paymentStatus = paymentStatus;
 	}
 
 	public Long getId() {
@@ -168,19 +193,19 @@ public abstract class PaymentParent {
 		this.paymentCharge = paymentCharge;
 	}
 
-	public Set<Product> getProducts() {
+	public Collection<Product> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Set<Product> products) {
+	public void setProducts(Collection<Product> products) {
 		this.products = products;
 	}
 
-	public String getPaymentType() {
+	public PaymentType getPaymentType() {
 		return paymentType;
 	}
 
-	public void setPaymentType(String paymentType) {
+	public void setPaymentType(PaymentType paymentType) {
 		this.paymentType = paymentType;
 	}
 
@@ -213,8 +238,6 @@ public abstract class PaymentParent {
 		} else if (!paymentId.equals(other.paymentId))
 			return false;
 		return true;
-	}
-	
-	
+	}	
 
 }

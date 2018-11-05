@@ -1,10 +1,11 @@
 package com.quatspec.persistence.domain.base;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -21,6 +22,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -133,14 +135,20 @@ public abstract class UserParent {
 	@JoinTable(name = "user_profile",
 			joinColumns = { @JoinColumn(name = "user_id") },
 			inverseJoinColumns = { @JoinColumn(name = "profile_id") })
-	protected Set<Profile> profiles = new HashSet<Profile>();
+	protected Collection<Profile> profiles = new HashSet<Profile>();
 	
-    @ManyToMany(fetch=FetchType.LAZY,targetEntity=Product.class)
+   /* @ManyToMany(fetch=FetchType.LAZY,targetEntity=Product.class)
     @JoinTable(name="user_product",
             joinColumns =@JoinColumn(name="user_id"),
             inverseJoinColumns=@JoinColumn(name="product_id"))
-    protected Set<Product> products = new HashSet<Product>();
-	
+    protected Collection<Product> products = new HashSet<Product>();*/
+    
+    @OneToMany(mappedBy="paychant") 	//fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true
+    protected Collection<PaymentParent> payerPayments = new HashSet<PaymentParent>();
+    
+    @OneToMany(mappedBy="merchant")		//fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true
+    protected Collection<PaymentParent> payeePayments = new HashSet<PaymentParent>();
+    
 	public UserParent() {}
 	
 	public UserParent(String userName, String email, String password, String gsmPhoneNumber, String nationalId, Organization organization) {
@@ -296,11 +304,11 @@ public abstract class UserParent {
 		this.lastLogoutDate = lastLogoutDate;
 	}
 
-	public Set<Profile> getProfiles() {
+	public Collection<Profile> getProfiles() {
 		return profiles;
 	}
 	
-	public void setProfiles(Set<Profile> profiles) {
+	public void setProfiles(Collection<Profile> profiles) {
 		this.profiles = profiles;
 	}
 
@@ -376,12 +384,28 @@ public abstract class UserParent {
 		this.nationalId = nationalId;
 	}
 	
-    public Set<Product> getProducts() {
+ /*   public Collection<Product> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Set<Product> products) {
+	public void setProducts(Collection<Product> products) {
 		this.products.addAll(products);
+	}*/
+
+	public Collection<PaymentParent> getPayerPayments() {
+		return payerPayments;
+	}
+
+	public void setPayerPayments(Collection<PaymentParent> payerPayments) {
+		this.payerPayments = payerPayments;
+	}
+
+	public Collection<PaymentParent> getPayeePayments() {
+		return payeePayments;
+	}
+
+	public void setPayeePayments(Collection<PaymentParent> payeePayments) {
+		this.payeePayments = payeePayments;
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.quatspec.persistence.domain;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,7 +45,7 @@ public class Profile {
 	protected String baseUrl;
 	
 	@ManyToMany(mappedBy = "profiles")
-	protected Set<UserParent> users = new HashSet<UserParent>();
+	protected Collection<UserParent> users = new HashSet<UserParent>();
 	
 	@ManyToMany(fetch=FetchType.EAGER,targetEntity = Role.class)
 	@JoinTable(name = "profile_role",
@@ -100,11 +101,11 @@ public class Profile {
 		this.baseUrl = baseUrl;
 	}
 
-	public Set<UserParent> getUsers() {
+	public Collection<UserParent> getUsers() {
 		return users;
 	}
 
-	public void setUsers(Set<UserParent> users) {
+	public void setUsers(Collection<UserParent> users) {
 		this.users = users;
 	}
 
