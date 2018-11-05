@@ -1,4 +1,4 @@
-package com.quatspec.middleware.message;
+package com.quatspec.middleware.consumer;
 
 import javax.jms.Message;
 import javax.jms.MessageListener;

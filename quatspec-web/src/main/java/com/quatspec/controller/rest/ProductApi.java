@@ -23,7 +23,7 @@ import com.quatspec.persistence.domain.User;
 import com.quatspec.persistence.repository.DataAccessService;
 
 @RestController
-@RequestMapping(value = "/rest/api/products", produces = {APPLICATION_JSON_VALUE}, consumes = {APPLICATION_JSON_VALUE})
+@RequestMapping(value = "/api/products", produces = {APPLICATION_JSON_VALUE}, consumes = {APPLICATION_JSON_VALUE})
 public class ProductApi {
 	
 	@Autowired

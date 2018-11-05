@@ -1,5 +1,6 @@
 package com.quatspec.controller.rest.model;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ public class IOrganizationResource extends DefaultResource implements IOrganizat
 	
 	private String phoneNumber;
 	
-	private Set<IProductResource> products = new HashSet<IProductResource>();
+	private Collection<IProductResource> products = new HashSet<IProductResource>();
 	
 	public IOrganizationResource() {
 		super();
@@ -56,11 +57,11 @@ public class IOrganizationResource extends DefaultResource implements IOrganizat
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Set<IProductResource> getProducts() {
+	public Collection<IProductResource> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Set<IProductResource> products) {
+	public void setProducts(Collection<IProductResource> products) {
 		this.products = products;
 	}
 

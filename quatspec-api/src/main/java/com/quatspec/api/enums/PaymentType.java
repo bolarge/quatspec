@@ -2,7 +2,7 @@ package com.quatspec.api.enums;
 
 public enum PaymentType {
 
-	BALANCE ("BAL"), ADVANCE ("ADV"), ARREAR ("ARR"), DUE("DUE");
+	BALANCE ("BAL"), ADVANCE ("ADV"), ARREAR ("ARR"), DUE("DUE"), INVOICE("INV"), PAID("PID");
 
 	private String code;
 

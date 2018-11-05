@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.quatspec.controller.rest.model.LoginResource;
 
 @RestController
-@RequestMapping(value = "/rest/api/login")
+@RequestMapping(value = "/api/login")
 public class LoginApi {
 
     @Autowired

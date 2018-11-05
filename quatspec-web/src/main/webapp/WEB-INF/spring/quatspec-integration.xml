@@ -37,6 +37,8 @@
 	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
 		<property name="connectionFactory" ref="cachingConnectionFactory" />
 		<property name="defaultDestination" ref="fixedDepositDestination" />
+		<!-- This is going to be the system transaction acquirer  -->
+		<!--  <property name="defaultDestination" ref="financialPaymentsAcquirer" /> -->
 	</bean>
 
 	<amq:queue id="fixedDepositDestination" physicalName="aQueueDestination" />
@@ -47,8 +49,9 @@
 		<jms:listener destination="emailQueueDestination" ref="emailMessageListener" />
 	</jms:listener-container>
 
-	<bean id="emailMessageListener" class="com.quatspec.middleware.message.EmailMessageListener" />
-	<bean id="fixedDepositMessageListener" class="com.quatspec.middleware.message.FixedDepositMessageListener" />
+	<bean id="emailMessageListener" class="com.quatspec.middleware.consumer.EmailMessageListener" />
+	<bean id="fixedDepositMessageListener" class="com.quatspec.middleware.consumer.FixedDepositMessageListener" />
+	
 	<bean id="fixedDepositProcessorJob" class="com.quatspec.middleware.job.FixedDepositProcessorJob" />
 	
 	<task:scheduled-tasks scheduler="emailScheduler">

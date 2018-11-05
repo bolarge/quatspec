@@ -70,12 +70,12 @@ public class IBankAccountResource extends DefaultResource implements IBankAccoun
 	}
 
 	@Override
-	public Long getAccountId() {		
+	public Long getId() {		
 		return 0L;
 	}
 
 	@Override
-	public void setAccountId(Long accountId) {
+	public void setId(Long accountId) {
 		
 	}
 

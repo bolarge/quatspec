@@ -1,9 +1,7 @@
 package com.quatspec.controller.rest.model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.Collection;
 
 import com.quatspec.api.model.IProduct;
 
@@ -17,7 +15,7 @@ public class IProductResource extends DefaultResource implements IProduct<IOrgan
 	
 	private Integer productClass;
 	
-	private Set<IProductResource> products = new HashSet<IProductResource>();
+	private Collection<IProductResource> products = new ArrayList<IProductResource>();
 	
 	private IOrganizationResource organization;
 	
@@ -85,13 +83,10 @@ public class IProductResource extends DefaultResource implements IProduct<IOrgan
 		this.productClass = productClass;
 	}
 
-	public Set<IProductResource> getProducts() {
-		return products;
+	@Override
+	public Collection<IOrganizationResource> getProducts() {
+		// TODO Auto-generated method stub
+		return null;
 	}
-
-	public void setProducts(Set<IProductResource> products) {
-		this.products = products;
-	}
-	
 	
 }

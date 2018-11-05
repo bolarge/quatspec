@@ -1,4 +1,5 @@
-package com.quatspec.middleware.message;
+package com.quatspec.middleware.consumer;
+/*package com.quatspec.middleware.producer;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -11,13 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.quatspec.persistence.dao.BankAccountDao;
-import com.quatspec.persistence.dao.FixedDepositDao;
-import com.quatspec.persistence.domain.FixedDepositAccount;
-
-
+import com.quatspec.persistence.domain.financialaccount.FixedDepositAccount;
+import com.quatspec.persistence.repository.dao.BankAccountDao;
+import com.quatspec.persistence.repository.dao.FixedDepositDao;
 
 public class FixedDepositMessageListener implements MessageListener {
+	
 	private static Logger logger = LogManager.getLogger(FixedDepositMessageListener.class);
 	
 	@Autowired
@@ -31,7 +31,7 @@ public class FixedDepositMessageListener implements MessageListener {
 	@Transactional(transactionManager="dbTxManager")
 	public int createFixedDeposit(FixedDepositAccount fdd) {
 		// -- create fixed deposit
-		bankAccountDao.subtractFromAccount(fdd.getBankAccountId(), fdd.getFdAmount());
+		bankAccountDao.subtractFromAccount(fdd.getAccountNumber(), fdd.getFixedAmount());
 		return myFixedDepositDao.createFixedDeposit(fdd);
 	}
 
@@ -49,4 +49,4 @@ public class FixedDepositMessageListener implements MessageListener {
 			createFixedDeposit(fdd);
 		}
 	}
-}
+}*/

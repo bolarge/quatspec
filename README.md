@@ -1,15 +1,14 @@
-# Payspec Payment Infrastructure Project 
+# Payspec Payments Infrastructure Project 
 
-The project provides RESTful APIs to manage Bank Account, initiate and process Payments and facilitates both B2B and B2C.
+The project provides RESTful APIs to manage Bank Account, initiate and process Payments and facilitates both B2B and B2C through mobile.
 
 ## How to set up
 At deployment project uses a servlet installer to install super ADMIN into the database. The is the Customer Key or Super Admin of the entire system.
 
 
-**superuser** is the only user with **ROLE_ADMIN** so, is the only who can use some of the entry points, for example, *get users*.
+**superuser** is the only user with **ROLE_ADMIN** so, is the only one who can use some of the entry points, for example, *get users*.
 
 ## How to run it
-
 This is a multi-layer Maven project built using **Spring framework: 5.1.0.RELEASE**.
 
 To build the project just execute maven `mvn clean package` commands from the project root, with this you'll get a generated war file on target folder.
@@ -163,9 +162,9 @@ Body: empty
 To verify if it's correctly working you can use, for example with **curl**, read the manual using `man curl` to get details about how to use it, some examples bellow using our local running server on **http://localhost:8080/quatspec **(#How-to-run-it):
 
 ##### GET request example
-This example will make a **GET** request on path *rest/api/users*, the cookie content is gotten from a successfully login request.
+This example will make a **GET** request on path *api/users*, the cookie content is gotten from a successfully login request.
 ```
- curl -X GET -H'Accept: application/json' -H'Content-Type: application/json' --cookie "JSESSIONID=F642BF70B000FE382DE92E5F7A024C08" -D- http://localhost:8080/quatspec/rest/api/users
+ curl -X GET -H'Accept: application/json' -H'Content-Type: application/json' --cookie "JSESSIONID=F642BF70B000FE382DE92E5F7A024C08" -D- http://localhost:8080/quatspec/api/users
 ```
 you'll get in your terminal something similar to this with the *status code* on the first line and the *body of the response* in the last one
 ```
@@ -186,7 +185,7 @@ Date: Tue, 23 May 2017 12:06:08 GMT
 ```
 
 ##### POST request example
-This example will make a **POST** request on path *rest/api/login* in our local running server on *localhost:/quatspec/8080*
+This example will make a **POST** request on path *api/login* in our local running server on *localhost:/quatspec/8080/api/login*
 ```
 curl -XPOST -H'Accept: application/json' -H'Content-Type: application/json' -d'{"username":"superuser","password":"password"}' -D- http://localhost:8080/rest/api/login
 ```

@@ -1,5 +1,7 @@
 package com.quatspec.controller.rest.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,7 +25,9 @@ public class IUserResource extends DefaultResource implements IUser<IOrganizatio
 
 	private IOrganizationResource iOrganization;   
 	
-	private Set<IProductResource> products = new HashSet<IProductResource>();
+	private Collection<IProductResource> products = new ArrayList<IProductResource>();
+	
+	private Collection<IProductServiceResource> productServices = new ArrayList<IProductServiceResource>();
 
     public IUserResource() {
         super();
@@ -36,9 +40,6 @@ public class IUserResource extends DefaultResource implements IUser<IOrganizatio
         this.userType = iUser.getUserType();
         this.password = iUser.getPassword();
         this.nationalId = iUser.getNationalId();
-        /*if(iUser.getOrganization() != null) {
-        	iOrganization = new IOrganizationResource(iUser.getOrganization());
-        }*/
     }
 
 	@Override
@@ -270,11 +271,6 @@ public class IUserResource extends DefaultResource implements IUser<IOrganizatio
 	public void setPaychantId(String paychantId) {		
 		
 	}
-	
-	@Override
-	public Set<Profile> getProfiles() {
-		return null;
-	}
 
 	@Override
 	public String getNationalId() {
@@ -294,5 +290,11 @@ public class IUserResource extends DefaultResource implements IUser<IOrganizatio
 	@Override
 	public void setOrganization(IOrganizationResource organization) {
 		this.iOrganization = organization;
+	}
+
+	@Override
+	public Collection getProfiles() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

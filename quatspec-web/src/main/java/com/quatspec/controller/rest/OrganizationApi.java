@@ -17,7 +17,7 @@ import com.quatspec.api.service.IOrganizationService;
 import com.quatspec.controller.rest.model.IOrganizationResource;
 
 @RestController
-@RequestMapping("rest/api/organizations")
+@RequestMapping("/api/organizations")
 public class OrganizationApi {
 	
 	@Autowired

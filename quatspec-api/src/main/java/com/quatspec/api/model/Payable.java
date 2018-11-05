@@ -1,10 +1,10 @@
 package com.quatspec.api.model;
 
-import java.util.Set;
+import java.util.Collection;
 
 public interface Payable<Product> {
 
-	Set<Product> getProduct();
+	Collection<Product> getProducts();
 	
-	void setProduct(Set<Product> product);
+	//void setProducts(Collection<Product> product);
 }

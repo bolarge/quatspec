@@ -1,12 +1,13 @@
 package com.quatspec.api.model;
 
 import java.math.BigDecimal;
-
+import java.util.Collection;
 import java.util.Date;
 
-import com.quatspec.api.enums.PaymentStatus;
 
-public interface IPayment<T extends IUser> {
+public interface IPayment<T extends IUser>{ 
+	
+	Collection<IProduct> getProducts();
 		
 	T getPaychant();
 
@@ -28,17 +29,12 @@ public interface IPayment<T extends IUser> {
 
 	void setPaymentDate(Date paymentDate) ;
 
-	PaymentStatus getPaymentStatus() ;
+	/*PaymentStatus getPaymentStatus() ;
 
 	void setPaymentStatus(PaymentStatus paymentStatus);
 	
-	String getPaymentType() ;
+	PaymentType getPaymentType();
 
-	void setPaymentType(String paymentType);
-	
-	/*Set<T> getProducts();
-
-	void setProducts(Set<T> products) ;*/
-	
+	void setPaymentType(PaymentType paymentType);*/
 
 }

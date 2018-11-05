@@ -21,7 +21,7 @@ import com.quatspec.api.service.IBankAccountService;
 import com.quatspec.controller.rest.model.IBankAccountResource;
 
 @RestController
-@RequestMapping(value = "/rest/api/accounts", produces = {APPLICATION_JSON_VALUE}, consumes = {APPLICATION_JSON_VALUE})
+@RequestMapping(value = "/api/accounts", produces = {APPLICATION_JSON_VALUE}, consumes = {APPLICATION_JSON_VALUE})
 public class BankAccountApi {
 
     @Autowired

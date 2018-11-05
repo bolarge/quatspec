@@ -16,9 +16,9 @@ public interface IBankAccount<T extends IUser> {
 
     void setAccountNumber(String accountNumber);
     
-    Long getAccountId();
+    Long getId();
 
-	void setAccountId(Long accountId);
+	void setId(Long accountId);
 
 	int getBalanceAmount() ;
 

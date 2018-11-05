@@ -23,7 +23,7 @@ import com.quatspec.controller.rest.model.IInvoiceResource;
 import com.quatspec.controller.rest.model.IPaymentResource;
 
 @RestController
-@RequestMapping(value = "/rest/api/payments", produces = {APPLICATION_JSON_VALUE}, consumes = {APPLICATION_JSON_VALUE})
+@RequestMapping(value = "/api/payments", produces = {APPLICATION_JSON_VALUE}, consumes = {APPLICATION_JSON_VALUE})
 public class PaymentApi {
 	
 	@Autowired
@@ -46,14 +46,22 @@ public class PaymentApi {
 	@Secured({"ROLE_ADMIN", "ROLE_USER"})
 	@RequestMapping(method = RequestMethod.POST) 
 	public IPaymentResource initiatePayment(@RequestBody IPaymentResource iPaymentRequest) {
-		System.out.println("Product to be Invouced are " + iPaymentRequest.getPaychant().getUserName());
-		//IInvoice productInvoiceRequest = paymentService.generateInvoice(iProductInvoice);
-		//if (productInvoiceRequest != null) {
+		System.out.println("Product amount sold is " + iPaymentRequest.getProducts().size());
 			IPayment paymentRequestOutcome = paymentService.processPayment(iPaymentRequest);
 			if (paymentRequestOutcome != null) {
 				return new IPaymentResource(paymentRequestOutcome);
 			}
-		//}
 		return null;
 	}
+	
+	/*@Secured({"ROLE_ADMIN", "ROLE_USER"})
+	@RequestMapping(method = RequestMethod.POST) 
+	public IPaymentResource initiatePayment(@RequestBody IInvoiceResource iPaymentRequest) {
+		System.out.println("Product amount sold is " + iPaymentRequest.getProducts().size());
+			IPayment paymentRequestOutcome = paymentService.processPayment(iPaymentRequest);
+			if (paymentRequestOutcome != null) {
+				return new IPaymentResource(paymentRequestOutcome);
+			}
+		return null;
+	}*/
 }

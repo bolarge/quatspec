@@ -1,27 +1,11 @@
 package com.quatspec.api.model;
 
-import java.util.Set;
+import java.util.Collection;
 
-public interface IInvoice<T extends IProduct> {
-
-	/*String getProductId();
-
-	void setProductId(String productId);
-
-	String getName();
-
-	void setName(String name);
-
-	String getDescription();
-
-	void setDescription(String description);
-
-	Integer getProductClass();
-
-	void setProductClass(Integer productClass);*/
+public interface IInvoice<T extends IProduct>{
 	
-	Set<T> getProducts();
+	Collection<T> getProducts();
 	
-	void setProducts(Set<T> products);
+	void setProducts(Collection<T> products);
 
 }

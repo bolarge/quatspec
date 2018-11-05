@@ -24,7 +24,7 @@ import com.quatspec.controller.rest.model.IUserResource;
 import com.quatspec.service.application.service.LoggerService;
 
 @RestController
-@RequestMapping(value = "/rest/api/users", produces = {APPLICATION_JSON_VALUE})
+@RequestMapping(value = "/api/users", produces = {APPLICATION_JSON_VALUE})
 public class UserApi {
 
     @Autowired

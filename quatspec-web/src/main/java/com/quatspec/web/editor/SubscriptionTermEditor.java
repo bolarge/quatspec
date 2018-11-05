@@ -2,7 +2,7 @@ package com.quatspec.web.editor;
 
 import java.beans.PropertyEditorSupport;
 
-import com.quatspec.persistence.enums.SubscriptionStatus;
+import com.quatspec.api.enums.SubscriptionStatus;
 
 public class SubscriptionTermEditor extends PropertyEditorSupport
 {

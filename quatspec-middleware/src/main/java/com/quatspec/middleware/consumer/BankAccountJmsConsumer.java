@@ -1,4 +1,4 @@
-package com.quatspec.middleware;
+package com.quatspec.middleware.consumer;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -12,6 +12,7 @@ import com.quatspec.api.exception.QuaspecError;
 import com.quatspec.api.exception.QuaspecServiceException;
 import com.quatspec.api.model.IBankAccount;
 import com.quatspec.api.service.IBankAccountService;
+import com.quatspec.middleware.Constants;
 import com.quatspec.service.service.impl.BankAccountServiceImpl;
 
 @Service("bankAccountJmsConsumer")
@@ -55,6 +56,30 @@ public class BankAccountJmsConsumer implements IBankAccountService {
 	public void transferFromAccount(String fromAccountNumber, String toAccountNumber, int transferAmount) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void createBankAccount(IBankAccount account) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Long createAndReturnAccountId(IBankAccount bankAccountDetails) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IBankAccount getFixedDeposit(String fixedDepositId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<? extends IBankAccount> getFixedDepositsByBankAccount(Long bankAccountId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 

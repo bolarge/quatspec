@@ -1,5 +1,6 @@
 package com.quatspec.api.model;
 
+import java.util.Collection;
 import java.util.Set;
 
 public interface IOrganization<T extends IProduct> {
@@ -16,8 +17,8 @@ public interface IOrganization<T extends IProduct> {
 	
 	void setPhoneNumber(String phoneNumber);
 	
-	Set<T> getProducts();
+	Collection<T> getProducts();
 	
-	void setProducts(Set<T> products);
+	void setProducts(Collection<T> products);
 
 }

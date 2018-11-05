@@ -1,6 +1,6 @@
 package com.quatspec.api.model;
 
-public interface IProduct<T extends IOrganization> {
+public interface IProduct<T extends IOrganization> extends Payable {
 
 	String getProductId();
 	

@@ -1,4 +1,4 @@
-package com.quatspec.middleware.job;
+/*package com.quatspec.middleware.job;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
-import com.quatspec.persistence.dao.FixedDepositDao;
-import com.quatspec.persistence.domain.FixedDepositAccount;
+import com.quatspec.persistence.domain.financialaccount.FixedDepositAccount;
+import com.quatspec.persistence.repository.dao.FixedDepositDao;
 
 public class FixedDepositProcessorJob {
 	@Autowired
@@ -43,4 +43,4 @@ public class FixedDepositProcessorJob {
 		}
 		myFixedDepositDao.setFixedDepositsAsActive(inactiveFds);
 	}
-}
+}*/

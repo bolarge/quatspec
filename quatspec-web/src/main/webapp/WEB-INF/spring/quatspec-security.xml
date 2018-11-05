@@ -19,7 +19,7 @@
 	<!--\END Guest  -->
 
 	<!-- REST Authentication -->
-	<security:http realm="API Realm"  pattern="/rest/**" use-expressions="true" authentication-manager-ref="apiAuthenticationManager">  
+	<security:http realm="API Realm"  pattern="/api/**" use-expressions="true" authentication-manager-ref="apiAuthenticationManager">  
         <security:intercept-url pattern="/api/*" access="hasAuthority('ROLE_ADMIN')" />
         <security:http-basic/>
         <security:logout delete-cookies="JSESSIONID" />

@@ -14,4 +14,14 @@ public interface IBankAccountService {
     void withdrawFromAccount(String accountNumber, int withdrawAmount) throws QuaspecServiceException;
     
     void transferFromAccount(String fromAccountNumber, String toAccountNumber, int transferAmount);
+    
+    void createBankAccount(IBankAccount account);
+    
+    Long createAndReturnAccountId(IBankAccount bankAccountDetails);
+    
+    IBankAccount getFixedDeposit(String fixedDepositId);
+    
+	List<? extends IBankAccount> getFixedDepositsByBankAccount(Long bankAccountId);
+	
+	//FixedDepositDetails getFixedDepositFromCache(int fixedDepositId);
 }

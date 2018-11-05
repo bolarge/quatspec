@@ -45,7 +45,7 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 		<url-pattern>/admin</url-pattern>
-		<url-pattern>/rest</url-pattern>
+		<url-pattern>/api</url-pattern>
 		<url-pattern>/guest</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
    	    <dispatcher>ASYNC</dispatcher>
@@ -80,7 +80,7 @@
 		<servlet-name>payspec</servlet-name>
 		<url-pattern>/</url-pattern>
 		 <url-pattern>/admin</url-pattern>
-		 <url-pattern>/rest</url-pattern>
+		 <url-pattern>/api</url-pattern>
 		 <url-pattern>/guest</url-pattern>
 	</servlet-mapping>
 	

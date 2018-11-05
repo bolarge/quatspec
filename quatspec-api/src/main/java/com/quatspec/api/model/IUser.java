@@ -1,5 +1,6 @@
 package com.quatspec.api.model;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 
@@ -101,7 +102,7 @@ public interface IUser<T extends IOrganization>  {
 	
 	void setPaychantId(String paychantId);
 	
-	Set getProfiles();	
+	Collection getProfiles();	
 	
 	T getOrganization();
 	

@@ -1,17 +1,17 @@
 package com.quatspec.controller.rest.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
-import com.quatspec.api.enums.PaymentStatus;
-import com.quatspec.api.model.IInvoice;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.quatspec.api.enums.PaymentType;
 import com.quatspec.api.model.IPayment;
-import com.quatspec.api.model.IProduct;
+import com.quatspec.api.model.Payable;
+import com.quatspec.persistence.domain.Product;
 
-public class IPaymentResource extends DefaultResource implements IPayment<IUserResource>, IInvoice<IProductResource> {
+public class IPaymentResource extends DefaultResource implements IPayment<IUserResource>, Payable {
 	
 	private BigDecimal amount;
 	
@@ -23,11 +23,12 @@ public class IPaymentResource extends DefaultResource implements IPayment<IUserR
 	
 	private IUserResource merchant;
 	
-	private PaymentStatus paymentStatus;
+	//private PaymentStatus paymentStatus;
 	
-	private String paymentType;
+	private PaymentType paymentType;
 	
-	private Set<IProductResource> products;
+	//@JsonIgnore
+	private Collection<Product> products = new ArrayList<Product>();
 	
 	public IPaymentResource() {
 		super();
@@ -36,20 +37,16 @@ public class IPaymentResource extends DefaultResource implements IPayment<IUserR
 	public IPaymentResource(IPayment iPaymentRequest) {
 		this.amount = iPaymentRequest.getAmount();
 		this.paymentDescription = iPaymentRequest.getPaymentDescription();
-		this.paymentType = iPaymentRequest.getPaymentType();
+		//this.paymentType = iPaymentRequest.getPaymentType();
 		
 		if ((iPaymentRequest.getPaychant() != null) && (iPaymentRequest.getMerchant() != null)) {
 			this.paychant = new IUserResource(iPaymentRequest.getPaychant());
 			this.merchant = new IUserResource(iPaymentRequest.getMerchant());
 		}
 		
-		//Having issues here to revisit
-		/*if(!iPaymentRequest.getMerchant().getProducts().isEmpty()) {
-		//if(!iPaymentRequest.getProducts().isEmpty()) {
-			products = new HashSet<IProductResource>();
-			products.addAll(iPaymentRequest.get);
-			//((IProductResource) this.products).setProducts(iPaymentRequest.getMerchant().getOrganization().getProducts());					
-		}*/
+		if(!iPaymentRequest.getProducts().isEmpty()) {	
+			this.products = iPaymentRequest.getProducts();				
+		}
 	}
 
 	@Override
@@ -102,7 +99,7 @@ public class IPaymentResource extends DefaultResource implements IPayment<IUserR
 		this.paymentDate = paymentDate;
 	}
 
-	@Override
+	/*@Override
 	public PaymentStatus getPaymentStatus() {
 		return paymentStatus;
 	}
@@ -113,23 +110,18 @@ public class IPaymentResource extends DefaultResource implements IPayment<IUserR
 	}
 
 	@Override
-	public String getPaymentType() {
+	public PaymentType getPaymentType() {
 		return paymentType;
 	}
 
 	@Override
-	public void setPaymentType(String paymentType) {
+	public void setPaymentType(PaymentType paymentType) {
 		this.paymentType = paymentType;
-	}
+	}*/
 
 	@Override
-	public Set<IProductResource> getProducts() {
+	public Collection getProducts() {
 		return products;
-	}
-
-	@Override
-	public void setProducts(Set<IProductResource> products) {
-		this.products.addAll(products);
 	}
 
 }
