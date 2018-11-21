@@ -50,12 +50,12 @@ public class IBankAccountResource extends DefaultResource implements IBankAccoun
     }
 
 	@Override
-	public int getBalanceAmount() {
+	public double getBalanceAmount() {
 		return 0;
 	}
 
 	@Override
-	public void setBalanceAmount(int balanceAmount) {
+	public void setBalanceAmount(double balanceAmount) {
 		
 	}
 

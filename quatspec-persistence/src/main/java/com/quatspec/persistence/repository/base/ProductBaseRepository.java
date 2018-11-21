@@ -11,9 +11,9 @@ import com.quatspec.persistence.domain.Product;
 @NoRepositoryBean
 public interface ProductBaseRepository<T extends Product> extends JpaRepository<T, Long>  {
 
-	public T findByName (String username);
+	T findByName (String username);
 	
-	public T findByProductId(String productId);
+	T findByProductId(String productId);
 	
-	public Optional<IProduct> findByProductId (Long productId);
+	Optional<IProduct> findByProductId (Long productId);
 }

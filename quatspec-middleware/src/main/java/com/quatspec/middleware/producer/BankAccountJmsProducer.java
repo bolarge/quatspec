@@ -1,4 +1,4 @@
-package com.quatspec.middleware.producer;
+/*package com.quatspec.middleware.producer;
 
 import org.apache.activemq.command.ActiveMQQueue;
 import org.slf4j.Logger;
@@ -54,12 +54,12 @@ public class BankAccountJmsProducer implements IBankAccountService {
 	}
 	
 	@Override
-	public void withdrawFromAccount(String accountNumber, int withdrawAmount) throws QuaspecServiceException {
+	public void withdrawFromAccount(String accountNumber, double withdrawAmount) throws QuaspecServiceException {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void transferFromAccount(String fromAccountNumber, String toAccountNumber, int transferAmount) {
+	public void transferFromAccount(String fromAccountNumber, String toAccountNumber, double transferAmount) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -73,15 +73,24 @@ public class BankAccountJmsProducer implements IBankAccountService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
-	public IBankAccount getFixedDeposit(String fixedDepositId) {
+	public List<? extends IBankAccount> getInactiveBankAccounts() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
-	public List<? extends IBankAccount> getFixedDepositsByBankAccount(Long bankAccountId) {
+	public IBankAccount deActivateBankAccount(String accountNumber) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void deActivateBankAccount(List<IBankAccount> account) {
+		// TODO Auto-generated method stub
+		
 	}
 }
 
+*/

@@ -33,8 +33,8 @@ public class BankAccountServiceImpl implements IBankAccountService {
 	
 	private static Logger logger = LogManager.getLogger(BankAccountServiceImpl.class);
 	
-	@Autowired
-	private JmsTemplate jmsTemplate;
+	/*@Autowired
+	private JmsTemplate jmsTemplate;*/
 	
 	@Autowired
 	DataAccessService dataAccessService;
@@ -70,32 +70,20 @@ public class BankAccountServiceImpl implements IBankAccountService {
     }
 
 	@Override
-	public void withdrawFromAccount(String accountNumber, int withdrawAmount) throws QuaspecServiceException {
+	public void withdrawFromAccount(String accountNumber, double withdrawAmount) throws QuaspecServiceException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void transferFromAccount(String fromAccountNumber, String toAccountNumber, int transferAmount) {
+	public void transferFromAccount(String fromAccountNumber, String toAccountNumber, double transferAmount) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	@CachePut(cacheNames = { "fixedDeposit" }, key = "#fixedDepositId")
-	public IBankAccount getFixedDeposit(String fixedDepositId) {
-		logger.info("getFixedDeposit method invoked with fixedDepositId " + fixedDepositId);
-		return dataAccessService.getBankAccountRepository().findByAccountNumber(fixedDepositId);
-	}
 
-	@Override
-	@Cacheable(cacheNames = { "fixedDepositList" })
-	public List<? extends IBankAccount> getFixedDepositsByBankAccount(Long bankAccountId) {
-		logger.info("findFixedDepositsByBankAccount method invoked");
-		return dataAccessService.getBankAccountRepository().findFixedDepositsByBankAccount(bankAccountId);
-	}
 
-	@Override
+	/*@Override
 	@Transactional(transactionManager = "jmsTxManager")
 	@CacheEvict(cacheNames = { "accountList" }, allEntries = true, beforeInvocation = true)
 	public void createBankAccount(IBankAccount account) {
@@ -120,12 +108,30 @@ public class BankAccountServiceImpl implements IBankAccountService {
 			}
 		});
 		
-	}
+	}*/
 
 	@Override
 	public Long createAndReturnAccountId(IBankAccount bankAccountDetails) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<? extends IBankAccount> getInactiveBankAccounts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IBankAccount deActivateBankAccount(String accountNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deActivateBankAccount(List<IBankAccount> account) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

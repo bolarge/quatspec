@@ -28,7 +28,7 @@
                             <a class="nav-link" href="#best-features">Features</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#demonstrations">Demonstrations</a>
+                            <a class="nav-link" href="#demonstrations">Use Cases</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#customers">Customers</a>

@@ -1,4 +1,4 @@
-package com.quatspec.middleware.consumer;
+/*package com.quatspec.middleware.consumer;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -13,7 +13,6 @@ import com.quatspec.api.exception.QuaspecServiceException;
 import com.quatspec.api.model.IBankAccount;
 import com.quatspec.api.service.IBankAccountService;
 import com.quatspec.middleware.Constants;
-import com.quatspec.service.service.impl.BankAccountServiceImpl;
 
 @Service("bankAccountJmsConsumer")
 public class BankAccountJmsConsumer implements IBankAccountService {
@@ -47,13 +46,13 @@ public class BankAccountJmsConsumer implements IBankAccountService {
 	}
 
 	@Override
-	public void withdrawFromAccount(String accountNumber, int withdrawAmount) throws QuaspecServiceException {
+	public void withdrawFromAccount(String accountNumber, double withdrawAmount) throws QuaspecServiceException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void transferFromAccount(String fromAccountNumber, String toAccountNumber, int transferAmount) {
+	public void transferFromAccount(String fromAccountNumber, String toAccountNumber, double transferAmount) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -71,15 +70,22 @@ public class BankAccountJmsConsumer implements IBankAccountService {
 	}
 
 	@Override
-	public IBankAccount getFixedDeposit(String fixedDepositId) {
+	public List<? extends IBankAccount> getInactiveBankAccounts() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<? extends IBankAccount> getFixedDepositsByBankAccount(Long bankAccountId) {
+	public IBankAccount deActivateBankAccount(String accountNumber) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void deActivateBankAccount(List<IBankAccount> account) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
+*/

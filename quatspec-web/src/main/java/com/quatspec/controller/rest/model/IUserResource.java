@@ -83,12 +83,12 @@ public class IUserResource extends DefaultResource implements IUser<IOrganizatio
 	}
 
 	@Override
-	public Long getUserId() {
+	public Long getId() {
 		return null;
 	}
 
 	@Override
-	public void setUserId(Long id) {		
+	public void setId(Long id) {		
 		
 	}
 

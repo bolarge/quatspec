@@ -32,7 +32,7 @@ public abstract class AccountParent {
 	protected String bankVerificationNumber;
 
 	@Column(name = "balance_amount")
-	protected int balanceAmount;
+	protected double balanceAmount;
 
 	@Column(name = "last_transaction_ts")
 	protected Date lastTransactionTimestamp;
@@ -103,11 +103,11 @@ public abstract class AccountParent {
 		this.user = user;
 	}
 
-	public int getBalanceAmount() {
+	public double getBalanceAmount() {
 		return balanceAmount;
 	}
 
-	public void setBalanceAmount(int balanceAmount) {
+	public void setBalanceAmount(double balanceAmount) {
 		this.balanceAmount = balanceAmount;
 	}
 

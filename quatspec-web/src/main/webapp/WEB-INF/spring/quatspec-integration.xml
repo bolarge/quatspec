@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:amq="http://activemq.apache.org/schema/core" xmlns:jms="http://www.springframework.org/schema/jms"
 	xmlns:cache="http://www.springframework.org/schema/cache" xmlns:task="http://www.springframework.org/schema/task"
@@ -37,8 +37,7 @@
 	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
 		<property name="connectionFactory" ref="cachingConnectionFactory" />
 		<property name="defaultDestination" ref="fixedDepositDestination" />
-		<!-- This is going to be the system transaction acquirer  -->
-		<!--  <property name="defaultDestination" ref="financialPaymentsAcquirer" /> -->
+		
 	</bean>
 
 	<amq:queue id="fixedDepositDestination" physicalName="aQueueDestination" />
@@ -90,3 +89,4 @@
 	</bean>
 
 </beans>
+ -->

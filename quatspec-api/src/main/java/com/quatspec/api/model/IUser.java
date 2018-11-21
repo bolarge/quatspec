@@ -8,9 +8,9 @@ import com.quatspec.api.enums.Gender;
 
 public interface IUser<T extends IOrganization>  {
 	
-	Long getUserId();
+	Long getId();
 
-	void setUserId(Long id);
+	void setId(Long id);
 
 	int getVersion();
 

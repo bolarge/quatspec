@@ -29,6 +29,7 @@ public class LoginApi {
 
         try {
         		Authentication auth = apiAuthenticationManager.authenticate(token);
+        		System.out.println("Authenticated user is " + auth.getName());
         		SecurityContextHolder.getContext().setAuthentication(auth);
             	return new LoginResource(auth.isAuthenticated(), auth.getName());
         	} catch (BadCredentialsException e) {

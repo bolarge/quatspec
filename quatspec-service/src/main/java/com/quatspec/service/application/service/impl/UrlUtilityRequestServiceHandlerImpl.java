@@ -37,6 +37,7 @@ public class UrlUtilityRequestServiceHandlerImpl implements UrlUtilityRequestSer
 		if (isUrlForAdmin(httpServletRequest)) {
 			entryPoint = "adminwelcome";
 		}
+		System.out.println("4: Called identityLandingPageForUserType " + entryPoint);
 		return entryPoint;
 	}
 
@@ -45,10 +46,10 @@ public class UrlUtilityRequestServiceHandlerImpl implements UrlUtilityRequestSer
 		if (isUrlForAdmin(httpServletRequest)) {
 			entryPoint = "admineditprofile";
 		}
+		System.out.println("6: Called identityEditProfilePageForUserType " + entryPoint);
 		return entryPoint;
 	}
 
-	// please we have to make this usertype based
 	public String identityLogoutCompletionAuthenticationEntryPointURLByBaseURL(String baseURL) {
 		if (baseURL.contains("/admin/")) {
 			return "/admin/login?msg=logoutcomplete";
@@ -60,6 +61,7 @@ public class UrlUtilityRequestServiceHandlerImpl implements UrlUtilityRequestSer
 		if (baseURL.contains("/admin/")) {
 			return "/admin/login?";
 		}
+		System.out.println("7: Called identityLoginAuthenticationEntryPointURL " );
 		return "/login?";
 	}
 

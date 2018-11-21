@@ -10,13 +10,11 @@ public interface DataAccessService {
 	
 	public OrganizationRepository getOrganizationRepository();
 	
-	public EmployeeRepository getEmployeeRepository();
-	
 	public UserRepository getUserRepository();
 	
 	public MenuRepository getMenuRepository();
 	
-	public FixedDepositRepository getFixedDepositRepository();
+	//public FixedDepositRepository getFixedDepositRepository();
 	
 	public BankAccountRepository getBankAccountRepository();
 	

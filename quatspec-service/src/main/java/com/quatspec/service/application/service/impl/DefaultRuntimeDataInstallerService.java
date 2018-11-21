@@ -5,11 +5,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.quatspec.api.model.IUser;
 import com.quatspec.persistence.domain.Employee;
 import com.quatspec.persistence.domain.Profile;
 import com.quatspec.persistence.domain.Role;
+import com.quatspec.persistence.domain.User;
 import com.quatspec.persistence.repository.DataAccessService;
 import com.quatspec.service.application.service.ApplicationService;
 import com.quatspec.service.application.service.LoggerService;
@@ -17,7 +20,7 @@ import com.quatspec.service.application.service.LoggerService;
 @Component("defaultRuntimeInstallerService")
 public class DefaultRuntimeDataInstallerService {
 
-    @Autowired
+    @Autowired @Qualifier("dataAccessService")
     private DataAccessService dataAccessService;
 
     @Autowired
@@ -57,13 +60,8 @@ public class DefaultRuntimeDataInstallerService {
                     /*Set<Menu> menuSet = applicationService.findActiveMenuByProfileId(profile.getId());
                     dataAccessService.getRoleRepository().findById(profile.getId()).get().setMenus(menuSet);
                     //dataAccessLayer.addChildsToParent(Role.class, role.getId(), menuSet, "setMenus", Set.class);
-*/                    
-                    
-
-                    // lets create profile
-                    // i will look into priviledge for admin general later but note will need to have a screen for creating it
-                    //
-     
+                    */                    
+              
                     if (!dataAccessService.getProfileRepository().existsById(new Long(1l))) {
                     	profile = new Profile();
                     	profile.setName("System Profile");
@@ -74,11 +72,11 @@ public class DefaultRuntimeDataInstallerService {
                     	dataAccessService.getProfileRepository().save(profile);
                     } else {
                     	profile = applicationService.getApplicationProfileByName(installNode.get("profile").asText());
-                    	//System.out.println("");
                     }
                     if (profile != null) { 
                     	Employee user = null;                                              
-                        if (!dataAccessService.getEmployeeRepository().existsById(new Long(1l))) {
+                        //if (!dataAccessService.getUserRepository().existsById(new Long(1l))) {
+                    	if (!dataAccessService.getUserRepository().existsById(new Long(1l))) {
                             user = new Employee();
                             user.setUserName(installNode.get("username").asText());
                             user.setEmail(installNode.get("email").asText());
@@ -87,7 +85,7 @@ public class DefaultRuntimeDataInstallerService {
                             user.setPassword(passwordEncoder.encode(installNode.get("password").asText()));                          
                             user.setEnabled(true);                            
                             user.getProfiles().add(profile);
-                            dataAccessService.getEmployeeRepository().save(user);
+                            dataAccessService.getUserRepository().save(user);
                            
                         } else {                           
                         	System.out.println("XXXXXXX XXXXXXXXXXXX XXXXXXXX XXXXXX");

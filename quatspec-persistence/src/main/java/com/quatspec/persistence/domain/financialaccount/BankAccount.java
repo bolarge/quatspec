@@ -57,12 +57,12 @@ public class BankAccount extends AccountParent implements IBankAccount<User>, Se
 	}
 
     @Override
-	public int getBalanceAmount() {
+	public double getBalanceAmount() {
 		return balanceAmount;
 	}
 
     @Override
-	public void setBalanceAmount(int balanceAmount) {
+	public void setBalanceAmount(double balanceAmount) {
 		this.balanceAmount = balanceAmount;
 	}
 

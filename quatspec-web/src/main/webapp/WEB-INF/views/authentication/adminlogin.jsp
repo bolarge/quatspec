@@ -1,10 +1,5 @@
 <%@ include file="/WEB-INF/tags.jsp"%>
-<!-- 
-<body class="top-border custombody">
-	<div class="container d-flex h-100">
-		<div class="row justify-content-center align-self-center"> -->
-			<section class="form-simple">
-				<!--Form with header-->
+
 				<div class="card">
 					<!--Header-->
 					<div class="header pt-3 blue lighten-2">
@@ -58,6 +53,3 @@
 					</div>
 				</div>
 			</section>
-		<!-- </div>
-	</div>
-</body> -->

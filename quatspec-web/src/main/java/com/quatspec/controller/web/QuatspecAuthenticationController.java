@@ -44,7 +44,7 @@ public class QuatspecAuthenticationController {
 
 	@GetMapping(value = {"/welcome","/admin/welcome"})
 	public String home(Locale locale, Model model, HttpServletRequest httpServletRequest) throws Exception{
-		System.out.println(": Called QuatspecAuthenticationController Landing Page " + httpServletRequest.getRequestURI());
+		System.out.println("3: Called QuatspecAuthenticationController Landing Page " + httpServletRequest.getRequestURI());
 		HttpSession httpSession = httpServletRequest.getSession(false); 
 		if(httpSession !=null){
 			 List<Profile> adminUserProfiles = (List<Profile>) dataAccessService.getProfileRepository().findAll();

@@ -34,7 +34,7 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	@Transactional
 	public IUser getByUserId(Long userId) throws QuaspecServiceException {
-		Optional<IUser> user =  dataAccessService.getUserRepository().findByUserId(userId);
+		Optional<User> user =  dataAccessService.getUserRepository().findById(userId);
 		if(user.isPresent()){
 			 return user.get();
 		}
@@ -76,12 +76,12 @@ public class UserServiceImpl implements IUserService{
 
 	@Override
 	public void deleteUser(String userId) throws QuaspecServiceException {
-		dataAccessService.getUserRepository().deleteById(dataAccessService.getUserRepository().findByUserName(userId).getUserId());	
+		dataAccessService.getUserRepository().deleteById(dataAccessService.getUserRepository().findByUserName(userId).getId());	
 	}
 
 	@Override
 	public boolean isUserExist(String userId) {
-		return dataAccessService.getUserRepository().existsById(dataAccessService.getUserRepository().findByUserName(userId).getUserId());
+		return dataAccessService.getUserRepository().existsById(dataAccessService.getUserRepository().findByUserName(userId).getId());
 	}
 
 }

@@ -9,10 +9,6 @@ import com.quatspec.persistence.domain.financialaccount.BankAccount;
 @NoRepositoryBean
 public interface BankAccountBaseRepository<T extends BankAccount> extends JpaRepository<T, Long> {
 	
-	IBankAccount save(IBankAccount bankAccount);
-	
-	Long saveAndReturnId(IBankAccount bankAccount);
-	
 	T findByAccountNumber(String accountNumber);
 	
 	IBankAccount getByAccountNumber (String accountNumber);

@@ -13,7 +13,7 @@
 
             <!-- Breadcrumb-->
             <div class="breadcrumb-dn mr-auto">
-                <p>Quatspec Payment</p>
+                <p>Payspec Payment</p>
             </div>
 
             <!-- Links -->
@@ -53,7 +53,7 @@
                 <li class="logo-sn waves-effect">
                     <div class=" text-center">
                         <a href="#" class="pl-0">
-                            <img src="" class="" alt="Quatbits Logo">
+                            <img src="" class="" alt="Payspec Logo">
                             <!-- <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class=""> -->
                         </a>
                     </div>
@@ -79,16 +79,13 @@
                             <div class="collapsible-body">
                                 <ul>
                                     <li>
+                                        <a href="#" class="waves-effect">Administrator</a>
+                                    </li>
+                                    <li>
                                         <a href="#" class="waves-effect">Customer</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="waves-effect">Staff</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="waves-effect">Bank</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="waves-effect">Merchant</a>
+                                        <a href="#" class="waves-effect">Financial Institution</a>
                                     </li>
                                     <li>
                                         <a href="#" class="waves-effect">Telco</a>
@@ -101,16 +98,32 @@
                         </li>
                         <li>
                             <a class="collapsible-header waves-effect arrow-r">
+                                <i class="fa fa-hand-pointer-o"></i> Account Management
+                                <i class="fa fa-angle-down rotate-icon"></i>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li>
+                                        <a href="#" class="waves-effect">Account Setup</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect">Report</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="collapsible-header waves-effect arrow-r">
                                 <i class="fa fa-hand-pointer-o"></i> Payment Management
                                 <i class="fa fa-angle-down rotate-icon"></i>
                             </a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li>
-                                        <a href="#" class="waves-effect">Account</a>
+                                        <a href="#" class="waves-effect">Payment Setup</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="waves-effect">Point of Service</a>
+                                        <a href="#" class="waves-effect">Report</a>
                                     </li>
                                 </ul>
                             </div>
@@ -123,16 +136,16 @@
                             <div class="collapsible-body">
                                 <ul>
                                     <li>
-                                        <a href="#" class="waves-effect">Quatbits Payment</a>
+                                        <a href="#" class="waves-effect">Payspec Payment</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect">Payspec e-Trade</a>
                                     </li>
                                     <li>
                                         <a href="#" class="waves-effect">QuatCart e-Commerce</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="waves-effect">Quatspec POS</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="waves-effect">QuatCart e-Commerce</a>
+                                        <a href="#" class="waves-effect">Payspec POS</a>
                                     </li>
                                     <li>
                                         <a href="#" class="waves-effect">Quadrant Delivery</a>

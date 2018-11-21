@@ -51,7 +51,7 @@
                 <!--First column-->
                 <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
                     <h6 class="text-uppercase font-weight-bold">
-                        <strong>Company name</strong>
+                        <strong>Payspec</strong>
                     </h6>
                     <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                     <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
@@ -66,17 +66,15 @@
                     </h6>
                     <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                     <p>
-                        <a href="#!">MDBootstrap</a>
+                        <a href="#!">Payspec</a>
                     </p>
                     <p>
-                        <a href="#!">MDWordPress</a>
+                        <a href="#!">Payspec eCommerce</a>
                     </p>
                     <p>
-                        <a href="#!">BrandFlow</a>
+                        <a href="#!">Quadrant Logistics</a>
                     </p>
-                    <p>
-                        <a href="#!">Bootstrap Angular</a>
-                    </p>
+                    
                 </div>
                 <!--/.Second column-->
 
@@ -87,13 +85,13 @@
                     </h6>
                     <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                     <p>
-                        <a href="#!">Your Account</a>
+                        <a href="#!">Investor Opportunity</a>
                     </p>
                     <p>
-                        <a href="#!">Become an Affiliate</a>
+                        <a href="#!">Join our Sales Partner Network</a>
                     </p>
                     <p>
-                        <a href="#!">Shipping Rates</a>
+                        <a href="#!">Sign up 5 people, Earn a Reward </a>
                     </p>
                     <p>
                         <a href="#!">Help</a>
@@ -108,13 +106,11 @@
                     </h6>
                     <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                     <p>
-                        <i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
+                        <i class="fa fa-home mr-3"></i> Lekki Lagos, LG 105102, NG</p>
                     <p>
-                        <i class="fa fa-envelope mr-3"></i> info@example.com</p>
+                        <i class="fa fa-envelope mr-3"></i> info@payspec.co</p>
                     <p>
-                        <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
-                    <p>
-                        <i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
+                        <i class="fa fa-phone mr-3"></i> + 234 818 695 2945</p>
                 </div>
                 <!--/.Fourth column-->
 

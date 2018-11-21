@@ -15,8 +15,6 @@ public interface UserBaseRepository<T extends User> extends JpaRepository<T, Lon
 	
 	T findByEmail(String email);
 	
-	Optional<IUser> findByUserId (Long userId);
-	
-	T create(IUser iUser);
+	Optional<T> findById (Long userId);
 	
 }

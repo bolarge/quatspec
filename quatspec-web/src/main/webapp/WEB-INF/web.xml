@@ -27,10 +27,6 @@
     	<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
 	</listener>
 	
-	<!-- <listener>
-		<listener-class>org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
-	</listener> -->
-	
 	<listener>
 		<listener-class>com.quatspec.web.security.listener.QuatspecContextInstallerServletListener</listener-class>
 	</listener>
@@ -43,10 +39,10 @@
 
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/api</url-pattern>	
+		<url-pattern>/customer</url-pattern>
 		<url-pattern>/admin</url-pattern>
-		<url-pattern>/api</url-pattern>
-		<url-pattern>/guest</url-pattern>
+		<url-pattern>/*</url-pattern>			
 		<dispatcher>REQUEST</dispatcher>
    	    <dispatcher>ASYNC</dispatcher>
 	</filter-mapping>
@@ -77,11 +73,11 @@
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>payspec</servlet-name>
-		<url-pattern>/</url-pattern>
-		 <url-pattern>/admin</url-pattern>
+		<servlet-name>payspec</servlet-name>		
 		 <url-pattern>/api</url-pattern>
-		 <url-pattern>/guest</url-pattern>
+		 <url-pattern>/customer</url-pattern>
+		 <url-pattern>/admin</url-pattern>
+		 <url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
 	<session-config>

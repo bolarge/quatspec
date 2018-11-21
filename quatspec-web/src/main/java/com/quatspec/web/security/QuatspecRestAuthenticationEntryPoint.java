@@ -15,6 +15,6 @@ public class QuatspecRestAuthenticationEntryPoint implements AuthenticationEntry
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
     	System.out.println("Entering commence due to failed Authentication");
-    	response.sendError( HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized Access!" );
+    	response.sendError( HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized" );
     }
 }

@@ -42,7 +42,7 @@ public abstract class UserParent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	protected Long userId;
+	protected Long id;
 	
 	@Column(name = "version")
 	protected int version;
@@ -160,12 +160,12 @@ public abstract class UserParent {
 		this.organization = organization;
 	}
 	
-	public Long getUserId() {
-		return userId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserId(Long id) {
-		this.userId = id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public int getVersion() {
@@ -383,14 +383,6 @@ public abstract class UserParent {
 	public void setNationalId(String nationalId) {
 		this.nationalId = nationalId;
 	}
-	
- /*   public Collection<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(Collection<Product> products) {
-		this.products.addAll(products);
-	}*/
 
 	public Collection<PaymentParent> getPayerPayments() {
 		return payerPayments;
@@ -413,7 +405,7 @@ public abstract class UserParent {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((gsmPhoneNumber == null) ? 0 : gsmPhoneNumber.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -431,14 +423,11 @@ public abstract class UserParent {
 				return false;
 		} else if (!gsmPhoneNumber.equals(other.gsmPhoneNumber))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!userId.equals(other.userId))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
-	
-	
-
 }

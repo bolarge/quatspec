@@ -32,9 +32,9 @@
   </definition>
   
   <!-- Front End Guest -->
-  <definition name="home/index" extends="default.frontend">
+  <definition name="index" extends="default.frontend">
   	<put-attribute name="header" value="" />
-    <put-attribute name="body" value="/WEB-INF/views/home/index.jsp" />
+    <put-attribute name="body" value="/WEB-INF/views/guest/index.jsp" />
     <put-attribute name="footer" value="" />
   </definition>
   <!-- /Front End Guest -->

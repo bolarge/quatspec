@@ -1,4 +1,4 @@
-package com.quatspec.persistence.repository;
+ package com.quatspec.persistence.repository;
 
 import java.util.List;
 

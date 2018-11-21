@@ -33,12 +33,12 @@ public class User extends UserParent implements IUser<Organization>, Serializabl
 		this.userType = userType;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserId(Long id) {
-		this.userId = id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public int getVersion() {

@@ -1,4 +1,4 @@
-package com.quatspec.middleware.consumer;
+/*package com.quatspec.middleware.consumer;
 
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -36,4 +36,4 @@ public class EmailMessageListener implements MessageListener {
 		}
 		sendEmail();
 	}
-}
+}*/

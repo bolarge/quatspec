@@ -6,19 +6,24 @@ import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
-import com.quatspec.persistence.domain.financialaccount.FixedDepositAccount;
-import com.quatspec.persistence.repository.dao.FixedDepositDao;
+import com.quatspec.api.model.IBankAccount;
+import com.quatspec.middleware.consumer.FixedDepositMessageListener;
+import com.quatspec.service.financial.FinancialPaymentsService;
 
 public class FixedDepositProcessorJob {
-	@Autowired
-	@Qualifier(value = "fixedDepositDao")
-	private FixedDepositDao myFixedDepositDao;
+	
+private static Logger logger = LogManager.getLogger(FixedDepositMessageListener.class);
+	
+	@Autowired @Qualifier("financialServiceRegistry")
+	private FinancialPaymentsService financialPaymentsService;
 
 	@Autowired
 	private transient JavaMailSender mailSender;
@@ -27,20 +32,20 @@ public class FixedDepositProcessorJob {
 	@Qualifier("requestProcessedTemplate")
 	private transient SimpleMailMessage simpleMailMessage;
 
-	private List<FixedDepositAccount> getInactiveFixedDeposits() {
-		return myFixedDepositDao.getInactiveFixedDeposits();
+	private List<IBankAccount> getInactiveFixedDeposits() {
+		return (List<IBankAccount>) financialPaymentsService.getBankService().getInactiveBankAccounts();
 	}
 
 	public void sendEmail() throws AddressException, MessagingException {
-		List<FixedDepositAccount> inactiveFds = getInactiveFixedDeposits();
-		for (FixedDepositAccount fd : inactiveFds) {
+		List<IBankAccount> inactiveFds = getInactiveFixedDeposits();
+		for (IBankAccount fd : inactiveFds) {
 			MimeMessage mimeMessage = mailSender.createMimeMessage();
 			MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
-			mimeMessageHelper.setTo(fd.getEmail());
+			mimeMessageHelper.setTo(fd.getUser().getEmail());
 			mimeMessageHelper.setSubject(simpleMailMessage.getSubject());
 			mimeMessageHelper.setText(simpleMailMessage.getText());
 			mailSender.send(mimeMessage);
 		}
-		myFixedDepositDao.setFixedDepositsAsActive(inactiveFds);
+		financialPaymentsService.getBankService().deActivateBankAccount(inactiveFds);
 	}
 }*/

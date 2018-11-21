@@ -20,9 +20,9 @@ public interface IBankAccount<T extends IUser> {
 
 	void setId(Long accountId);
 
-	int getBalanceAmount() ;
+	double getBalanceAmount() ;
 
-	void setBalanceAmount(int balanceAmount);
+	void setBalanceAmount(double balanceAmount);
 
 	Date getLastTransactionTimestamp(); 
 

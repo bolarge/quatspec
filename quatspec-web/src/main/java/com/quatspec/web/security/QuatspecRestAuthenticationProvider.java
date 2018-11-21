@@ -9,7 +9,6 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
-import org.springframework.context.NoSuchMessageException;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -28,7 +27,7 @@ import com.quatspec.persistence.domain.Profile;
 import com.quatspec.persistence.repository.DataAccessService;
 import com.quatspec.service.application.service.ApplicationService;
 
-@Component
+@Component("quatspecRestAuthenticationProvider")
 public class QuatspecRestAuthenticationProvider implements AuthenticationProvider {
 	
 	@Autowired @Qualifier("dataAccessService")
@@ -58,15 +57,17 @@ public class QuatspecRestAuthenticationProvider implements AuthenticationProvide
 				boolean authenticated = passwordEncoder.matches(password, iUser.getPassword());	  
 				if (authenticated) {
 					if (iUser.isEnabled()) {	                      	                
-						Set<Profile> userProfiles = new HashSet<Profile>(dataAccessService.getProfileRepository().findProfileByUserId(iUser.getUserId())); 
+						Set<Profile> userProfiles = new HashSet<Profile>(dataAccessService.getProfileRepository().findProfileByUserId(iUser.getId())); 
 						UserDetails userDetails = new User(username, iUser.getPassword(), true, true, true, true, getAuthorities(new ArrayList<>(userProfiles)));
 						iUser.setLastLoginDate(new Date());
 						dataAccessService.getUserRepository().save(iUser);	                           
-						error_message = "USER SUCCESSFULLY LOGIN!";
+						error_message = "USER SUCCESSFULLY LOGIN!";						
 						status = true;                                    
-						auth = new UsernamePasswordAuthenticationToken(username, password, getAuthorities(new ArrayList<>(userProfiles)));					
+						auth = new UsernamePasswordAuthenticationToken(username, password, getAuthorities(new ArrayList<>(userProfiles)));	
+						System.out.println("Login is  XXXXXX : " + error_message + " " + auth.getName());
 					} else {	                           
 			            error_message = messageSource.getMessage("user.loginaccount.notactive", new Object[]{iUser.getFirstName() + " " + iUser.getLastName()}, applicationService.getDefaultApplicationLocale());
+			            System.out.println("Login is  XXXXXX : " + error_message);
 			        }
 				}else {	                       
 			        error_message = messageSource.getMessage("502", new Object[0], applicationService.getDefaultApplicationLocale());

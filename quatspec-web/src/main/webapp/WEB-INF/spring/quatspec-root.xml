@@ -10,6 +10,6 @@
 	
 	<import resource="quatspec-security.xml"/>
 	<import resource="quatspec-servlet.xml"/>
-	<import resource="quatspec-integration.xml"/>		
+	<!-- <import resource="quatspec-integration.xml"/>	 -->	
 		    		
 </beans>

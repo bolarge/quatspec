@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.quatspec.persistence.repository.BankAccountRepository;
 import com.quatspec.persistence.repository.DataAccessService;
-import com.quatspec.persistence.repository.EmployeeRepository;
-import com.quatspec.persistence.repository.FixedDepositRepository;
 import com.quatspec.persistence.repository.InstitutionRepository;
 import com.quatspec.persistence.repository.MenuRepository;
 import com.quatspec.persistence.repository.OrganizationRepository;
@@ -32,16 +30,10 @@ public class DataAccessServiceRegistry implements DataAccessService{
 	private OrganizationRepository organizationRepository;
 	
 	@Autowired
-	private EmployeeRepository employeeRepository;
-	
-	@Autowired
 	private UserRepository userRepository;
 	
 	@Autowired
 	private MenuRepository menuRepository;
-	
-	@Autowired
-	private FixedDepositRepository fixedDepositRepository;
 	
 	@Autowired
 	private BankAccountRepository bankAccountRepository;
@@ -69,11 +61,6 @@ public class DataAccessServiceRegistry implements DataAccessService{
 	}
 
 	@Override
-	public EmployeeRepository getEmployeeRepository() {
-		return employeeRepository;
-	}
-
-	@Override
 	public UserRepository getUserRepository() {
 		return userRepository;
 	}
@@ -81,11 +68,6 @@ public class DataAccessServiceRegistry implements DataAccessService{
 	@Override
 	public MenuRepository getMenuRepository() {
 		return menuRepository;
-	}
-
-	@Override
-	public FixedDepositRepository getFixedDepositRepository() {
-		return fixedDepositRepository;
 	}
 
 	@Override
