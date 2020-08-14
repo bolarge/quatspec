@@ -1,6 +1,6 @@
-# Payspec Payments Infrastructure Project 
+# Payspec Payments Project 
 
-The project provides RESTful APIs to manage Bank Account, initiate and process Payments and facilitates both B2B and B2C through mobile.
+This version of the project is monolithic multi module that provides together RESTful APIs and Front-end to manage Bank Account, initiate and process Payments and facilitates both B2B and B2C through mobile.
 
 ## How to set up
 At deployment project uses a servlet installer to install super ADMIN into the database. The is the Customer Key or Super Admin of the entire system.

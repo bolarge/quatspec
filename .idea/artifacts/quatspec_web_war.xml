@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="quatspec-web:war">
+    <output-path>$PROJECT_DIR$/quatspec-web/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>quatspec-web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="payspec.war">
+      <element id="artifact" artifact-name="quatspec-web:war exploded" />
+    </root>
+  </artifact>
+</component>

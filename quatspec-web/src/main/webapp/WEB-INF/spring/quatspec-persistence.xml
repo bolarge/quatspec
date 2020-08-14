@@ -13,7 +13,7 @@
 
 <jpa:repositories base-package="com.quatspec"/>
 
-<context:property-placeholder location="classpath:/META-INF/spring/quatspec.properties" />
+<context:property-placeholder location="classpath:/META-INF/spring/quatspe_devc.properties" />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${database.driverClassName}" />
@@ -57,7 +57,7 @@
 
 	<util:properties id="props">
 		<prop key="javax.persistence.validation.mode">${javax.persistence.validation.mode}</prop>
-		<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+		<prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>
 		<prop key="hibernate.show_sql">true</prop>
 		<prop key="hibernate.id.new_generator_mappings">false</prop>
 		<prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>

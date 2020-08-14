@@ -24,7 +24,8 @@
 		<spring.version>5.0.3.RELEASE</spring.version>
 		<springsecurity-version>5.0.1.RELEASE</springsecurity-version>
 		<spring-data-jpa.version>2.0.3.RELEASE</spring-data-jpa.version>
-		<hibernate.version>5.2.13.Final</hibernate.version>
+		<!--<hibernate.version>5.2.13.Final</hibernate.version>-->
+		<hibernate.version>5.3.7.Final</hibernate.version>
 		<jackson.version>2.9.4</jackson.version>
 		<javax-mail.version>1.6.1</javax-mail.version>
 		<javax-validation.version>1.1.0.Final</javax-validation.version>
@@ -36,8 +37,7 @@
 		<selenium.version>2.53.1</selenium.version>
 		<selenium-htmlunit.version>2.21</selenium-htmlunit.version>
 		<mockito.version>1.10.19</mockito.version>
-		<activemq.version>5.15.3</activemq.version>	  
-		
+		<activemq.version>5.15.3</activemq.version>
 	</properties>
 
 	<repositories>
@@ -412,7 +412,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.46</version>
+			<version>8.0.21</version>
 		</dependency>
 		
 		<!-- Google Cloud Library		

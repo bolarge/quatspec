@@ -13,30 +13,25 @@
   <packaging>war</packaging>
   
  <dependencies>
-
 		<dependency>
 			<groupId>com.quatspec</groupId>
 			<artifactId>quatspec-persistence</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.quatspec</groupId>
 			<artifactId>quatspec-service</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>com.quatspec</groupId>
 			<artifactId>quatspec-middleware</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
-
 	</dependencies>
   
   <build>
     <finalName>payspec</finalName>
     <defaultGoal>package</defaultGoal>
   </build>
-  
 </project>

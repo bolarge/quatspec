@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/quatspec-api/quatspec-api.iml" filepath="$PROJECT_DIR$/quatspec-api/quatspec-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quatspec-middleware/quatspec-middleware.iml" filepath="$PROJECT_DIR$/quatspec-middleware/quatspec-middleware.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quatspec-parent.iml" filepath="$PROJECT_DIR$/quatspec-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quatspec-persistence/quatspec-persistence.iml" filepath="$PROJECT_DIR$/quatspec-persistence/quatspec-persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quatspec-service/quatspec-service.iml" filepath="$PROJECT_DIR$/quatspec-service/quatspec-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quatspec-web/quatspec-web.iml" filepath="$PROJECT_DIR$/quatspec-web/quatspec-web.iml" />
+    </modules>
+  </component>
+</project>
