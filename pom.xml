@@ -22,7 +22,7 @@
 		<java.version>8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>5.0.3.RELEASE</spring.version>
-		<springsecurity-version>5.0.1.RELEASE</springsecurity-version>
+		<springsecurity-version>5.5.7</springsecurity-version>
 		<spring-data-jpa.version>2.0.3.RELEASE</spring-data-jpa.version>
 		<!--<hibernate.version>5.2.13.Final</hibernate.version>-->
 		<hibernate.version>5.3.7.Final</hibernate.version>
