@@ -26,7 +26,7 @@
 		<spring-data-jpa.version>2.0.3.RELEASE</spring-data-jpa.version>
 		<!--<hibernate.version>5.2.13.Final</hibernate.version>-->
 		<hibernate.version>5.3.7.Final</hibernate.version>
-		<jackson.version>2.9.4</jackson.version>
+		<jackson.version>2.12.7.1</jackson.version>
 		<javax-mail.version>1.6.1</javax-mail.version>
 		<javax-validation.version>1.1.0.Final</javax-validation.version>
 		<joda-time.version>2.9.9</joda-time.version>
